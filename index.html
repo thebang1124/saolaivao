@@ -266,7 +266,7 @@
         </main>
         
         <footer class="text-center mt-10 text-slate-500 text-sm">
-            <p>Phát triển bởi Thế Bằng &copy; 2025</p>
+            <p>Phát triển bởi Bằng &copy; 2025</p>
             <p id="userIdDisplay" class="mt-1 opacity-70">Đang chờ xác thực người dùng...</p>
         </footer>
     </div>
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- GEMINI API CALLS ---
-    async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.0-flash') {
+    async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20') {
         const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
         let chatHistory = [];
@@ -630,7 +630,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const base64Image = reader.result.split(',')[1];
             const mimeType = state.selectedImageFile.type;
 
-            const prompt = `Trích xuất tất cả văn bản từ hình ảnh này. Sau đó, nếu văn bản đã trích xuất là tiếng Ê-đê, hãy dịch sang tiếng Việt. Nếu văn bản đã trích xuất là tiếng Việt, hãy dịch sang tiếng Ê-đê. Nếu không phải cả hai, chỉ cung cấp văn bản đã trích xuất. Chỉ xuất ra văn bản đã dịch hoặc văn bản đã trích xuất nếu không thể dịch. Không thêm bất kỳ lời giải thích nào khác.`;
+            // Prompt has been updated for better OCR and translation
+            const prompt = `Trích xuất tất cả văn bản từ hình ảnh này. Sau đó, dịch văn bản đó sang tiếng Việt nếu văn bản gốc là tiếng Ê-đê, hoặc sang tiếng Ê-đê nếu văn bản gốc là tiếng Việt. Nếu không phải cả hai, chỉ cung cấp văn bản đã trích xuất. Chỉ xuất ra văn bản đã dịch hoặc văn bản đã trích xuất nếu không thể dịch. Không thêm bất kỳ lời giải thích nào khác.`;
             
             try {
                 const translatedText = await callGeminiAPI(prompt, { data: base64Image, mimeType: mimeType });
@@ -1274,7 +1275,7 @@ Yưh yưp (tt),1. Chậm chạp. Eùbat yưh yưp: đi chậm chạp.
         ui.speakTranslatedTextButton.addEventListener('click', () => speakText(ui.outputText.value));
         ui.speakAdditionalTextButton.addEventListener('click', () => speakText(ui.additionalOutput.value));
         ui.speakEdeParagraphButton.addEventListener('click', () => speakText(ui.edeParagraphOutput.value, 'vi-VN')); // Assuming Vietnamese TTS can handle Ede text for now
-        ui.speakVietParagraphButton.addEventListener('click', () => speakText(ui.vietParagraphOutput.value, 'vi-VN'));
+        ui.speakVietParagraphButton.addEventListener('click', ()anto speakText(ui.vietParagraphOutput.value, 'vi-VN'));
     }
 
     // --- MAIN ENTRY POINT ---
