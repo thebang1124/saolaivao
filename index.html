@@ -4455,22 +4455,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Other handlers (generateExamples, summarize, etc.) remain the same...
-    async function handleGenerateExamples() {
-        if (state.isLoading || !ui.outputText.value.trim() || ui.outputText.value.includes("Kết quả dịch sẽ hiển thị ở đây")) return;
-        setLoadingState(ui.generateExamplesButton, true, 'Tạo ví dụ');
-        ui.additionalOutput.value = '';
-        const prompt = `Tạo 3 câu ví dụ sử dụng từ hoặc cụm từ "${ui.outputText.value}" trong ngữ cảnh khác nhau. Các câu ví dụ này nên được dịch sang ngôn ngữ còn lại (nếu từ gốc là tiếng Việt, ví dụ là tiếng Ê-đê và ngược lại). Chỉ trả về các câu ví dụ, mỗi câu trên một dòng mới.`;
-        try {
-            const examples = await callGeminiAPI(prompt);
-            ui.additionalOutput.value = examples;
-            ui.additionalOutputWrapper.classList.remove('hidden');
-        } catch (error) {
-            ui.additionalOutput.value = `Đã xảy ra lỗi: ${error.message}`;
-            showMessage(`Lỗi tạo ví dụ: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
-        }
+   async function handleGenerateExamples() {
+    // Thay đổi: Lấy từ gốc từ ô nhập liệu ban đầu (inputText) thay vì ô kết quả (outputText)
+    if (state.isLoading || !ui.inputText.value.trim()) {
+        showMessage("Vui lòng nhập một từ để tạo ví dụ.");
+        return;
     }
+    setLoadingState(ui.generateExamplesButton, true, 'Tạo ví dụ');
+    ui.additionalOutput.value = '';
+    
+    const originalWord = ui.inputText.value.trim();
+
+    // Thay đổi: Câu lệnh prompt được cập nhật để luôn yêu cầu ví dụ tiếng Ê-đê và bản dịch tiếng Việt
+    const prompt = `Với từ gốc là "${originalWord}", hãy tạo 3 câu ví dụ bằng tiếng Ê-đê. Với mỗi câu, hãy cung cấp bản dịch tiếng Việt ngay bên dưới. Định dạng như sau:
+    1. [Câu ví dụ tiếng Ê-đê]
+       - Dịch: [Bản dịch tiếng Việt]
+    2. [Câu ví dụ tiếng Ê-đê]
+       - Dịch: [Bản dịch tiếng Việt]
+    3. [Câu ví dụ tiếng Ê-đê]
+       - Dịch: [Bản dịch tiếng Việt]`;
+       
+    try {
+        const examples = await callGeminiAPI(prompt);
+        ui.additionalOutput.value = examples;
+        ui.additionalOutputWrapper.classList.remove('hidden');
+    } catch (error) {
+        ui.additionalOutput.value = `Đã xảy ra lỗi khi tạo ví dụ: ${error.message}`;
+        showMessage(`Lỗi tạo ví dụ: ${error.message}`, 5000);
+    } finally {
+        setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
+    }
+}
 
     async function handleSummarize() {
         if (state.isLoading || !ui.outputText.value.trim() || ui.outputText.value.includes("Kết quả dịch sẽ hiển thị ở đây")) return;
