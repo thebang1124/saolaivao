@@ -667,328 +667,4009 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to parse the .docx content and add it to Firestore
     async function loadInitialDictionaryData() {
         const docxContent = `Từ,Nghĩa
-Abao (dt),Ốc bươu.
-Abăn (dt),Cái chăn (mền). Msăm abăn: đăp chăn; Abăn hmlei: Chăn bông.
-Abŭ (dt),Cái hũ.
-Adei (dt),Em.
-Adĕ (dt),Hến.
-Adham (dt),Một nhóm trong tộc người Êđê.
-Adhan (dt),Cành. Adhan kyâo: Cành cây.
-Adhei (dt),Trán. Adhei: Trán rộng.
-Adiê (dt),Trời. Adiê hjan: Trời mưa.
-Adiê không,Nắng hạn.
-Adiê tlam,Xế chiều.
-Adih (đt),Kia. Sang kâo ti anôk adih: Nhà tôi chỗ kia; Hruê aguah
-,Adih kâo đue# hiu: Sáng ngày kia tôi đi chơi.
-Adôk (đgt),Còn. Kâo adôk prăk: Tôi còn tiền; Adôk hdyơp: Còn sống.
-Adrăng (dt),Rơm rạ. Mkăm adrăng: đống rơm.
-Adring (dt),"Hiên nhà sàn. Amyơ kâo [hu mdiê ti adring: Mẹ tôi phơi luôa ở hiên nhà sàn."
-Adrŏk (dt),Con cóc.
-Aduôn (dt),Bà (nội
-Adŭ (dt),1.Phòng. Adu\ pyơt: Phòng ngủ; Adu\ hriăm: Phòng học.
-,2. Lớp. Adu\ năm: Lớp 6; Adu\ pluh dua: Lớp 12.
-,3. Cái ô. Adu\ ju\: ô màu đen.
-Adŭ bruă (dt),Văn phòng.
-Adŭ git gai bruă kiă kriê (dt) , Phòng hành chính.
-Adŭ tĭng yap (dt),Phòng kế tín.
-Adŭng (dt),Mũi. {ăng adu\ng: Lỗ mũi.
-Aê (dt),Ông (nội
-Aê êa drao (dt),Bác sĩ. Aê êa drao jing pô mdrao klei ruă kơ jih jang mnuih: Bác sĩ là người chữa bệnh cho mọi người.
-Agam (tt),Loạn luân. Klei ngă agam jing soh ho\ng klei bhiăn anak Êđê: Loạn luân là hành động vi phạm phong tục của người Êđê.
-Agha (dt),Rễ. Agha kram: Rễ tre.
-Aguah (trạng từ),Buổi sáng. Aguah ưm: Sáng sớm; Aguah mgi: Sáng mai; Aguah mbruê: Sáng hôm qua.
-Aguăt (dt),"Con bọ cạp. Aguăt du] ruă snăk: Bọ cạp đốt rất đau."
-Ah (hư từ) ,Ạ. Kâo thâo klei soh leh amyơ ah: con biết lỗi rồi mẹ ạ.
-Ai (dt),Sức. Ai ktang: Sức mạnh.
-Ai hriăm (dt),Học lực.
-Ai êwa (dt) (tt),Khí thế
-Ai mĭn (đgt),Suy nghĩ. Tui si ai kâo myøn: Theo tôi nghĩ.
-Ajĭk (dt),Ốch.
-Ak (dt),Con quạ. Ju\ mse\ si ak: đen như quạ.
-Akăt (dt),Bụi (khóm). Akăt kram: Bụi tre.
-Akâo (đgt),Xin. Akâo prăk: Xin tiền; Akâo êa mnăm: Xin nước uống.
-Ala (dt),Con rắn. Ala knăl: Rắn giun; Ala mtah: Rắn lục.
-Ala čar (dt),"Tổ quốc. Ala ]ar Việt Nam: Tổ quốc Việt Nam. "
-Ala čar tač êngao (dt) ,Nước ngoài.
-Alah (tt),Lười biếng. Alah mă bruă: Lười làm việc; Mnuih alah: Người lười biếng.
-Alah alan (tt),Uể oải. Mă bruă alah alan: Làm việc uể oải.
-Ală (dt),Mắt. Pyơt ală: Nhắm mắt.
-Ală kĭng (dt),Kính. Truă ală kyông: đeo kính.
-Ală mmăt (tt),Cận thị. Ală mmăt kjham: Mắt cận thị nặng.
-"Alĕ, Aluê̆ (đgt)",Nhả. Ale\ djah êhăng: Nhả bã trầu.
-Alê (dt),Le.
-Alôk (đgt),"Lột. Alôk boh [ơr: Lột vỏ quả bơ."
-Alum akâo (đgt),Cầu xin. Alum akâo kơ aê êa drao đru mdrao brei anak kâo: Cầu xin bác sĩ cứu chữa con tôi.
-Alum kkuh (đgt),Kính thưa.
-Alum mpŭ (đgt),Trân trọng
-Alŭ (dt),Thôn
-Alŭ wăl (dt),Vùng.
-Alŭ buôn prŏng,Phố phường.
-Alưñ (tt),Gớm. Alưyũ bưyũ: Gớm giếc.
-Am pul pui (dt) ,Bóng đèn. Am pul pui kmlă: Bóng điện.
-Ama (dt),Bố (cha).
-Amai (dt),Chị.
-Amâo (pht),Không. Amâo mâo: Không có; Kâo amâo mâo prăk: Tôi không có tiền; Amâo guôp: Không hợp.
-Amâo dah (lt),Hay (hoặc). Kâo amâo dah ih nao: Tôi hay anh đi.
-Amâo dưi ,
-Amâo djŏ ai (tt),Không vừa lòng. Aáu mă bruă amâo djô ai amyơ ama: Nó làm việc không vừa lòng bố mẹ.
-Amâo djŏ knŏng (trgt),Chẳng những. Amâo djô knô\ng hriăm hră kriăng ôh
-Amâo kpă (tt),Bất chính. Klei ngă amâo kpă: Hành động bất chính.
-Amâo klă mngač (tt),"Bất minh. Mjê mjuk amâo klă mnga]: Quan hệ bất minh."
-Amâo răk (đgt),Bất cứ
-Amâo răk rai (hư từ),Bất diệt. Klei đao\ knang amâo răk rai: Niềm tin bất diệt.
-Amâo thâo knga (tt),Vô ơn.: Người vô ơn.
-Amâo mâo tŭ ư (đgt),Phản đối. Tôi phản đối anh ta làm việc không đúng.
-Amiêt (dt),Cậu. Anei amiêt kâo: đây là cậu tôi.
-Amĭ (dt),Mẹ (má).
-Amĭ ama hđeh (dt),Phụ huynh.
-Amlơ̆k (dt),"Cám. Amlơk ]iêm u\n: Cám lợn."
-Amra (pht),Sẽ. Kâo amra nao: Tôi sẽ đi.
-Amrak (dt),Con công. Rông amrak pioh dlăng: Nuôi công làm cảnh.
-Amrê̆č (dt),"Ớt. Sang kâo mâo pla amrê: nhà tôi có trồng ớt."
-Amung mtei (dt),Buồng chuối. Amyơ koh amung mtei: Mẹ chặt buồng chuối.
-Amung mdiê (dt),Bông lúa.
-Amung kngan (dt),Mu tay.
-Amung ŭn (dt),Mõm lợn (heo).
-Amuôn (dt),Cháu (cháu với cậu
-Ana ,I.(dt) cây. Ana kneh: cây mít. Ana truôl: cây ổi.
-,Ii.(tt) giống cái (từ dùng chỉ động vật giống cái). Uyôn ana: lợn nái; mnu\ ana: gà mái.
-Anak (dt),Con (dùng cho người).
-Anak ală (dt),Con ngươi.
-Anak ĭ (dt),Trẻ sơ sinh.
-Anak rai (dt),Con rồng.
-Anal (dt),Con sâu nái.
-Anal kŏ (dt),Cái gối.
-Anăn ,I.(dt) tên. Anăn kâo nam: tên tôi là nam.
-,Ii.(đại từ chỉ định) đó
-Anăn kdrưh (dt),Danh hiệu.
-Anăp (giơïi từ),Trước. Ti anăp: Phía trước.
-Anei (đt),"Đây. Anei [yông kâo: đây là bạn tôi. Kâo mă bruă ti anei: tôi làm việc ở đây. "
-Aneh (dt),Dễ.
-Angĭn (dt),Gió. Angyôn dưr: Gió bắc. Angyôn đrŭng: Gió lốc
-Angĭn êbŭ (dt),Bão.
-Angưr (đgt),Ngẩng. Angưr ko\: Ngẩng đầu.
-Anghar (đgt),"Ngáy. Pyơt anghar [rok [rok: Ngủ ngáy khò khò."
-Anôk (dt),Nơi
-Anôk dôk (dt),Nơi ở
-Anôk dôk êjai (dt),Nơi tạm trú.
-Anôk mjưh (dt),Nơi dừng. Anôk mjưh êdeh: Bến xe.
-Anôk mjưh mran (dt),Cảng.
-Anuă (dt),Cái cưa.
-Anŭng (dt),Túi. Anu\ng hăt: Túi thuốc lá.
-Anur (dt),Con ruồi.
-Anut (dt),Cái khuy áo. Sa boh anut: Một cái khuy.
-Añŭ (dt),Hạt cườm (chuỗi). Kngan buh ayu\: Cổ tay đeo cườm.
-Añuê (dt),Chiếu. Lang ayuê kơ adei pyơt: Trải chiếu cho em ngủ.
-Añhuôr (đgt),"Duỗi. Ayuhuôr jơ\ng ]iăng đăm êgah: Duỗi chân cho đỡ mỏi."
-Añhuih (đgt),Hỉ. Ayuhuih êa adu\ng: Hỉ mũi.
-Ao (dt),Áo. Ao ko#: Áo trắng. Ao hjan: Áo mưa.
-Ap (đgt),Đè.
-Ap gư̆ (đgt) ,Đàn áp.
-Aprŏng (dt),Bác (chị của mẹ).
-Ară anei (trgt),Hiện nay
-Arăn (đgt),Rặn. Arăn kkiêng: Rặn sinh.
-Arăng (đt),Người ta. Kâo hmư\ arăng blu\ lu kơ ayo\ng: Tôi nghe người ta nói nhiều về anh.
-Areh (dt),Con rệp. Areh ke\ ktăl êdi: Rệp cắn ngứa thật.
-Ariêng (dt),Con cua.
-Aruăt (dt),Gân
-Arul (dt),Họ của người Êđê.
-Arưp aram (đgt),"Đe dọa. Phung roh arưp aram mdjiê jih mnuih [uôn sang: bọn giặc đe dọa giết sạch dân làng."
-Asăp (dt),1. Lời. Asăp blu\: Lời nói.
-,2. Khói. Asăp pui: Khói lửa.
-Asăp mtrŭn (dt),Nghị quyết
-Asăr (dt),1.hạt
-,2. Viên. Asăr phao: Viên đạn.
-Aseh (dt),Con ngựa. Sang kâo mâo rông dua drei aseh ko#: Nhà tôi có nuôi hai con ngựa trắng.
-Asâo (dt),Con chó. Rông dua drei asâo: Nuôi hai con chó.
-Asei (dt),Thân
-Asei mlei (dt),Thân thể
-Asei wah (dt),Lưỡi câu.
-Atăt (đgt),Đón. Atăt ba kâo nao truh ti anôk ayo\ng mă bruă: Đón tôi đi đến nơi anh làm việc.
-Atâo (dt),Người chết (thi hài người chết).
-Ai tiê (dt),Tấm lòng.
-Ai tiê jăk (dt),Sự tốt bụng
-Ai tiê kriăng (tt),Chăm chỉ
-Atŭt (dt),Đốt. Atu\t kram: đốt tre; atu\t kđiêng kngan: đốt ngón tay. Atu\t klang ro\ng: đốt sống.
-Atiêng (dt),Nhánh. Atiêng êya: Nhánh gừng.
-Awa (dt),Bác (anh trai và chị gái của bố). Awa Hồ: Bác Hồ.
-Awak (dt),Cái thìa.
-Awak boh (dt),Cái muôi (làm bằng tre).
-Awan (dt),Khuôn
-Awăt (tt),Yếu
-Ayŏng (dt),Anh. Ayo\ng adei: Anh em.
-Ayŏng khua (dt),Anh cả.
-,
-A,
-Al (đgt),Mắng
-Al čôñ (tt),Giận hờn.
-Am (đgt),"Nướng. Aăm ]yôm ]iăng bi ksă: Nướng thịt cho chín."
-Ap (đgt),1. Bịt. Aap đyông êa: Bịt ống nước.
-,2. Ấp. Aap knga ti mtih: Áp tai vào vách.
-,3. Chườm. Kdô pioh ăp: Túi chườm.
-At (pht),1. Vẫn. Kâo ăt dôk ti anôk hđăp: Tôi vẫn ở chỗ cũ.
-,"2. Cũng. Aáu ăt myøn mse\ si kâo mơh: Nó cũng nghĩ như tôi; Ih la] snăn"
-,
-B,
-Ba (đgt),Mang. Djă ba: Mang theo.
-Ba tian (đgt),Mang bầu (có chửa dùng cho người).
-Ba kđi (đgt),Bồi thường.
-Bai (dt),Giỏ. Bai djah: Giỏ rác.
-Bai đih (dt),Nôi (em bé).
-Ban (đgt),Trườn.
-Bă (đgt),Đụng
-Băk (đgt),Đeo (vào cổ). Băk klei mah: đeo dây chuyền vàng.
-Bĕ (tht),Thôi! (lối hô thúc). Nao be\: đi thôi!
-Bê (dt),Dê (con vật). Bê knô: Dê đực; Ana bê: Dê mẹ.
-Bhang (dt),Hè
-Bhañ (đgt),Hắt hơi.
-Bhĭ (dt),Tên của một loại chim. }yôm bhyø: Chim phỉ.
-Bhiăn (phó từ),Thường. Aáu bhiăn kgu\ êla: Nó thường dậy muộn.
-Bhiâo (tt),Một lúc
-Bhiâo hin (pht),Chóng vánh.
-Bhiâo riâo rit,Chốc lát
-Bhĭr (đgt),Nếm.
-Bhĭt (tt),Rậm.
-Bhĭt pum/bhĭt dliê (dt) ,Bụi rậm.
-Bhôk gah (dt) ,Ngăn nhỏ ở gian trước nhà sàn Êđê.
-Bhŏng bhŏng (đgt),"Ào ạt. K[iă bho\ng bho\ng mse\ si klap: Ra ào ạt như mối."
-Bhung aguah (trt),Suốt đêm. Mlam bhung aguah hlo\ng amâo pyơt: Suốt đêm không ngủ.
-Bhung bhang (tt),Sáng sủa.
-Bi,1. (lt) Còn. Kâo nao mă bruă bi anak kâo dê nao sang hră: Tôi đi làm còn con tôi đi học.
-,"2. (trt) Phải. Bi nao mtam ]iăng kơ hmao: Phải đi ngay cho kịp."
-Bi ăl (đgt),Giận nhau.
-Bi blŭ (đgt),Đàm thoại
-Bi čĭk (đgt),Vật nhau.
-Bi dơ̆k bi dria (tt),Rộn rã.
-Bi êdah (đgt),Thể hiện
-Bi hlĭ (tt),Hòa thuận.
-Bi hdơr (đgt),Tưởng nhớ.
-Bi kbưi (đgt),Cách ly.
-Bi kjăp (đgt),Củng cố.
-Bi kmiêk (đgt),Ôm nhau
-Bi lar (đgt),Trau dồi.
-Bi leh (đgt),Hoàn thành.
-Bi liê (đgt),Tiêu
-Bi lir (gt),Liền nhau (sát).
-Bi lông,1. Thi (thi cử). Bi lông klei Êđê: Thi tiếng Êđê.
-,2. Đua. Bi lông êdeh: đua xe.
-Bi lui (đgt),Ly dị
-Bi mđĭ (đgt),Nâng cao. Bi mđyø klei thâo săng: Nâng cao kiến thức.
-Bi mĭn (đgt),Suy nghĩ.
-Bi mlih (đgt),Thay đổi.
-Bi mtlaih (đgt),Giải thích
-Bi ruê̆ (đgt),Kết thúc
-Bi rŭng (đgt),Gây rối
-Bi ŭk bi ăk (tt),Tấp nập (chỉ sự ồn ào
-Bi yông (tt),Tụ lại nhau.
-Biêng (đgt),Đập. }ăm biêng: đánh đập.
-Biêr (tt),1. Lùn. Jar mnuih biêr: Dáng người lùn.
-,2.Thấp. Ana kyâo biêr: Cây thấp.
-Bih (dt),Thuộc nhóm dân tộc Êđê.
-Bip (dt),Vịt. Bip knô: Vịt đực.
-Bip êa (dt),Con vịt nước.
-Bir (dt),Vỉa hè. Eùbat ti dlông bir êlan: đi (bộ) trên vỉa hè.
-Biut (dt),Mây.
-Blač (đgt),"Mổ. Bla] prô] êbeh: Mổ ruột thừa."
-Blah ,I.(đgt)1. Bổ. Blah djuh: bổ củi
-,2. Chẻ. Blah đrao: Chẻ nứa.
-,Ii. Từ dùng để đếm số cái
-Blang (đgt),Nở (hoa). Mnga blang: Hoa nở.
-Blao (tt),Nhát.
-Bliư̆ ,I.(đgt). Lật. Eùdeh bliư\: xe lật.
-,Ii.(dt). Lần. Eùma bliư\
-Blô (tt),Bầu (bĩnh). {o# blô: Mặt bầu bĩnh.
-Blŭ (đgt),"Nói. Blu\ êku\t: Nói sau lưng; Blu\ lo\k luăl:Nói ngọng; Blu\ mdiêr: Nói quanh co; Blu\ mgao: Nói quá; Blu\ mha]:"
-Blŭ bi hmư̆ (đgt),Nói khéo.
-Blŭ mhriêng (đgt),Nói bóng.
-Blŭ tlao (đgt),Cười nói.
-Blŭ wah wơ (đgt),Nói trống không.
-Blŭ myâo (đgt),Nói khéo.
-Blŭ yăl (đgt),Nói năng.
-Boh ,I.(dt) 1. Quả
-,2. Trứng. Boh mnu\: Trứng gà.
-,"Ii.(đgt) giặt. Boh ]hum ao: giặt quần áo."
-,"Iii. Từ dùng để đếm cái. Dua boh k]ok (]hiên): hai cái ly (chén). Sa boh sang: một ngôi nhà. Năm boh ]ar: sáu tỉnh. Eùma boh êyûan: năm bậc thang."
-Boh anăn (dt),Danh từ.
-Boh anut (dt),Cái khuy (khuy áo). Kă boh anut ao: đơm khuy áo.
-Boh areh (dt),Long não.
-Boh bip êđai (dt),Trứng vịt lộn.
-Boh dlông (dt),Chiều cao
-Boh đê̆č (dt),"Hoa văn. Myuam boh đê: Dệt hoa văn."
-Boh blŭ (dt),Từ ngữ (từ vựng).
-Boh blŭ mčuê (dt),Giới từ
-Boh ƀai (dt),Diện tích.
-Boh ƀleh (dt),Thận
-Boh hră (dt),Chữ
-Boh jhat (tt),Sự xấu xa.
-Boh jing (dt),1. Tính từ.
-,2. Thành quả.
-Boh kê̆ñ (dt),Bánh chưng.
-Boh kŏ (dt),Cái đầu. Ruă kno\ng sa boh ko\: đau mỗi cái đầu.
-Boh kpăt (dt),Bồ hòn. Phyo mse\ syo boh kpăt : Đắng như quả bồ hòn.
-Boh lăn (dt),Trái đất. Boh lăn dar: Trái đất quay.
-Boh m’ô̆(dt),1. Hầu (người)
-,2. Sỏi rừng (hột nhỏ).
-Boh mdê (dt),Đặc thù.
-Boh mtuh (dt),Lựu đạn.
-Boh nik (nak) (tt),Nhất là.
-Boh păm (dt),Bồ kết. ]ô ko\ ho\ng êa boh păm: Gội đầu bằng nước bồ kết.
-Boh pha (dt),Bắp vế.
-Boh phŭn (dt),Nội dung.
-Boh pia (dt),Phụ âm.
-Boh tih (dt),Bắp chân.
-Boh tluôn (dt),Cái mông.
-Bŏ (tt),Đầy.
-Bŏk (đgt),Sưng
-Bŏk yơi (dt),Quai bị.
-Bŏk wi wu (đgt),Sưng vù.
-Bŏng bŭ (dt),Bãm vịt.
-Bông (dt),Quan tài (hòm).
-Bơ bhô (tt),Ưỡn ộc.
-Braih (dt),"Gạo. Ple#] braih: Vo gạo."
-Braih ka hroh (dt),Gạo lức.
-Braih mkuê̆ (dt),Gạo (gạo thóc nói chung). Sang kâo amâo mâo braih mkue# ôh: Nhà tôi không có gạo thóc gì cả.
-Brang (dt),Gai (cây gai).
-Brei (đgt),Cho.
-Bring (tt),Rỉ
-Brô̆(dt),Đàn. Pe\ bro#: đánh đàn (ghi ta).
-Bru bra (đgt),Tán loạn.
-Brŭ (tt),Thối. {âo bru\: Hôi thối.
-Brŭ hiă (tt),Thối hoắc
-Bruă (dt),Việc.
-Bruă čuăn (dt),Quy định
-Bruă knăl (dt),Nhiệm vụ
-Bruă tŭ ngă (dt),Nhiệm vụ
-Buh (đgt),Đeo (vào cổ tay). Buh ayu\: đeo cườm (hạt).
-Buôn (đgt),Nuôi. Buôn mâo: nuôi rắn.
-Buôn ba (đt),Nuôi dạy. Buôn ba anak: Nuôi dạy con.
-Băn (đt),Lò. Băh pui: Lò sưởi.
-Bơ̆ (dt),Sáng (sáng ra). Bơ# aguah: Sáng sớm.
-Blâo (đt),Nhai. Blâo hmăn: nhai trầu.
-Bơ̆ng (dt),Mèo.
-Bơ̆ng (dt),Đòn gánh.
-Bơ̆t (đgt),Nhấn. Bơ#t phao: nhấn mạnh.
-Bơ̆t mĭn (dt),Nhận xét.
-Byăn (đt),Bình. Byăn êa: Bình nước. Byăn kdra: Bình trà.
-Yuôm bhăn (tt),1. Vô giá. Klei yuôm bhăn: Vật vô giá.
-,2. Trọng đại. Klei truh yuôm bhăn: Sự kiện trọng đại.
-,3. Cần thiết. Bruă yuôm bhăn: Việc cần thiết.
-,"4. Quan trọng. Mne#] ngă yuôm bhăn: Biện pháp quan trọng."
-,5. Thiêng liêng.
-Yuôm yĭn (tt),Đắt đỏ. Mnơng mnuă yuôm yyøn: hàng hóa đắt đỏ.
-Yuôr (dt),Cây canh kina rừng.
-Yuôt (đgt),Bám. Yuôt ti dhan kyâo hrut asei đyø kơ dlông: Bám cành cây đu người lên.
-Yut yat (tt),Đung đưa.
-Yŭ (dt),(Hướng) Tây. Angyøn mơng yu\: Gió Tây.
-Yŭ ngŏ (dt),Phương hướng. Amâo lo\ thâo yu\ ngo\: Lạc mất phương hướng.
-Yŭk (dt),"Đũng. Yu\k ]hum: đũng quần."
-Yŭm (tt),Mắn (nhiều)
-Yŭn (đgt),Rung.
-Yŭng jing (đgt),Đứng sững.
-Yŭr (dt),Dái. Yu\r knga: Dái tai.
-Yŭr tluôn (dt),Mông
-Yưh yưp (tt),1. Chậm chạp. Eùbat yưh yưp: đi chậm chạp.
-,2. Lụn bại. Ai tiê yưh yưp: Cuộc sống lụn bại.`;
+Abao (dt) : Ốc bươu
+Abăn (dt) : Cái chăn (mền)
+Abŭ (dt) : Cái hũ
+Adei (dt) : Em
+Adĕ (dt) : Hến
+Adham (dt) : Một nhóm trong tộc người Êđê
+Adhan (dt) : Cành
+Adhei (dt) : Trán
+Adiê (dt) : Trời
+Adiê không : Nắng hạn
+Adiê tlam : Xế chiều
+Adih (đt) : Kia
+Adôk (đgt) : Còn
+Adrăng (dt) : Rơm rạ
+Adring (dt) : Hiên nhà sàn
+Adrŏk (dt) : Con cóc
+Aduôn (dt) : Bà (nội, ngoại)
+Adŭ (dt) : Phòng; Lớp; Cái ô
+Adŭ bruă (dt) : Văn phòng
+Adŭ git gai bruă kiă kriê (dt) : Phòng hành chính
+Adŭ tĭng yap (dt) : Phòng kế toán
+Adŭng (dt) : Mũi
+Aê (dt) : Ông (nội, ngoại)
+Aê êa drao (dt) : Bác sĩ
+Agam (tt) : Loạn luân
+Agha (dt) : Rễ
+Aguah (trạng từ) : Buổi sáng
+Aguăt (dt) : Con bọ cạp
+Ah (hư từ) : Ạ
+Ai (dt) : Sức
+Ai hriăm (dt) : Học lực
+Ai êwa (dt) (tt) : Khí thế, hơi sức
+Ai mĭn (đgt) : Suy nghĩ
+Ajĭk (dt) : Ếch
+Ak (dt) : Con quạ
+Akăt (dt) : Bụi (khóm)
+Akâo (đgt) : Xin
+Ala (dt) : Con rắn
+Ala čar (dt) : Tổ quốc
+Ala čar tač êngao (dt) : Nước ngoài
+Alah (tt) : Lười biếng
+Alah alan (tt) : Uể oải
+Ală (dt) : Mắt
+Ală kĭng (dt) : Kính
+Ală mmăt (tt) : Cận thị
+Alĕ, Aluê̆ (đgt) : Nhả
+Alê (dt) : Le
+Alôk (đgt) : Lột
+Alum akâo (đgt) : Cầu xin
+Alum kkuh (đgt) : Kính thưa
+Alum mpŭ (đgt) : Trân trọng, kính trọng
+Alŭ (dt) : Thôn, xóm
+Alŭ wăl (dt) : Vùng
+Alŭ buôn prŏng : Phố phường
+Alưñ (tt) : Gớm
+Am pul pui (dt) : Bóng đèn
+Ama (dt) : Bố (cha)
+Amai (dt) : Chị
+Amâo (pht) : Không
+Amâo dah (lt) : Hay (hoặc)
+Amâo dưi : Không thể, không được
+Amâo djŏ ai (tt) : Không vừa lòng
+Amâo djŏ knŏng (trgt) : Chẳng những
+Amâo kpă (tt) : Bất chính
+Amâo klă mngač (tt) : Bất minh
+Amâo răk (đgt) : Bất cứ, không kể đến
+Amâo răk rai (hư từ) : Bất diệt
+Amâo thâo knga (tt) : Vô ơn
+Amâo mâo tŭ ư (đgt) : Phản đối
+Amiêt (dt) : Cậu
+Amĭ (dt) : Mẹ (má)
+Amĭ ama hđeh (dt) : Phụ huynh
+Amlơ̆k (dt) : Cám
+Amra (pht) : Sẽ
+Amrak (dt) : Con công
+Amrê̆č (dt) : Ớt
+Amung mtei (dt) : Buồng chuối
+Amung mdiê (dt) : Bông lúa
+Amung kngan (dt) : Mu tay
+Amung ŭn (dt) : Mõm lợn (heo)
+Amuôn (dt) : Cháu (cháu với cậu, bác là người anh, em trai của mẹ)
+Ana (dt) : Cây; giống cái (từ dùng chỉ động vật giống cái)
+Anak (dt) : Con (dùng cho người)
+Anak ală (dt) : Con ngươi
+Anak ĭ (dt) : Trẻ sơ sinh
+Anak rai (dt) : Con rồng
+Anal (dt) : Con sâu nái
+Anal kŏ (dt) : Cái gối
+Anăn (dt) : Tên; Đó, đấy
+Anăn kdrưh (dt) : Danh hiệu
+Anăp (giới từ) : Trước
+Anei (đt) : Đây
+Aneh (dt) : Dì
+Angĭn (dt) : Gió
+Angĭn êbŭ (dt) : Bão
+Angưr (đgt) : Ngẩng
+Anghar (đgt) : Ngáy
+Anôk (dt) : Nơi, chỗ, vị trí
+Anôk dôk (dt) : Nơi ở, chổ ở
+Anôk dôk êjai (dt) : Nơi tạm trú
+Anôk mjưh (dt) : Nơi dừng
+Anôk mjưh mran (dt) : Cảng
+Anuă (dt) : Cái cưa
+Anŭng (dt) : Túi
+Anur (dt) : Con dúi
+Anut (dt) : Cái cúc áo
+Añŭ (dt) : Hạt cườm (chuỗi)
+Añuê (dt) : Chiếu
+Añhuôr (đgt) : Duỗi
+Añhuih (đgt) : Hỉ
+Ao (dt) : Áo
+Ap (đgt) : Đè
+Ap gư̆ (đgt) : Đàn áp
+Aprŏng (dt) : Bác (chị của mẹ)
+Ară anei (trgt) : Hiện nay, bây giờ
+Arăn (đgt) : Rặn
+Arăng (đt) : Người ta
+Areh (dt) : Con rệp
+Ariêng (dt) : Con cua
+Aruăt (dt) : Gân, sợi
+Arul (dt) : Họ của người Êđê
+Arưp aram (đgt) : Đe dọa
+Asăp (dt) : Lời; Khói
+Asăp mtrŭn (dt) : Nghị quyết, nghị định, chỉ thị
+Asăr (dt) : Hạt, hột; Viên
+Aseh (dt) : Con ngựa
+Asâo (dt) : Con chó
+Asei (dt) : Thân, mình
+Asei mlei (dt) : Thân thể, cơ thể
+Asei wah (dt) : Lưỡi câu
+Atăt (đgt) : Dẫn
+Atâo (dt) : Người chết (thi hài người chết)
+Ai tiê (dt) : Tấm lòng
+Ai tiê jăk (dt) : Sự tốt bụng, lòng tốt
+Ai tiê kriăng (tt) : Chăm chỉ, siêng năng
+Atŭt (dt) : Đốt
+Atiêng (dt) : Nhánh
+Awa (dt) : Bác (anh trai và chị gái của bố)
+Awak (dt) : Cái thìa
+Awak boh (dt) : Cái muôi (làm bằng tre)
+Awan (dt) : Khúc, đoạn (cây), dáng (người)
+Awăt (tt) : Yếu, đuối
+Ayŏng (dt) : Anh
+Ayõng khua (dt) : Anh cả
+Ăl (đgt) : Mắng, giận
+Ăl čôn (tt) : Giận hờn
+Ăm (đgt) : Nướng
+Ăp (đgt) : Bịt; Áp; Chườm
+Ăt (pht) : Vẫn; Cũng
+Ba (đgt) : Mang
+Ba tian (đgt) : Mang bầu (có chửa dùng cho người)
+Ba kđi (đgt) : Bồi thường
+Bai (dt) : Giỏ
+Bai đih (dt) : Nôi (em bé)
+Ban (đgt) : Trườn
+Bă (đgt) : Đụng, chạm phải
+Băk (đgt) : Đeo (vào cổ)
+Bě (tht) : Thôi! (ý hối thúc)
+Bê (dt) : Dê (con vật)
+Bhang (dt) : Hè, hạ (mùa)
+Bhañ (đgt) : Hắt hơi
+Bhĩ (dt) : Tên của một loài chim
+Bhiăn (phó từ) : Thường
+Bhiâo (tt) : Một lúc, (một lát)
+Bhiâo hin (pht) : Chóng vánh
+Bhiâo riâo rit : Chốc lát, tức thì, thoáng qua
+Bhir (đgt) : Ném
+Bhit (tt) : Rậm
+Bhit pum/bhit dliê (dt) : Bụi rậm
+Bhôk gah (dt) : Ngăn nhỏ ở gian trước nhà sàn Êđê
+Bhŏng bhŏng (đgt) : Ào ạt
+Bhung aguah (trt) : Suốt đêm
+Bhung bhang (tt) : Sáng sủa
+Bi (lt) : Còn; (trt) Phải
+Bi ăl (đgt) : Giận nhau
+Bi blũ (đgt) : Đàm thoại, đối thoại
+Bi čīk (đgt) : Vật nhau
+Bi dơ̆k bi dria (tt) : Rộn rã
+Bi êdah (đgt) : Thể hiện, biểu hiện
+Bi hlĭ (tt) : Hòa thuận
+Bi hdơr (đgt) : Tưởng nhớ
+Bi kbưi (đgt) : Cách ly
+Bi kjăp (đgt) : Củng cố
+Bi kmiêk (đgt) : Ôm nhau
+Bi lar (đgt) : Trau dồi
+Bi leh (đgt) : Hoàn thành
+Bi liê (đgt) : Tiêu, xài
+Bi lir (gt) : Liền nhau (sát)
+Bi lông : Thi (thi cử); Đua
+Bi lui (đgt) : Ly dị, bỏ nhau
+Bi mđĩ (đgt) : Nâng cao
+Bi măn (đgt) : Suy nghĩ
+Bi mlih (đgt) : Thay đổi
+Bi mtlaih (đgt) : Giải thoát, giải phóng
+Bi ruễ (đgt) : Kết thúc, bế giảng, bế mạc
+Bi rŭng (đgt) : Gây rối, nổi loạn
+Bi ŭk bi ăk (tt) : Tấp nập (chỉ sự ồn ào, náo nhiệt ở chợ)
+Bi yông (tt) : Tụ lại nhau
+Biêng (đgt) : Đập
+Biêr (tt) : Lùn; Thấp
+Bih (dt) : Thuộc nhóm dân tộc Êđê
+Bip (dt) : Vịt
+Bip êa (dt) : Con vịt nước
+Bir (dt) : Vỉa hè
+Biut (dt) : Mây
+Blač (đgt) : Mổ
+Blah (đgt) : Bổ; Chẻ; (tl) Từ dùng để đếm số cái, số tấm, số chiếc
+Blang (đgt) : Nở (hoa)
+Blao (tt) : Nhát
+Bliŭ (đgt) : Lật; (dt) Lần
+Blô (tt) : Bầu (bĩnh)
+Blũ (đgt) : Nói
+Blũ bi hmữ (đgt) : Nói khóe
+Blũ mhriêng (đgt) : Nói bóng
+Blũ tlao (đgt) : Cười nói
+Blũ wah wơ (đgt) : Nói trống không
+Blũ myão (đgt) : Nói khéo
+Blũ yăl (đgt) : Nói năng
+Boh (dt) : Quả, trái; Trứng; (đgt) Giặt; (tl) Từ dùng để đếm cái
+Boh anăn (dt) : Danh từ
+Boh anut (dt) : Cái khuy (cúc áo)
+Boh areh (dt) : Long não
+Boh bip êđai (dt) : Trứng vịt lộn
+Boh dlông (dt) : Chiều cao, chiều dài
+Boh đếč (dt) : Hoa văn
+Boh blů (dt) : Từ ngữ (từ vựng)
+Boh blũ mčuê (dt) : Giới từ, từ nối
+Boh ƀai (dt) : Diện tích
+Boh ƀleh (dt) : Thận, cật
+Boh hră (dt) : Chữ, chữ cái
+Boh kbưi (dt) : Cách xa, khoảng cách
+Boh jhat (tt) : Sự xấu xa
+Boh jing (dt) : Tính từ; Thành quả
+Boh kê̆ñ (dt) : Bánh chè
+Boh kŏ (dt) : Cái đầu
+Boh kpăt (dt) : Bồ hòn
+Boh lăn (dt) : Trái đất
+Boh m'ô̆ (dt) : Hầu (người); Xoài rừng (hột nhỏ)
+Boh mdê (dt) : Đặc thù
+Boh mtuh (dt) : Lựu đạn
+Boh nik (nak) (tt) : Nhất là
+Boh păm (dt) : Bồ kết
+Boh pha (dt) : Bắp vế
+Boh phùn (dt) : Nội dung
+Boh pia (dt) : Phụ âm
+Boh tih (dt) : Bắp chân
+Boh tluôn (dt) : Cái mông
+Bò (tt) : Đầy
+Bök (đgt) : Sưng, viêm (phù)
+Bök yơi (dt) : Quai bị
+Bök wi wu (đgt) : Sưng vù
+Băng bù (dt) : Bìm bịp
+Bông (dt) : Quan tài (hòm)
+Bơ bhô (tt) : Ông ộc
+Braih (dt) : Gạo
+Braih ka hroh (dt) : Gạo lức
+Braih mkuễ (dt) : Gạo (gạo thóc nói chung)
+Brang (dt) : Gai (cây gai)
+Brei (đgt) : Cho
+Bring (tt) : Rỉ, rỉ sét
+Brỗ (dt) : Đàn
+Bru bra (đgt) : Tán loạn
+Brŭ (tt) : Thối
+Brŭ hiă (tt) : Thối hoắc, thối nát
+Bruă (dt) : Việc
+Bruă čuăn (dt) : Quy định, chuẩn hóa
+Bruă kmrơ̆ng dhông (dt) : Lâm nghiệp
+Bruă lõ hma (dt) : Nông nghiệp, việc đồng áng
+Bruă lĭng kahan (dt) : Quân sự
+Bruă mă (dt) : Nghề nghiệp
+Bruă mă hgăm (dt) : Công tác bí mật
+Bruă mă kơ lu mnuih (dt) : Dịch vụ
+Bruă mdrao mgŭn (dt) : Y tế; Y khoa
+Bruă mgang ala čar (dt) : Quốc phòng
+Bruă mjeh mjuk (dt) : Công tác dân vận
+Bruă tĭng yap (dt) : Kế toán
+Bruă truh (dt) : Sự việc
+Bruă yua (dt) : Công dụng
+Bruă yua kiê kngan (dt) : Nghề thủ công
+Brung (tt) : Đốm
+Brung brê̆č (tt) : Sặc sỡ
+Buê (dt) : Hoa tai (bông tai)
+Buh (đgt) : Đeo (ở tay, chân); Tría
+Buk (tt) : Phồng; (dt) Nệm
+Bum (tt) : Mù, đui
+Buôr (dt) : Hạch; Cháo
+Bu (dt) : Con gái (gọi thân trong nhà)
+Búč (đgt) : Nhổ
+Bŭl (tt) : Cuộn (dây, chỉ)
+Bŭng (dt) : Cái gùi
+Bư̆ (đgt) : Rào
+Bư̆ guê (đgt) : Đắp bờ
+Bưn (dt) : Vườn (ở xa nhà, vườn rẫy)
+Bưng (dt) : Bát (làm bằng bầu khô)
+Bưng gŏ (dt) : Nồi niêu
+Ƀah (tt) : Mẻ (sứt)
+Ƀah dah...ƀah dah : Vừa...vừa
+Ƀai (tt) : Rộng; (đgt) Ác ôn
+Ƀai kdai (tt) : Rộng rãi
+Ƀaih (ct) : Ôi (chỉ sự ngạc nhiên)
+Ƀaih haih (ct) : Ai chà
+Ƀal (đgt) : Đẽo
+Ƀă (đgt) : Địu, cõng
+Ƀă anak lung êra : Chửa con so
+Ƀă pum (dt) : Chửa hoang
+Ƀăl (tt) : Chát
+Ƀăng (dt) : Lỗ; Hốc; Hầm; Hang (động)
+Ƀăng bhă (dt) : Cái cửa (dùng chung)
+Ƀăng bhă điêt (dt) : Cửa sổ
+Ƀăng bhă prŏng (dt) : Cửa ra vào
+Ƀăng đuê̆ dăp (dt) : Hầm hào
+Ƀăng eh (dt) : Hậu môn
+Ƀăng êa (dt) : Giếng nước
+Ƀăng êgei (dt) : Miệng (mồm)
+Ƀăng jang (dt) : Cổng, ngõ
+Ƀâo (tt) : Hôi
+Ƀâo brŭ (tt) : Hôi thối
+Ƀâo iu (tt) : Ôi thiu (Bị ôi, bị thiu)
+Ƀâo khơr (tt) : Khai (mùi khai)
+Ƀâo kmĭl (tt) : Hôi nách
+Ƀâo mnâo (đgt) : Đánh hơi
+Ƀâo mngưi (tt) : Thơm (mùi thơm)
+Ƀap (dt) : Cái ví
+Ƀar (đgt) : Mặc (váy, khố)
+Ƀar h’ô (đgt) : Ăn mặc
+Ƀĕ (dt) : Cái; Cây
+Ƀê̆č (đgt) : Bẫy
+Ƀê̆č ƀê̆č : Lẩm bẩm
+Ƀê̆ñ (dt) : Bánh
+Ƀê̆ñ hra (dt) : Đường ăn
+Ƀê̆ñ kpŭng (mi) (dt) : Bánh mì
+Ƀê̆ñ mlim (dt) : Kẹo
+Ƀhĭ (tt) : Nát, ải
+Ƀhĭ ƀhê̆ñ (tt) : Li ti
+Ƀhiăr (tt) : Phẳng lì
+Ƀhơi (đgt) : Đáng
+Ƀhu (đgt) : Phơi
+Ƀhư (tt) : Rộ
+Ƀhŭl (dt) : Bụi mù
+Ƀhur (tt) : Thổi
+Ƀi (yu) : Bi
+Ƀiă (tt) : Ít
+Ƀiă dhit : Quá ít
+Ƀiă ƀiă (tt) : Chút ít
+Ƀiă dah (lt) : Nhưng
+Ƀiêk (dt) : Khóe miệng, mép môi
+Ƀiêp ƀiêp (tt) : Nhai nhải
+Ƀiêr (dt) : Bia
+Ƀik ƀik (tt) : Nườm nượp
+Ƀĭng (dt) : Bạn
+Ƀĭng găp (dt) : Bạn bè
+Ƀĭng khăp (dt) : Người yêu
+Ƀĭng kna (dt) : Đồng chí
+Ƀlă (dt) : Ốc sên
+Ƀlĕ (đgt) : Chảy; Mọc; Trổ
+Ƀlĕ eh (đgt) : Ỉa
+Ƀlĕ êa ală (đgt) : Rơi nước mắt
+Ƀlĕ k’hŏ k’hang (đgt) : Toát mồ hôi
+Ƀlĕ tlao (đgt) : Phì cười (bật cười)
+Ƀlĕ k’ul (tt) : Buồn nôn
+Ƀlê̆č ƀlir (tt) : Đểu
+Ƀlia (tt) : Láng
+Ƀling (tt) : Lé
+Ƀlĭp ƀlĭp (tt) : Chớp (ánh sáng)
+Ƀlir (đgt) : Dán
+Ƀlir ƀlir (tt) : Long lanh
+Ƀlĭt (tt) : Dính
+Ƀloh (dt) : Muỗi
+Ƀlŏng ƀlŏng (tt) : Véo von
+Ƀlŏng ƀlut (tt) : Lênh đênh
+Ƀlô (dt) : Một nhánh người thuộc dân tộc Êđê
+Ƀlông (dt) : Gòn
+Ƀluôn (dt) : Múi
+Ƀlŭng (dt) : Hố
+Ƀô (đgt) : Mê
+Ƀôñ (tt) : Bện
+Ƀô̆ (tt) : Mặt
+Ƀô̆mta (dt) : Khuôn mặt (mặt mày)
+Ƀơ̆ng (đgt) : Ăn; Cháy; (tt) Sắc (bén)
+Ƀơ̆ng dôč (tt) : Ăn vặt
+Ƀơ̆ng hŏng kngan : Ăn bốc
+Ƀơ̆ng ngăn (tt) : Ăn hối lộ, tham ô
+Ƀrĭk (dt) : Gạch
+Ƀrah ƀrơp (tt) : Long đong
+Ƀrô mơh : May ra
+Ƀrôč (tt) : Thủng; Dột
+Ƀruêh (dt) (Anh) : Bàn chải
+Ƀrôk ƀrôk (tt) : Oang oang
+Ƀrŏng (dt) : Ngọn (cây)
+Ƀru ƀra (tt) : Tán loạn
+Ƀruih (dt) : Bụi
+Ƀruih ƀram (dt) : Bụi bặm
+Ƀrŭk ƀrŭk (tt) : Sùng sục
+Ƀrư̆ ƀrư̆ (tt) : Dần dần, từ từ
+Ƀrư̆ hruê ƀrư̆ (lt) : Càng ngày càng
+Ƀuah (đgt) : Trách
+Ƀuăn (đgt) : Hứa
+Ƀuăn rơ̆ng (đgt) : Cam đoan, cam kết
+Ƀuh (đgt) : Thấy
+Ƀuh klei soh : Thấy khuyết điểm
+Ƀun (dt) : Nghèo
+Ƀun ƀin (dt) : Nghèo nàn
+Ƀuôn (dt) : Buôn, làng; Ấp
+Ƀuôn hgŭm (dt) : Phường, thị trấn
+Ƀuôn phŭn (dt) : Thủ đô
+Ƀuôn prŏng (dt) : Thành phố, thị xã
+Ƀuôn sang (dt) : Làng mạc, quê hương
+Ƀuôr (đgt) : Khơi (mương)
+Ƀur (dt) : Bụi (cây nhỏ lùm cây)
+Ƀŭk (dt) : Tóc
+Ƀŭk ƀiêk (dt) : Tóc tai
+Ƀŭl ƀŭl (tt) : Đông đúc
+Ƀư̆ (đgt) : Ưỡn (người), (uốn cây)
+Ƀah (tt) : Mẻ (sứt)
+Ƀah dah...ƀah dah : Vừa...vừa
+Ƀai (tt) : Rộng; (đgt) Ác ôn
+Ƀai kdai (tt) : Rộng rãi
+Ƀaih (ct) : Ôi (chỉ sự ngạc nhiên)
+Ƀaih haih (ct) : Ai chà
+Ƀal (đgt) : Đẽo
+Ƀă (đgt) : Địu, cõng
+Ƀă anak lung êra : Chửa con so
+Ƀă pum (dt) : Chửa hoang
+Ƀăl (tt) : Chát
+Ƀăng (dt) : Lỗ; Hốc; Hầm; Hang (động)
+Ƀăng bhă (dt) : Cái cửa (dùng chung)
+Ƀăng bhă điêt (dt) : Cửa sổ
+Ƀăng bhă prŏng (dt) : Cửa ra vào
+Ƀăng đuê̆ dăp (dt) : Hầm hào
+Ƀăng eh (dt) : Hậu môn
+Ƀăng êa (dt) : Giếng nước
+Ƀăng êgei (dt) : Miệng (mồm)
+Ƀăng jang (dt) : Cổng, ngõ
+Ƀâo (tt) : Hôi
+Ƀâo brŭ (tt) : Hôi thối
+Ƀâo iu (tt) : Ôi thiu (Bị ôi, bị thiu)
+Ƀâo khơr (tt) : Khai (mùi khai)
+Ƀâo kmĭl (tt) : Hôi nách
+Ƀâo mnâo (đgt) : Đánh hơi
+Ƀâo mngưi (tt) : Thơm (mùi thơm)
+Ƀap (dt) : Cái ví
+Ƀar (đgt) : Mặc (váy, khố)
+Ƀar h’ô (đgt) : Ăn mặc
+Ƀĕ (dt) : Cái; Cây
+Ƀê̆č (đgt) : Bẫy
+Ƀê̆č ƀê̆č : Lẩm bẩm
+Ƀê̆ñ (dt) : Bánh
+Ƀê̆ñ hra (dt) : Đường ăn
+Ƀê̆ñ kpŭng (mi) (dt) : Bánh mì
+Ƀê̆ñ mlim (dt) : Kẹo
+Ƀhĭ (tt) : Nát, ải
+Ƀhĭ ƀhê̆ñ (tt) : Li ti
+Ƀhiăr (tt) : Phẳng lì
+Ƀhơi (đgt) : Đáng
+Ƀhu (đgt) : Phơi
+Ƀhư (tt) : Rộ
+Ƀhŭl (dt) : Bụi mù
+Ƀhur (tt) : Thổi
+Ƀi (yu) : Bi
+Ƀiă (tt) : Ít
+Ƀiă dhit : Quá ít
+Ƀiă ƀiă (tt) : Chút ít
+Ƀiă dah (lt) : Nhưng
+Ƀiêk (dt) : Khóe miệng, mép môi
+Ƀiêp ƀiêp (tt) : Nhai nhải
+Ƀiêr (dt) : Bia
+Ƀik ƀik (tt) : Nườm nượp
+Ƀĭng (dt) : Bạn
+Ƀĭng găp (dt) : Bạn bè
+Ƀĭng khăp (dt) : Người yêu
+Ƀĭng kna (dt) : Đồng chí
+Ƀlă (dt) : Ốc sên
+Ƀlĕ (đgt) : Chảy; Mọc; Trổ
+Ƀlĕ eh (đgt) : Ỉa
+Ƀlĕ êa ală (đgt) : Rơi nước mắt
+Ƀlĕ k’hŏ k’hang (đgt) : Toát mồ hôi
+Ƀlĕ tlao (đgt) : Phì cười (bật cười)
+Ƀlĕ k’ul (tt) : Buồn nôn
+Ƀlê̆č ƀlir (tt) : Đểu
+Ƀlia (tt) : Láng
+Ƀling (tt) : Lé
+Ƀlĭp ƀlĭp (tt) : Chớp (ánh sáng)
+Ƀlir (đgt) : Dán
+Ƀlir ƀlir (tt) : Long lanh
+Ƀlĭt (tt) : Dính
+Ƀloh (dt) : Muỗi
+Ƀlŏng ƀlŏng (tt) : Véo von
+Ƀlŏng ƀlut (tt) : Lênh đênh
+Ƀlô (dt) : Một nhánh người thuộc dân tộc Êđê
+Ƀlông (dt) : Gòn
+Ƀluôn (dt) : Múi
+Ƀlŭng (dt) : Hố
+Ƀô (đgt) : Mê
+Ƀôñ (tt) : Bện
+Ƀô̆ (tt) : Mặt
+Ƀô̆mta (dt) : Khuôn mặt (mặt mày)
+Ƀơ̆ng (đgt) : Ăn; Cháy; (tt) Sắc (bén)
+Ƀơ̆ng dôč (tt) : Ăn vặt
+Ƀơ̆ng hŏng kngan : Ăn bốc
+Ƀơ̆ng ngăn (tt) : Ăn hối lộ, tham ô
+Ƀrĭk (dt) : Gạch
+Ƀrah ƀrơp (tt) : Long đong
+Ƀrô mơh : May ra
+Ƀrôč (tt) : Thủng; Dột
+Ƀruêh (dt) (Anh) : Bàn chải
+Ƀrôk ƀrôk (tt) : Oang oang
+Ƀrŏng (dt) : Ngọn (cây)
+Ƀru ƀra (tt) : Tán loạn
+Ƀruih (dt) : Bụi
+Ƀruih ƀram (dt) : Bụi bặm
+Ƀrŭk ƀrŭk (tt) : Sùng sục
+Ƀrư̆ ƀrư̆ (tt) : Dần dần, từ từ
+Ƀrư̆ hruê ƀrư̆ (lt) : Càng ngày càng
+Ƀuah (đgt) : Trách
+Ƀuăn (đgt) : Hứa
+Ƀuăn rơ̆ng (đgt) : Cam đoan, cam kết
+Ƀuh (đgt) : Thấy
+Ƀuh klei soh : Thấy khuyết điểm
+Ƀun (dt) : Nghèo
+Ƀun ƀin (dt) : Nghèo nàn
+Ƀuôn (dt) : Buôn, làng; Ấp
+Ƀuôn hgŭm (dt) : Phường, thị trấn
+Ƀuôn phŭn (dt) : Thủ đô
+Ƀuôn prŏng (dt) : Thành phố, thị xã
+Ƀuôn sang (dt) : Làng mạc, quê hương
+Ƀuôr (đgt) : Khơi (mương)
+Ƀur (dt) : Bụi (cây nhỏ lùm cây)
+Ƀŭk (dt) : Tóc
+Ƀŭk ƀiêk (dt) : Tóc tai
+Ƀŭl ƀŭl (tt) : Đông đúc
+Ƀư̆ (đgt) : Ưỡn (người), (uốn cây)
+Čing čhar (dt) : Cồng chiêng
+Čiu (đgt) : Đền
+Čĭng čă (dt) : Thằn lằn
+Čoh (đgt) : Mổ; Cắn; Cuốc
+Čoh čuăn : Cơ bản
+Čoh boh (tt) : Cộc lốc
+Čŏng (dt) : Đỉnh, chóp
+Čŏng thơ̆ng (dt) : Tự nguyện
+Čŏng mâo (dt) : Tự nhiên
+Čô (dt) : Cháu (ông bà gọi); (đgt) Gội; (từ) dùng đếm số người: Đứa, người
+Čô đơ điêt, čô ƀia ƀiă : Mỗi người một ít
+Čôn (đgt) : Tự ái
+Cua (đgt) : Vạch đường để chọc lỗ tỉa lúa
+Cuă (dt) : Bã (rượu); (đgt) Thăm
+Cuă mđing (đgt) : Thăm dò
+Cuă awăng (đgt) : Tuần tra
+Cuah (dt) : Cát
+Cuăn (dt) : Qui định
+Cuăn dar (đgt) : Vây kín, vây bọc
+Cuê (đt) : Lối mòn (con thú đi tạo ra), nối (dây)
+Cuê nuê : Nối nòi (tục nối dây trong luật hôn nhân của người Êđê xưa)
+Cuh (đgt) : Đốt, thui, thắp
+Čuh ul (tt) : Buồn nôn
+Čuk (đgt) : Ủi; Dũi
+Čung (đgt) : Dìu
+Čung ba (đgt) : Dìu dắt
+Čuôn k’ŭt (đgt) : Quỳ gối
+Čuôr (dt) : Mái; Bãi (vùng có nhiều khe suối tiếp nối nhau)
+Čuôr hip mdơ̆ng : Nóc tủ
+Čuôt (tt) : Bủn xỉn
+Čuôt knhit (tt) : Hẹp hòi
+Čur (đgt) : Vót
+Čut (dt) : Đậu mùa (bệnh)
+Čŭm (đgt) : Hôn
+Čŭm hrip (đgt) : Hôn hít
+Čŭr (dt) : Vôi
+Cŭr čih (dt) : Phấn viết
+Čŭt (đgt) : Cắm; Đeo; Mặc (chỉ dùng cho mặc quần)
+Čŭt mnơ̆ng : Mắc mồi câu
+Čư̆ (dt) : Núi
+Čư̆ čhiăng (dt) : Núi non
+Čư̆ drông (dt) : Dãy núi
+Čư̆ kbuôn tring ahing : Núi non trùng điệp
+Čưng (đgt) : Đá
+Čưng boh (đgt) : Đá bóng
+Čưng mlâo mnŭ (đgt) : Đá cầu
+Dai wĭt dai nao (đgt) : Đu đưa
+Dai kngan (đgt) : Đưa tay
+Dam (dt) : Con trai (từ dùng gọi con trai)
+Dam knai (dt) : Bạn bè trai
+Dan (đgt) : Ăn xin
+Dang (dt) : Đĩa (hát)
+Dar (đgt) : Quay; (dt) Vòng
+Dat (đgt) : Đập (đập đồ vật)
+Dap (tt) : Bằng (bằng phẳng)
+Dăng (đgt) : Giăng; Chăng (dây)
+Dăng rĕ (dt) : Lá giang
+Dăp (đgt) : Xếp
+Dăp êmiêt (tt) : Sắp xếp
+Dăp boh pia : Gieo vần
+Dê̆č (đgt) : Trốn (tránh)
+Dê̆č dar (tt) : Tráo trở
+Dhar kreh (dt) : Văn hóa
+Dhiăr (dt) : Chong chóng
+Dhit dhut (tt) : Lề mề
+Dhŏng (dt) : Dao
+Dhua (tt) : Liên lụy
+Dhuan (tt) : Phiền hà
+Dhul (dt) : Sương mù
+Dhŭng (dt) : Nam (miền, hướng)
+Dhut bưng (dt) : Số phận
+Dhut hdĭp (dt) : Số kiếp; Vận mệnh
+Dhŭp (đgt) : Thụp
+Di ñu, di gơ̆ (đt) : Họ (ngôi thứ ba số ít)
+Diăn (dt) : Cây nến
+Diăn kra (dt) : Ngọc lan
+Dĭng buăl (dt) : Đầy tớ
+Djah (dt) : Rác
+Djah djâo (dt) : Rác rưởi
+Djah djap (tt) : Lôi thôi
+Djaih (dt) : Nhựa cây để bẫy chim
+Djam (dt) : Rau; Canh
+Djam tam (dt) : Rau (nói chung)
+Djam bei boh (dt) : Củ cải
+Djam bei đŭng (dt) : Bắp cải (bắp sú)
+Djam bei hla êrui : Cải xanh
+Djam đrê̆č (dt) : Bèo
+Djam bei mnoh hgơr (dt) : Su hào
+Djao (dt) : Xơ; Vợt
+Djao wak wai : Màng nhện
+Djă (đgt) : Cầm; Giữ
+Djă kŏ (đgt) : Đón đầu
+Djă krơ̆ng (đgt) : Đảm nhiệm
+Djăl (tt) : Mau, nhanh
+Djăl hin (tt) : Mau chóng, nhanh chóng
+Djăl ƀiă (tt) : Nhanh lên, mau lên
+Djăp (tt) : Đủ; Các; Mọi, khắp
+Djiê (đgt) : Chết, từ trần, qua đời
+Djiê brŭ (tt) : Chết chóc
+Djiê hdĭp (đgt) : Sống chết
+Djiê mdriêng (đgt) : Chết tai nạn
+Djiêt (đgt) : Vắt
+Djiêu (tt) : Cạnh
+Djim (đgt) : Bâu
+Djiu (đgt) : Rù
+Djeh djut (tt) : Kèo nhèo; Lặt vặt; Nhỏ nhen
+Djĕ djuñ (tt) : Nhẹ nhàng
+Djik djak (đgt) : Mỉa mai
+Djĭk djơ̆k (tt) : Lầy lội
+Djhĭt djhĭt (tt) : Sụt sịt
+Djhĭt djhŭt (tt) : Dầm dề
+Djhông djhông (tt) : Ngân nga
+Djŏ (tt) : Trúng; Đúng
+Djŏ ai : Đắc ý; Thích chí
+Djŏ guôp : Thích hợp, hợp lý
+Djŏ hnơ̆ng : Điều hòa
+Djŏ tuôm : Liên quan
+Djŏk (tt) : Chín nhũn
+Djuê (dt) : Loài, giống; Họ
+Djuê ana (dt) : Dân tộc
+Djuê anăn (dt) : Họ tên
+Djuh (đt) : Củi
+Djŭp (đgt) : Hút
+Djhŭr djhăr (tt) : Nhầy nhụa
+Dlai (tt) : Tràn
+Dlăm (đgt) : Liệng, vứt
+Dlăng (đgt) : Đọc; Coi, nhìn; Xem
+Dlăng ba (đgt) : Chăm nom
+Dlăng klei ruă (đgt) : Khám bệnh
+Dlăng pruê̆ bi kpă : Gióng hàng cho thẳng
+Dlao (đgt) : Chửi, mắng
+Dlao wač kuač kčĭng (tng) : Xỉ vả, chửi bới
+Dleh (tt) : Khó
+Dleh knap (tt) : Gian khổ
+Dleh dlan (tt) : Khó khăn, vất vả
+Dleh êmăn (tt) : Khó nhọc
+Dliê (dt) : Rừng
+Dliê tlô (dt) : Phong cảnh
+Dliu (tt) : Héo
+Dlô (dt) : Não (óc)
+Dlô klang (dt) : Tủy
+Dlông (tt) : Dài; Cao
+Dlông ai (tt) : Nhẫn nại, dẻo dai
+Dluih (đgt) : Xoa bóp
+Dlưh (đgt) : Sập
+Dlưh ai (tt) : Cảm động
+Dlưh trŭn (tt) : Suy sụp
+Doh (tt) : Sạch
+Doh bhung (tt) : Sạch sẽ
+Dŏ (dt) : Đồ
+Dŏ dô (dt) : Đồ đạc
+Dôk (đgt) : Đang; Lấy
+Dôk anôk : Ở cữ
+Dôk asei lưng : Ở trần
+Dôk čhưn : Ngồi chơi
+Dôk dơ̆ng (đgt) : Đứng
+Dôk gŭ (đgt) : Ngồi xuống
+Dôk jhŏng jhư (đgt) : Ngồi xổm
+Dôk kjăp : Ổn định
+Dôk kăp (đgt) : Phục kích
+Dôk mang : Ở không
+Dôk hliê (tt) : Độc thân
+Dôk jŭm dar (đgt) : Ngồi xung quanh
+Dôk suôr (tt) : Gắn bó
+Dôk ti : Ở tại, ở
+Dôk ti krah : Ở giữa
+Dòng (tt) : Cứu
+Dŏng dăt (tt) : Ngúng nguẩy
+Dơ̆k dria (tt) : Nháo nhác
+Dơ̆ng (đgt) : Sắp; Chững
+Dơ̆ng mơ̆ng : Từ
+Dơr (đgt) : Chôn (vùi)
+Dơr ƀăng (đgt) : Lấp hố
+Drai (dt) : Thác
+Drang (tt) : Phượng hoàng
+Drao (dt) : Bùa, ngãi
+Dră (đgt) : Chống (đỡ)
+Dră k’iêng (đgt) : Chống nạnh
+Drei (đt) : Ta, chúng ta; (dt) Con (từ dùng để đếm số lượng con vật)
+Dria dria (tt) : Rôm rả
+Driah (tt) : Giát
+Drỗ (dt) : Rọ
+Drông (đgt) : Đón
+Druôm (đgt) : Chặt, đốn củi
+Dua (số từ) : Hai
+Dua klei blŭ (dt) : Song ngữ
+Duah (đgt) : Tìm, kiếm
+Duah ênŭč (đgt) : Gây sự
+Duah đaŏ (tt) : Ảo tưởng
+Duah hmư̆ (đgt) : Nghe ngóng
+Duah ksiêm dlăng (dt) : Khảo sát
+Duah ksiêm mkra (đgt) : Nghiên cứu
+Duah hưn (đgt) : Phao tin
+Duah mčeh (đgt) : Bịa đặt
+Duah mhing (đgt) : Rêu rao
+Duah mnê̆č (tt) : Mưu mô
+Duah mnê̆č jhat : Âm mưu, thủ đoạn
+Duam (tt) : Ốm (đau)
+Duê (dt) : Thơ
+Duh bruă (đgt) : Giúp việc
+Duh mkra (đgt) : Tổ chức, sửa soạn (cho bữa tiệc)
+Duñ (đgt) : Nhặt, lượm
+Duñ duñ (đgt) : Lẩm bẩm, lầu bầu
+Duôm (đgt) : Vá
+Dŭ (đgt) : Chuyển
+Dŭč (đgt) : Đốt
+Dŭm (đt) : Mấy?; Bao nhiêu?
+Dŭm boh sui : Bao lâu
+Dưi : Được; Đậu; Thắng
+Dưm (đgt) : Đặt; Đựng
+Dưn (đgt) : Kế thừa
+Đa (gt) : Với; Cả; Nữa
+Đa đa (ht) : Vân vân
+Đah (dt) : Hào; Đánh
+Đah da (dt) : Ngực
+Đal (đgt) : Gối; Chèn
+Đang (dt) : Luống; Vườn; Đảng
+Đao (dt) : Đao, gươm
+Đao đao (tt) : Âm ấm
+Đaŏ (đgt) : Tin; Đoán
+Đar (đgt) : Gõ
+Đat (tt) : Tẹt
+Đă (tt) : Cong
+Đăk (đgt) : Bẻ
+Đăm (bt) : Đừng, chớ; Ngủ lại; Chớ
+Đăng (tt) : Giòn
+Đeh (đgt) : Xào; Chiên; Rang
+Đei (tt) : Quá
+Đê (dt) : Trục; Xà ngang dưới sàn nhà dài Êđê
+Đê̆č (đgt) : Làm hoa văn
+Đhăn (đgt) : Quấy
+Đhih đhuaih (tt) : Ưỡn ẹo
+Đhiăk đhiăr (đgt) : Ve vẩy; (tt) Rông
+Đhĭt đhĭt/đơ đhĭt (đgt) : Phất phới
+Đhuk đhuk (tt) : Khoan thai
+Đi (dt) : Điếm (đĩ)
+Đi čơ (tt) : Đĩ điếm
+Đi đư (tt) : Đong đưa
+Đih (đgt) : Nằm
+Đih pui (dt) : Ở cữ
+Đing (đgt) : Nghi
+Đing đaŏ (đgt) : Nghi ngờ
+Đing đang (tt) : Ngả nghiêng
+Đing đưng (tt) : Bồng bềnh
+Điâo (dt) : Trái
+Điêt (tt) : Nhỏ; Bé
+Điêt kriêt (tt) : Nhỏ xíu, tí hon
+Điêt dhiêt (tt) : Bé nhỏ; Chút xíu
+Điŏ (dt) : Nếp
+Đĭ (đgt) : Cưỡi; Leo; Lên; Đi
+Đĭ ai (đgt) : Động lực
+Đĭ ai krê̆ñ : Nổi cơn giận
+Đĭ ai kơ bruă : Hăng làm việc
+Đĭ ƀiă : Khá hơn
+Đĭ kyar (bt) : Tiến bộ
+Đĭ đơ̆ (tt) : Chập chững
+Đĭng (dt) : Ống
+Đĭng buôt (dt) : Sáo
+Đĭng jô (dt) : Cúp
+Đĭng khen (dt) : Kèn amônica
+Đĭng kpiê (dt) : Cần rượu
+Đĭng năm (dt) : Kèn bầu sáu ống
+Đĭng nuh (dt) : Ống tra lúa (ống đựng thóc để trỉa lúa trên rẫy)
+Đĭng tiông (dt) : Ống tên
+Đĭng tŭt (dt) : Kèn ống nứa
+Doh (đgt) : Chảy; Kéo
+Đò đơñ (tt) : Kệch cỡm
+Đŏk (dt) : Giọng
+Đŏng đăt (tt) : Đỏng đảnh
+Đŏng đưt (tt) : Bấp bênh; Gập ghềnh
+Đŏng dlơt (tt) : Thọt
+Đôk (đgt) : Bóc
+Đơ (trt) : Tất cả; Cỡ; Những
+Đơ đip (tt) : Trùng trùng điệp điệp
+Đơ đĭk (tt) : Ngắc
+Đơ đhiar (đgt) : Giãy nảy
+Đơ đhiăk (đgt) : Giãy dụa
+Đơ găt (tt) : To
+Đơ găt đơ gĭn (tt) : Vĩ đại; Rộng lớn
+Đơl/đơt (tt) : Ngắn
+Đơl đhơl/ đơt dhơt (tt) : Ngắn ngủn
+Đram (đgt) : Đốt (đốt rẫy)
+Đrao (dt) : Nứa
+Đrê̆ñ (tt) : Giòn
+Đrê̆ñ rơ riăp (tt) : Đanh
+Đrê̆ñ rơ rŏk (tt) : Giòn tan (thức ăn)
+Đring đring (tt) : Âm ẩm
+Đrŏng đrôč (tt) : Ốm nhòm
+Đrông (dt) : Dãy; Băng (vải); Hoài
+Đru (đgt) : Giúp
+Đrut (đgt) : Nhúng
+Đrư̆ (dt) : Vó
+Đuč (đgt) : Thôi
+Đung (đgt) : Trôi; Bay; (dt) Thóp
+Đup (tt) : Nhịn
+Đup gưt (tt) : Lễ phép
+Đua (đgt) : Đội; Mang
+Đuê̆ (đgt) : Cút; Đi; Bạt đi
+Đuê̆ dăp (đgt) : Ẩn nấp
+Đui (đgt) : Giao hợp
+Đuôm (đgt) : Mắc; Dính; Cố định
+Đuôn (dt) : Mũ, nón
+Đuôn jŏng (dt) : Nón lá
+Đuôn ê-i (dt) : Nón quai thao
+Đŭ (đgt) : Phạt
+Đŭng (đgt) : Gói; Đốp
+Đŭt (tt) : Ngắn; Thấp
+Đut dhŭt (tt) : Ngắn ngủn
+Đưl (đgt) : Bẩy
+Đưm (tt) : Xưa; Cổ
+E-ĕ (tt) : Be bé
+Eh (dt) : Phân
+Eh ală (dt) : Ghèn mắt
+Eh êgei (dt) : Cao răng
+Eh hluăt (dt) : Tơ tằm
+Eh klê (dt) : Phân xu
+Eh mđiă (dt) : Rôm sẩy, ra
+Eh tlŏng (dt) : Ráy tai
+Ek ek (tt) : Eng éc
+Ek ôk (tt) : Ồm ộp
+Ep (đgt) : Rèn
+Et ot (đgt) : Õng ẻo; Cọt kẹt
+Ĕ (tt) : Bé
+Ĕk ôk (tt) : Núc ních
+Ĕr (dt) : Nốt nhạc
+Êa (dt) : Nước; Màu
+Êa bah (dt) : Nước miếng
+Êa drao (dt) : Thuốc
+Êa drao gŭn (dt) : Thuốc men
+Êa jua (dt) : Nước nôi
+Êa juôr (dt) : Sông ngòi
+Êa k'hŏ (dt) : Mồ hôi
+Êa klôñ (dt) : Nước hoa
+Êa ksâo (dt) : Sữa
+Êa pơ̆ng (dt) : Nước máy
+Êa pui (dt) : Dầu lửa
+Êa săng (dt) : Xăng
+Ê-ăt (tt) : Lạnh; Nguội
+Ê-ăt hriêt (tt) : Lạnh ngắt; Lạnh lẽo; Lạnh giá
+Êba (dt) : Cơm rượu
+Êbah (tt) : Kiệt
+Êbai (dt) : Đậu ván
+Êbai grăm (dt) : Đậu ngự
+Êbai gri (dt) : Đậu rồng
+Êban (dt) : Họ Êban
+Êbat (đgt) : Đi
+Êbăng (tt) : Thính
+Êbâo (dt) : Nghìn
+Êbeh (tt) : Dư; Nhiều/trội
+Êbeh êbiêr (tt) : Dư dật; Quá mức; Dư thừa
+Êbhơr, êbơr (tt) : Trơn; Láng
+Êbuê (đgt) : Từ trần
+Êbua (dt) : Môn
+Ébuh (đgt) : Ngã
+Êbhui (tt) : Rữa; Mục; Bở
+Êbŭ (dt) : Bão
+Ébŭng (dt) : Măng
+Êƀak (tt) : Bừa bãi; Tục
+Êƀăt (tt) : Gọn gàng; Sạch
+Êčăm (dt) : Họ Êčăm
+Êda (dt) : Xà ngang
+Êdam (dt) : Thanh niên (nam)
+Êdam ngiêk (dt) : Thiếu niên
+Êdah (tt) : Lộ, phô; Hiện rõ
+Êdah brưl (bt) : Rõ ràng
+Êdai (dt) : Bễ; Đưa
+Êdak (dt) : Bí đao, bí xanh
+Êdap (dt) : Vông
+Êdeh (dt) : Xe
+Édeh êdâo (dt) : Xe cộ
+Édei (bt) : Sau; Kế
+Êdei êdă (trt) : Sau cùng
+Êdei adih (trt) : Sau này
+Êdei anăp (trt) : Tương lai
+Êdê (dt) : Luồng
+Êdi (pht) : Rất, lắm; Chắc; Thật vậy
+Êdjin (tt) : Nhão, mềm
+Êdu (tt) : Yếu; Dịu; Kém
+Êdu čhut (tt) : Hời hợt
+Êdu êdŏk (tt) : Yếu kém
+Êdŭk (dt) : Ngọn; Sau cùng; Mũi
+Êđai (dt) : Khốn/thằng; Con (chỉ dùng cho con vật thay thực vật cây con)
+Êđai pĭ (dt) : Thằng nhãi
+Êđal (dt) : Nông, cạn
+Êđal blă (tt) : Đơn giản
+Êđăp (tt) : Mát
+Êđăp drưm (tt) : Mát mẻ
+Êđê (dt) : Dân tộc Êđê
+Êga (dt) : Sỏi
+Êgah (tt) : Mỏi
+Égah êgăn (tt) : Ê ẩm
+Égap (tt) : Thợ săn
+Égar (tt) : Lạ
+Êgaih (tt) : Rõ ràng; Chính nghĩa
+Egao (đgt) : Qua
+Êgei (dt) : Răng
+Êhai (tt) : Rộng
+Éghaih (đgt) : Gỡ
+Êhao (tt) : Tốn; Thuận tiện
+Êghăng (tt) : Chắc, trơ trụi
+Êhăng (dt) : Trầu
+Êhăk êhai (tt) : Lạc quan; Hồn nhiên
+Êhiô̆ (tt) : Vãn
+Êhŭng (dt) : Dạ dày
+Êhưl (dt) : Lợi (lợi răng)
+Êhưng (tt) : Rỗng
+Êhưng êhang (tt) : Trống rỗng
+Ê-i (dt) : Rổ, thúng
+Ê-i rưng (dt) : Rá
+Ê-i knguôr (dt) : Thúng mủng
+Ê-ih (tt) : Nhừ; Chín mùi
+Ê-iăt (tt) : Vắng, hiu quạnh
+Ê-iăt êyăng (tt) : Vắng vẻ
+Ê-iŏ (tt) : Yên lặng
+Ê-iô̆ êyăng (tt) : Vắng lặng, vắng vẻ và yên lặng
+Êjai (trt) : Vừa; Trong khi; Trong lúc
+Êjai anei (trt) : Hiện tại
+Êjai anei hin (trt) : Hiện giờ
+Êjai kơ tluôn (trt) : Quá khứ
+Êjao (dt) : Võng
+Éjăng (tt) : Chắc
+Êjung (dt) : Cây mắt mèo
+Êka (đgt) : Bị thương
+Êkă (tt) : Nhám
+Êkăl (tt) : Đục
+Êkei (dt) : Nam (người)
+Êkei hruê (dt) : Nam giới, đàn ông
+Êkŏ (đgt) : Đông/đặc
+Êkŭt (tt) : Vắng
+Êklai (dt) : Tỷ
+Êklăk (dt) : Triệu
+Êla (tt) : Muộn, trễ
+Êlah (dt) : Lưỡi
+Êlah pui (dt) : Ngọn lửa
+Élah êa (dt) : Mặt nước
+Êlam (tt) : Sâu
+Êlan (dt) : Con đường
+Élan klông (dt) : Đường sá
+Élan tâo (dt) : Ngôi (ngôi tóc)
+Êlâo (gt) : Trước
+Êlhuê (tt) : Rộng
+Êlhuê êlhiăk (tt) : Rộng rãi
+Êlưih (tt) : Rẻ; Dễ
+Êlưih pưih (tt) : Rẻ mạt
+Élők (tt) : Phiền, gợi lại
+Élök/ êñök (đgt) : Nhắc
+Êma (dt) : Số 5
+Êman (dt) : Voi
+Êmă (dt) : Mỡ
+Êmăn (tt) : Mệt
+Êmăn êmiêt (tt) : Mệt mỏi
+Êmăt (đgt) : Thiện xạ
+Êmeh (dt) : Tê giác
+Êmit (tt) : Hiền
+Êmit êngiê (tt) : Hiền hậu
+Êmiêt (đgt) : Dọn
+Êmĭng (tt) : Lý
+Êmŏng (tt) : Mập
+Êmŏng êmă : Mập mạp
+Êmô (dt) : Con bò
+Êmông (dt) : Hổ
+Êmuh (đgt) : Hỏi
+Êmut (đgt) : Ghét
+Êmưt (tt) : Chậm
+Êmưt dhưt (tt) : Chậm chạp
+Ênah (dt) : Mủ; Rẫy mới
+Ênai (đt) : Tiếng
+Ênai dhuai (dt) : Tiếng tăm
+Ênang (tt) : Hiền
+Ênang ê-ưt (tt) : Nhàn rỗi; chậm rãi
+Ênang ê-ưih, ênang blang (tt) : Thong thả
+Ênao (dt) : Hồ
+Ênăng (dt) : Giun đất
+Ênăr (dt) : Sào
+Ênăp (tt) : Khăm
+Ênoh (dt) : Giá; Số lượng
+Ênô (tt) : Thật thà
+Ênông (đgt) : Gánh
+Ênua (dt) : Mạng người
+Ênuk (dt) : Thời; Giai đoạn (thời kỳ)
+Ênuč (dt) : Nọc; Đầu nhọt
+Ênŭm (tt) : Đủ
+Ênŭm ênap/ênŭm drŭm (tt) : Đầy đủ
+Ênŭng (dt) : Lươn
+Êña (dt) : Quang
+Êñah (đgt) : Vung; Chao
+Êñan (dt) : Thang
+Êñăt (đgt) : Kỳ cọ
+Êñuei (dt) : Xâu, chùm
+Êñuôl (dt) : Con tê tê, một họ của người Êđê
+Êngăn (tt) : Êm ả
+Êngăp (tt) : Ngập
+Engeh (tt) : Trong
+Êngeh ƀhang (tt) : Trong vắt
+Êngiê (dt) : Hòa bình
+Êngĭt (dt) : Trời
+Êngoh (dt) : Sốt
+Êngu (dt) : Vừng đen
+Êngŭm (tt) : Đông
+Ênguôt (tt) : Buồn
+Ênguôt ê-ưn (tt) : Buồn thiu
+Ênguôt dhuôt (tt) : Buồn bã
+Ênham (dt) : Đầm
+Ênham êrah (dt) : Vũng máu
+Ênhă (dt) : Diện tích
+Ênhă ƀô̆ (dt) : Bề mặt
+Ênhiang (dt) : Vùng, địa thế
+Êpa (tt) : Đói
+Êpan (dt) : Con rít, con rết
+Êpei (đgt) : Mơ (ngủ mơ)
+Êpih (tt) : Mỏng
+Êpông (dt) : Thăn
+Êpul (đgt) : Nhóm
+Épul êya (dt) : Đoàn thể
+Épŭk êpiăk (tt) : Bơ phò
+Êra (đgt) : Thiếu nữ
+Êrah (dt) : Máu
+Êran (đgt) : Chạy
+Êrião (dt) : Lục lạc
+Êrin (tt) : Nghèo
+Êrin tap (tt) : Nghèo khổ
+Êrĭt (tt) : Mồ côi
+Êrĭt êrin (tt) : Côi cút
+Êruê (dt) : Dấu, lối; Gai
+Êruh (tt) : Bê trễ
+Êrŭm (dt) : Kim
+Êsei (dt) : Cơm
+Êsŭn (dt) : Hành (củ hành)
+Êsŭn atâo (dt) : Hẹ
+Êsŭn ñô (dt) : Kiệu
+Êsŭng (dt) : Cối
+Êtak (dt) : Đậu
+Êtak êbai (dt) : Chỉ chung các loại đậu
+Êtak aduôn sun (dt) : Đậu nành
+Êtak čăt (dt) : Giá đỗ
+Êtăng (đgt) : Xiết
+Êtuh (dt) : Trăm
+Ê-un (tt) : Mềm; Dẻo; Khéo
+Ê-un ê-ăk (tt) : Yếu ớt; Mềm nhũn
+Ê-un dhun (tt) : Mềm mại; Êm dịu
+Ê-un djun (tt) : Êm ái
+Ê-up ê-ap (tt) : Ẩm thấp
+Ê-ưt (đgt) : Tạnh
+Ê-ưt hjan (tt) : Tạnh mưa
+Êwa (dt) : Hơi
+Êwak (đgt) : Khuân
+Êwang (tt) : Gầy
+Êwang êwĭt (tt) : Gầy gò
+Êwăng (đgt) : Lùng
+Êwei (đgt) : Xe sợi
+Êweh êwit (tt) : Khẳng khiu (người và động vật)
+Êwiên (dt) : Liệt (bệnh)
+Êwiên êwu (tt) : Bại liệt
+Êwiêt (dt) : Kiệt (kiệt sức)
+Êwư (đgt) : Mò
+Êwư êpêč (đgt) : Mò mẫm
+Êya (dt) : Gừng
+Êyăn (dt) : Mướp
+Êyăng (tt) : Tĩnh mịch
+Êyông (dt) : Xà dọc trong nhà sàn Êđê
+Êyuh (đgt) : Lay
+Êyuh kngan (đgt) : Bắt tay nhau
+Êyui (dt) : Bóng
+Ễč (dt) : Rau quế, é
+Ễč dliê (dt) : Hương nhu
+Ga (dt) : Khí đốt
+Gah (dt) : Nhà ngoài (phần phía trước của nhà dài Êđê dành cho khách và cho sinh hoạt lễ hội)
+Gai (đgt) : Điều khiển
+Gai kpiê : Mời rượu (Điều khiển tiệc rượu)
+Gam (đgt) : Đậu, đỗ
+Gang (đgt) : Chặn, đón
+Găl (đgt) : Chặt; (tt) Có lý
+Găm (đgt) : Che; Đậy
+Găn (đgt) : Qua, sang
+Găn gao (đgt) : Qua lại
+Găp (dt) : Mái nhà; Bè bạn
+Găp djuê (dt) : Họ hàng
+Giăm (dt) : Gần, cạnh
+Giê (dt) : Que, roi, gậy
+Giê gai êdeh (dt) : Tay lái (xe ôtô)
+Giêng (dt) : Công đoạn luồn sợi dọc vào go trong nghề dệt truyền thống
+Giê dra (dt) : Cây gậy
+Giê dưh (dt) : Đũa
+Giêt (dt) : Quả bầu, lọ, chai, bình (làm bằng thủy tinh)
+Giêu (dt) : Bẫy thắt
+Gĭ (đgt) : Chải
+Gĭr (đgt) : Cố
+Gĭr ktĭr (đgt) : Cố gắng, quyết tâm
+Gĭr ktưn (đgt) : Phấn đấu
+Gĭt gai (đgt) : Lãnh đạo
+Ghan (dt) : Buôn (buôn bán)
+Ghan mnia (dt) : Buôn bán
+Ghang (đgt) : Nướng
+Ghă (đgt) : Can, ngăn
+Go (dt) : Nồi, xoong
+Gŏ ƀŭng (dt) : Nồi đồng
+Gŏ êa čê (dt) : Ấm chè
+Gŏ êsei (dt) : Nồi cơm; Hộ gia đình
+Gŏng (dt) : Cương
+Gŏng gô̆č (dt) : Bọ ngựa
+Gô (tt) : Cong
+Gô̆ (đgt) : Hiếp dâm
+Gơ̆ (đại từ) : Nó (ngôi thứ ba số ít)
+Gơ̆ng (dt) : Cột
+Grăn (dt) : Cán
+Grat (dt) : Cấp bậc
+Grăm (dt) : Sấm, Sấm sét
+Grăm kmlaĭ (dt) : Sấm sét
+Grăp (phụ từ) : Mỗi
+Grê : Cái đòn cong
+Grê̆ñ (đgt) : Gầm
+Gri (dt) : Cây; (tt) nhà sắp đổ
+Griă (giới từ) : Sát
+Griăng (dt) : Nanh
+Grĭ (dt) : Cáu bẩn, ghét; Đất (dơ bẩn trên cơ thể)
+Gring (đgt) : Đỡ (đỡ dậy)
+Griŏ (dt) : Đường viền (rỗ rá), vành nón
+Grĭp (dt) : Cái bẫy chuột
+Groh (đgt) : Sủa
+Grông (dt) : Hàng, lôi tay
+Grôñ (tt) : Thon búp măng
+Gru (dt) : Dấu, vết
+Grua (dt) : Tua rua
+Gru bi kal (dt) : Chữ thập (+)
+Gru jŏngn (dt) : Dấu chân
+Gru kđiêng kngan (dt) : Dấu vân tay
+Gruê (dt) : Bàn chải; Lông bờm (trên lưng)
+Gruê hlô ŭn : Lông lợn rừng
+Gruh (dt) : Vùng trũng, hồ
+Grŭp (tt) : Gục, ụp; (dt) Nhóm, đội
+Grư̆ (dt) : Con đại bàng
+Grưh (dt) : Xương sườn
+Gu (dt) : Cụp xuống, khom
+Gu ktơr (dt) : Cùi bắp
+Guam (tt) : Ngượng, mắc cỡ
+Guam ahuam (tt) : Ngượng ngùng
+Guê lŏ (dt) : Bờ ruộng
+Guê̆č (đgt) : Choàng
+Gu ga (dt) : Quả thanh long
+Gu gê (dt) : Bọ dừa
+Guh (đgt) : Quạt lên, phát quang
+Guh k'ang (tt) : Lộng lẫy, rạng rỡ
+Gu tuk (dt) : Chim tu hú
+Gui (đgt) : Gùi (nước, lúa)
+Guôm (tt) : Bọc kín, bao kín
+Guôn (đgt) : Chờ, đợi
+Gun (tt) : Vướng
+Gung (dt) : Bẫy sập
+Guôp (tt) : Hợp
+Guôr (dt) : Dọc (khoai nước, đu đủ...)
+Guôp êlâo : Tiếp theo
+Gut (đgt) : Uốn, bẻ cong
+Gưl (dt) : Bậc, cấp, đợt (khóa học)
+Gưt asăp (dt) : Vâng lời
+Gưr (dt) : Sự gia tăng
+Guôk (dt) : Guốc mang
+Guôl (dt) : Cây cọ
+Gŭt gu (tt) : Gật gù
+Gư̆ (đgt) : Ấr, bấm, nhấn, nén
+Ha (đgt) : Há
+Hah (phụ từ) : Đây, này
+Hal (đgt) : Xẻ
+Hak (đgt) : Dang
+Han (đgt) : Vá
+Hang (dt) : Bờ; Bãi; (tt) Rát
+Hao hao : Tiếng ồn trong đám đông
+H'ap (đgt) : Ngáp
+Har (đgt) : Hấu (cầu kỳ)
+Hat (tt) : The
+Hă (phụ từ) : Này, đây; Hả, Hử (dùng để hỏi)
+Hăng (tt) : Cay
+Hăt (dt) : Thuốc lá
+Hăt klĭt (dt) : Thuốc xì gà
+Hăt reh (dt) : Thuốc rê
+Hâo (đgt) : Báo, cho biết
+Hbâo (dt) : Tro
+Hbâo pruê (dt) : Phân bón
+Hbei (dt) : Khoai, sắn
+Hbei ƀlang (dt) : Khoai mì
+Hbia (dt) : Công chúa, nữ thần, hoàng hậu
+Hbiê (dt) : Tên cây, lá thuốc hút hay lá dược
+Hbĭl (trạng từ) : Khi nào, lúc nào
+Hƀlŏk (đgt) : Hối hận, ăn năn
+Hƀơih (phụ từ) : Ối chà, Úi chà (tiếng thốt)
+Hƀuê ktuê (đgt) : Lần theo
+Hƀuê ênuk (dt) : Lịch sử
+Hda (dt) : Chông loại nhỏ
+Hdang (dt) : Tôm
+Hdao (dt) : Tên một loại cây, gỗ tạp, (không có lõi)
+Hdăm (dt) : Con kiến
+Hdăng (dt) : Than; (pt) Đều; Lẫn
+Hdei (đgt) : Sàng sẩy
+Hdiêr (tt) : Rống, ré (nói về tiếng voi kêu)
+Hdĭp (đgt) : Sống
+Hdjai (đgt) : Chỉ động tác chuyển từ cành cây này sang cành cây khác của khỉ, vượn
+Hdơr (đgt) : Nhớ
+Hdơr knga : Nhớ ơn
+Hdrah (dt) : Rừng non, rừng tái sinh; Đám rừng đã xí trước để làm rẫy; Ghềnh
+Hdrak (đgt) : Ho cảm, cảm cúm
+Hdrô (dt) : Một giống lúa sớm Êđê
+Hdruôm (dt) : Quyển; (đgt) Bao, bọc
+Hdruôm hră (dt) : Quyển sách
+Hdruôm jŏng (dt) : Giày
+Hdruôm m’ar (dt) : Quyển vở
+Hđăp (dt) : Cũ, xưa
+Hđeh, hđeh êlăk (dt) : Trẻ em, trẻ con
+Hđeh êdam (dt) : Thanh niên (trai)
+Hđeh ĭ (dt) : Trẻ sơ sinh
+Hđeh êra (dt) : Thanh niên (gái)
+Hđeh hriăm hră (dt) : Học sinh
+Hđĭ hđang (đgt) : Loay hoay, quay đi quay lại
+Hđô : Quên bẵng
+Hđô mla (dt) : Chỉ voi đực không có ngà
+Hđơ̆ng (tt) : Yên ổn
+Heh (dt) : Đơn vị đo chiều dài từ cùi chỏ đến ngón tay; (đgt) Hí (ngựa)
+Hei (phụ từ) : Ư, chăng (để hỏi)
+Hĕ (phụ từ) : Đã (có ý khẳng định); Ư, hả (để hỏi)
+Hếč hmui (đgt) : Cầu chúc, chúc mừng
+Hê̆ñ (đgt) : Xấu hổ
+Hgăl (tt) : Nguyên vẹn
+Hgăm (tt) : Kín, mật, ngầm
+Hgao (đgt) : Bước ngang qua
+Hgơr (dt) : Cái trống
+Hgŭm ngă : Giúp nhau
+Hia (đgt) : Khóc
+Hiă (tt) : Rữa
+Hiêk (đgt) : Xé
+Hiên (tt) : Thóp; (dt) Eo (quả bầu, núi)
+Hik (đgt) : Hệch
+Hin (tt) : Hiếm
+Hing (đgt) : Đồn đại
+Hing ang (dt) : Danh tiếng, nổi tiếng
+Hip (dt) : Rương, hòm
+Hip mdơ̆ng (dt) : Tủ đứng
+Hip mgăn (dt) : Tủ trà
+Hiu (đgt) : Đi rong, đi chơi
+Hĭn (phụ từ) : Hơn
+Hĭn dĭn : Hơn hẳn
+Hjan (dt) : Mưa
+Hjăn (tt) : Một mình
+Hjei (dt) : Dùi đục
+Hjŭng (dt) : Vợ lẻ
+Hla (dt) : Lá; Cái diều
+Hlah (tt) : Ngán
+Hlai (tt) : Nguôi
+Hlang (dt) : Cỏ tranh
+Hlao (dt) : Cái khay, cái mâm; (đgt) Khỏi bệnh, hết bệnh
+Hlăk (trạng từ) : Khi; (trợ từ) Đang
+Hlăk hlai (tt) : Thỏa mãn
+Hlăm (giới từ) : Trong, trên, dưới; (tt) Sỉ
+Hlăp (đgt) : Chơi
+Hlăp lê̆ñ (đgt) : Chơi đùa
+Hlăp mbŭl (đgt) : Nô đùa, đùa giỡn
+Hlâo (dt) : Chày; Đôi
+Hlâo êya (dt) : Chày nhỏ
+Hlei (đt) : Ai; Gì (Từ dùng để hỏi tên)
+Hli (đgt) : San phẳng
+Hli ai (đgt) : Làm vừa lòng, xoa dịu
+Hliăng (dt) : Tên một cái cồng trong bộ cồng người Êđê
+Hlia (đgt) : Liếm
+Hliăr (tt) : Xảo quyệt
+Hliê (tt) : Lẻ loi, rời, lẻ; Còn son, còn tơ
+Hliêng (đgt) : Vác
+Hliêng wih (trgt) : Xế chiều
+Hin knap (dt) : Nghèo khổ
+Hiu êbat (đgt) : Tản bộ
+H’iêng (đgt) : Chiều chuộng; (tt) Cưng, quý
+H’iêng h’ưi (tt) : Thương tiếc
+Hiu lua (đgt) : Đi săn
+Hiu lua mnah (đgt) : Săn bắn
+Hiu puh hlô (đgt) : Đi đuổi thú (mang tính chất bao vay)
+Hĭp (hư từ) : Bức
+H’ĭt (dt) : Yên tâm
+Hgơr (dt) : Trống
+Hgŭm (đgt) : Đoàn kết
+Hgŭm ai (đt) : Phối hợp, hợp tác
+Hjan ƀhŭk (dt) : Mưa phùn
+Hjan angĭn (dt) : Mưa gió
+Hjiê (dt) : Kho (kho để thóc)
+Hla in jin (dt) : Lá bài
+Hla kơ (dt) : Lá cờ
+Hla kơ ala čar (dt) : Quốc kỳ
+Hla knih (dt) : Cây chổi
+Hlai (tt) : Nguôi
+Hlăk anăn (trgt) : Bấy giờ, lúc đó
+Hling (dt) : Gỗ mun
+Hlĭm (dt) : Mưa dầm
+Hlĭn (dt) : Sáp ong
+Hlĭng (dt) : Rót
+Hlŏng (dt) : Tên một cái cồng trong bộ cồng Êđê; (phụ từ) Chí, đến, thâu; Luôn thể
+Hlô (dt) : Thú (con thú)
+Hlô mnơ̆ng (dt) : Thú vật
+Hlông (đgt) : Tạo ra, làm mới
+Hlua (đgt) : Dội, đổ
+Hluăt (dt) : Con sâu
+Hluê (tt) : Lỏng, long, rộng; Theo, bắt chước
+Hluh (tt) : Thủng
+Hmum (tt) : Lành (không rách)
+Hlung (đgt) : Bợ, đỡ, bê
+Hluôm (tt) : Nguyên hạt, đầy hạt
+Hlŭ (lŭ) (dt) : Bùn
+Hlŭl (tt) : Tắc, nghẽn
+Hlŭn (dt) : Nô lệ, đầy tớ
+Hlŭt (đgt) : Dốc đầu xuống; Liều, táo bạo
+Hlư̆ (đgt) : Đẩy ra
+Hma (dt) : Rẫy
+Hmang (dt) : Cái khay đựng chén bát
+Hmăm (dt) : Chậu thau
+Hmăng (đgt) : Ngóng, trông
+Hmăng hmưi (đgt) : Cầu mong, ước mong
+Hmăr (đgt) : Mau, nhanh
+Hmăt (đgt) : Quất, vụt (bằng roi)
+Hmei (đại từ) : Chúng tôi (ngôi thứ nhất số ít)
+Hmiêt mkăp : Sẵn sàng
+Hmlei (dt) : Bông xơ, bông y tế
+Hmô (đgt) : Cho ví dụ, Ví dụ
+Hmôk (dt) : Vỏ cây
+Hmrot (tt) : Lẻ loi, cô đơn
+Hmrui (dt) : Trầm bầu
+Hmưč (đgt) : Khấn hứa với thần
+Hmư̆ (đgt) : Nghe
+Hmui (đgt) : Cầu mong, cầu cho
+Hna (dt) : Ná, nỏ
+Hnač (tt) : Dai
+Hnăl (dt) : Cái đệm
+Hnăn (đt) : Vậy
+Hnăr (đt) : Trườn
+Hnê̆č (đgt) : Tranh thủ
+Hngah (đgt) : Từ chối
+Hngam ram (tt) : Vị ngọt nhân nhấn đắng của rượu ngon
+Hngăn (dt) : Quả dâu đất
+Hngăp (tt) : Bẵng, (không nhớ)
+Hngăp êyăng, hngăp hngơr : Biệt tăm, biệt tích
+Hngŭt hngui (tt) : Sa sầm, bùi ngùi
+Hngô (dt) : Cây thông
+Hnĭng (đgt) : Nhớ
+Hnoh (dt) : Khe, lạch
+Hnô (tt) : Hình bầu dục; Đền bù
+Hnơ̆ng (dt) : Mức độ; Hệ thống; Trình độ văn hóa
+Hnuă (gt) : Bên phải
+Hnuăt (dt) : Cái roi
+Hnuê (dt) : Ong mật
+Hnun (dt) : Tã lót
+Hnuh (dt) : Cùm
+Hnui (dt) : Trễ, muộn (mùa màng)
+Hnuôr (dt) : Khúc cây đã hạ xuống trên rẫy
+Hnŭk (tt) : Yên
+Hnưm (tt) : Sớm (mùa màng)
+Hoh (phụ từ) : Đây, này (đưa vật gì cho ai)
+Hõ (phụ từ) : Nhé, nhá (ý bảo ban, ra lệnh)
+Hök (đgt) : Đỗ, vãi, sánh ra ngoài (nước và chất lỏng)
+Hŏng (tt) : Trống (trống trãi); Bằng; (giới từ) Với
+Hŏ kdŏng (tt) : Trống rỗng
+Hô (tt) : Thiếu, hụt, túng
+Hôč (đgt) : Huýt sáo
+Hôk (dt) : Đơn vị đo chiều dài từ nách cho hết bàn tay duỗi thẳng
+Hông (dt) : Ong vò vẽ
+Hô̆ (dt) : Thuyền
+Hơ hơp (tt) : Toang
+Hơi (phụ từ) : Này, ơi, nào (dùng trong ca hát để gọi người đối thoại)
+Hơr (đgt) : Hơ
+Hơ̆k (tt) : Vui
+Hra (dt) : Muối
+Hrah (tt) : Đỏ
+Hrah mda (tt) : Màu hồng
+Hrai (đgt) : Rải, rắc
+Hră (dt) : Giấy
+Hră m’ar (dt) : Giấy tờ
+Hrač (dt) : Gỗ dầu; (đgt) Tuốt (lúa)
+Hrăm (hư từ) : Cùng
+Hrăng (đgt) : Nai nịt
+Hrăp (tt) : No, chán, ngán, ngấy, ớn
+Hrĕ roh (đgt) : Phát dọn bìa rẫy
+Hri (đgt) : Mô phỏng tiếng ve kêu
+Hriăm (đgt) : Học
+Hriê (đgt) : Đến
+Hriê kơ mdrŏng : Đang giàu lên
+Hriêl (dt) : Bùa, ngải
+Hriêng (dt) : Ẩn dụ
+Hriêt (tt) : Ít, thiểu số
+Hrih (đgt) : Làm phép
+Hrip (đgt) : Hít
+Hrĭl (dt) : Con két mỏ đỏ (giống con vẹt)
+Hrŏ (đgt) : Giảm
+Hrŏng (tt) : Hốt, sốt; Lựa, chọn
+Hrŏng kƀĭn (đgt) : Tổng kết
+Hrô (đt) : Cái then; (đgt) Thay thế; Xâu, xỏ
+Hrôk (dt) : Cái đó (để bắt cá)
+Hrông (tt) : Hoang; Nguyên vẹn
+Hrơ̆ng (đgt) : Chém
+Hruê (dt) : Ngày
+Hrua = hrô (đgt) : Thay thế
+Hruê̆ (dt) : Cây thân dây, loại dây rừng
+Hruh (dt) : Tổ chim; Bao, gói
+Hrui (đgt) : Thu về
+Hrut (đgt) : Co rút
+Hrut lăn (đgt) : Hít đất
+Hua (đgt) : Kéo lê
+Huă (đgt) : Ăn (ăn cơm)
+Huăk (đgt) : Móc, moi ra
+Huăn (tt) : Khít
+Hui (đgt) : Sợ
+Hui dah (đgt) : E rằng
+Huič (đgt) : Húp
+Hung, hung hang (đgt) : Háo, rất thích
+Hung hang (tt) : Bất kham, hung hang
+Hur har (tt) : Nhiệt tình
+Hŭl (đgt) : Hấp hơi; Hấp cách thủy, xông
+Hŭt (tt) : Trật, không trúng
+Hưn (đgt) : Báo cáo
+Hưn akâo (đgt) : Đăng ký
+Hưn mdah (đgt) : Giới thiệu
+Hưn mthâo (đgt) : Thông báo
+Hưn phong (đgt) : Khoe khoang
+Hưp (đgt) : Ham
+Hưt (tt) : Mát, khùng
+Hwa (dt) : Vượn
+Hwak (đgt) : Vác
+Hwar (đgt) : Cào thành đống
+Hwăt (đgt) : Lịm, ngất
+Hwiă (đgt) : Thắt (dây thắt lưng), xiết (cho chặt)
+Hwiê (dt) : Mây, song; (đgt) Liệng đi, vứt đi
+Hwiêt (đgt) : Tém (tóc)
+Hyuă (đgt) : Chằng, bó, buộc
+Hyưt (tt) : Lo sợ
+H'ai (tt) : Không
+H'ai mang : Không có gì
+H'ap (đgt) : Ngáp
+H'ăp (tt) : Ấm
+H'ê̆č hmưi (đgt) : Chúc mừng
+H'iêng (đgt) : Cưng, chiều; (tt) Quý
+H'ĭt (đgt) : Yên tâm
+H'ô (đgt) : Mặc (áo)
+H'ôk (đgt) : Đành lòng
+H'ua (đgt) : Cà vào, làm dây bệnh
+H'uôn (đgt) : Thương yêu, âu yếm, vuốt ve
+H'ưi (đgt) : Thương tiếc
+Iăm (đgt) : Mô phỏng tiếng ve kêu
+I-ăk riăk (đgt) : Khúc khích
+Iê (dt) : Anh rễ; chị dâu (nói chung)
+Iê êkei (dt) : Anh rể
+Iê mniê (dt) : Chị dâu
+Iêp (đgt) : Ghé, dòm
+Iêu (đgt) : Gọi
+Iêu anăn (đgt) : Điểm danh
+Iêu jak (đgt) : Rủ rê
+Iêu mthưr (đgt) : Kêu gọi
+Iêu ung (đgt) : Rước rể (rước rể theo phong tục của người Êđê)
+Ih (đại từ) : Anh, mày (ngôi thứ hai số ít)
+Ik ik (đgt) : Nài nỉ
+Ik rik : Lâm râm
+Im (đgt) : Yểm (bùa)
+In (đgt) : Chơi
+In an (đgt) : Dựa sát vào người khác
+Injin (dt) : Cờ bạc
+Ing ba k'ông : Rập rình (mô phỏng tiếng chiêng trống)
+Ing tlam : Chạng vạng
+Iu (tt) : Thiu, ôi
+Iŭ (đgt) : Thổi, bơm
+Ĭ (dt) : Sơ sinh
+Ĭr ĭr (tt) : Rừng rực (lửa cháy), ầm ĩ (tiếng ồn)
+Ĭt uôt (tt) : Lề mề
+Jač (đgt) : Ném
+Jah (đgt) : Phát
+Jak (đgt) : Mời, rủ
+Jăk (tt) : Tốt, ngon; Hay
+Jam (dt) : Đĩa (để thức ăn)
+Jang (tt) : Nhường
+Jao (đgt) : Giao
+Jar (dt) : Khung
+Jĕ (tt) : Gần
+Jê (đgt) : Giằm
+Jê̆č (tt) : Vội
+Jê̆ñ (pht) : Thường xuyên
+Jet jot (tt) : Xiêu vẹo
+Jhar pui (đgt) : Bỏ thêm củi vào bếp
+Jhat (tt) : Hỏng, xấu
+Jheh jhoh (tt) : Chồm hỗm
+Jhĭt (đgt) : Khâu
+Jhô (đgt) : Luồn, xỏ
+Jhŏng (tt) : Dữ
+Jhut jhut (tt) : Trì trệ
+Jhŭk jhŭk (tt) : Hùng dũng
+Jhưng (dt) : Giường, bàn, bảng
+Jia (dt) : Thuế
+Jiă (tt) : Nhiễm; Dính; (đgt) Nhét
+Jiăng (tt) : Bạn bè trai thân nhau (gọi là jiăng)
+Jiêk (đgt) : Nhét
+Jih (đgt) : Hết
+Jih jang (đt) : Tất cả
+Jik (đgt) : Làm, cuốc
+Jing (đgt) : Là; (tt) Thành
+Jĭng jai (tt) : Tạm thời
+Jip jap (tt) : Nhếch nhác
+Joh (đgt) : Gẫy
+Jông (dt) : Búa (bổ củi)
+Jŏng (dt) : Chân
+Jŭ (tt) : Đen
+Juă (đgt) : Đạp
+Juăt (pht) : Quen
+Juê (dt) : Lõi (lõi chuối)
+Juh (đgt) : Dỗ
+Juh lia (đgt) : An ủi
+Juh alum (đgt) : Dỗ dành
+Juih (dt) : Cái chĩa (đâm cá)
+Juk tô (dt) : Bạn nữ thân thiết nhau (gọi nhau là Juk tô)
+Jŭm dar (tt) : Xung quanh
+Jung (đgt) : Dìu
+Jur (đgt) : Rót (từ ống, cần rượu)
+Ka (pt) : Chưa
+Kă (đgt) : Buộc
+Kač (đgt) : Khắc vẽ
+Kah (đgt) : Chia rẽ
+Kah mbha (đgt) : Phân chia
+Kahan (dt) : Lính, bộ đội
+Kahan ƀuôn (dt) : Dân quân tự vệ
+Kahan roh (dt) : Quân giặc, quân thù
+Kai (đgt) : Cày
+Kaih (dt) : Vảy
+Kak (dt) : Chứng minh nhân dân
+Kal (đgt) : Cài
+Kam (dt) : Trấu
+Kan (dt) : Cá
+Kang (dt) : Cằm
+Kar (dt) : Ca; (đgt) Lọc
+Kar kak (dt) : Đế quốc
+Kăl sŏng (dt) (Pr) : Quần đùi
+Kăm (đgt) : Kiêng; Cấm
+Kăm ênoh (đgt) : Định giá
+Kăn : Không
+Kăp ƀŭk (đgt) : Cắt tóc
+Kăp (đgt) : Đón lõng
+Kăp dlăng (đgt) : Để xem
+Kâo (đt) : Tôi (ngôi thứ nhất số ít)
+Kba (tt) : Nhạt
+Kban (dt) : Cái cầu
+Kbao (dt) : Con trâu
+Kbâo (dt) : Mía
+Kbhoh (tt) : Bọt
+Kbiă (đgt) : Ra
+Kbin (dt) : Cái chõ
+Kblăm, kbluôm (đgt) : Nuốt chửng
+Kbruč (tt) : Toác
+Kbŭm (đgt) : Ngậm
+Kbŭm ênah : Mưng mủ
+Kbuôn (dt) : Đồi
+Kbưi (tt) : Xa
+Kƀah (tt) : Thiếu
+Kƀăk (đgt) : Treo (mắc vào)
+Kƀăt (tt) : Xinh đẹp
+Kƀao (dt) : Cái bào
+Kƀeh (đgt) : Lể; Mẻ
+Kƀei (dt) : Cái bay
+Kƀê̆ñ (đgt) : Rèn
+Kƀiêk ală (dt) : Khóe mắt
+Kƀĭn (đgt) : Họp, tập trung
+Kƀla (tt) : Nhát
+Kƀôč (dt) : Dúm; Mỏ (gà, chim)
+Kƀu (dt) : Xà phòng
+Kƀuê (dt) : Môi
+Kƀut (đgt) : Vun
+Kčah (đgt) : Hẹn
+Kčaĭ (đgt) : Bắn tung tóe
+Kčăt (đgt) : Nhéo
+Kčeh (đgt) : Nở (trứng nở ra con)
+Kčĕ bruă (đgt) : Tham mưu
+Kčĭk (dt) : Cắm xe
+Kčoh (đgt) : May; Băm
+Kčŏ (dt) : Chấm
+Kčuh (đgt) : Nhổ
+Kčŭng kčê̆ñ (tt) : Nhăn nheo
+Kčưm (đgt) : Mở đầu
+Kčŭt (đgt) : Chọc, thọc
+Kčŭt kđi (đgt) : Khiếu kiện
+Kdaih (đgt) : Rành
+Kdăt (đgt) : Nhảy
+Kdê (tt) : Co rúm lại
+Kdlăk (đgt) : Sặc (sặc sụa)
+Kdloh (đgt) : Tuột
+Kdô (dt) : Túi
+Kdŏ (đgt) : Múa
+Kdơ̆ng blah (đgt) : Kháng chiến
+Kdơ̆ng wĭt (đgt) : Chống trả
+Kdŭn (đgt) : Lùi
+Kdrăn bi mblah (dt) : Chiến trường
+Kdrăn (dt) : Bãi
+Kdưt (đgt) : Nhảy cóc (bỏ qua)
+Kdrăp (dt) : Trang phục
+Kdrê̆č (dt) : Đoạn, phần, chương
+Kdriêk čar (dt) : Huyện
+Kdruă (dt) : Vung, nắp
+Kdruêh đưm (dt) : Truyền thống
+Kdrưh k’ang (tt) : Vẻ vang
+Kđah (đgt) : Gặm
+Kđao (dt) : Khuỷu chân
+Kđăl (đgt) : Đóng
+Kđăl mnŭ (dt) : Mề gà
+Kđăm gru (đgt) : Đóng dấu
+Kđĕ asâo (đgt) : Kêu chó
+Kđiêng (dt) : Ngón
+Kđi čar (tt) : Chính trị
+Kđŏng (tt) : Dỏng; Cong
+Kđông (dt) : Đồn; (đgt) chửa (con vật)
+Kđhĭt (đgt) : Nháy
+Kđuh (dt) : Phên; (đgt) Giũ
+Kđul (dt) : Gót
+Keh (đgt) : Hất; (tht) Ủa
+Keh koh (tt) : Mâu thuẫn
+Keh nač (tt) : Ganh tị
+Kĕ (đgt) : Cắn; Đốt
+Kê̆č (dt) : Muỗi
+Kê̆ñ rô (dt) : Cầu vồng
+Kgă (dt) : Xà gạc
+Kgâo (dt) : Con gấu
+Kgông (đgt) : Gặm, gắp (con vật)
+Kgŭ (đgt) : Dậy
+Kgŭ dơ̆ng (đgt) : Đứng lên
+Khan (đgt) : Kể chuyện (theo nói vần)
+Khă (trợ từ) : Dù
+Khă dah (trt) : Mặc dù, tuy rằng
+Khăm (Yu) : Khám
+Khăng (tt) : Cứng; (pht) Thường
+Khăng yua (trt) : Thông dụng, thường dùng
+Khăp (đgt) : Yêu; Thích
+Khăp h’iêng (đgt) : Yêu thương
+Khăt (đgt) : Cắt
+Khê̆č (dt) : Trung Quốc
+Khil đao (dt) : Gươm đao
+Khŏ (tt) : Điên
+Không (tt) : Tạnh
+Khu (tt) : Rát
+Khua (tt) : Trưởng; Già; Người lãnh đạo cơ quan, ban ngành
+Khua bi ala (dt) : Đại biểu quốc hội
+Khua čar (dt) : Chủ tịch tỉnh
+Khua gĭt gai đaíng (dt) : Bí thư
+Khua knŭk kna (dt) : Thủ tướng Chính phủ
+Khua lăn čar (dt) : Chủ tịch Nước
+Khut khat (trt) : Tuyệt đối, dứt khoát
+Khua mil čhil (dt) : Tổng thống
+Khua yang (dt) : Chúa
+Khuôt (dt) : Cạn
+K’iăng khua gĭt gai Đảng : Phó bí thư
+Ki (dt) : Sừng
+Ki mda (dt) : Nhung, sừng non
+Kiă (đgt) : Chăn; Trông
+Kiă dlăng (đgt) : Trông nom
+Kiă kriê (đgt) : Giữ gìn; Chăm sóc
+Kiă răng mblah (đgt) : Trực chiến
+K’iêng (dt) : Hông
+Kih (đgt) : Quét
+Kjač (đgt) : Nhào
+Kjač mŭt (đgt) : Lao vào
+Kdjăt (đgt) : Giật
+Kdjăt ñhăr : Giật thót
+Kjăp (tt) : Chắc (vững)
+Kjăp mră (tt) : Vững chắc
+Kjham (tt) : Nặng; Trầm trọng
+Kjoh (đgt) : Bẻ
+Kjhôč lăn (dt) : Mũi đất
+Kjơ (dt) : Cái cào
+Kju (dt) : Cây giáo
+Kjuh (số từ) : Bảy
+Kjŭk (đgt) : Chọc lỗ tỉa lúa
+Kdjŏng (đgt) : Nhấc
+Kdjô̆ (đgt) : Gáy
+Kdjơt (đgt) : Nhón
+Kdjuôt (tt) : Héo, nhăn
+Kkaih (dt) : Gầu (gầu tóc, tế bào da đầu chết)
+Kkâo (dt) : Móng, vuốt
+Kkăl (tt) : Đục
+Kkiêng (đgt) : Sinh, đẻ (dùng cho người); Góc, cạnh
+Kkiêng kngan (dt) : Khuỷu tay
+Kkuh (đgt) : Chào
+Kkuê (dt) : Cổ
+Kkui (đgt) : Cúi xuống
+Kkuih (dt) : Con chuột
+Kkuih hyăp (dt) : Chuột đồng
+Kkuih nuôt (dt) : Chuột nhắt
+Kkung (đgt) : Khiêng
+Kla (tt) : Hói
+Klah (đgt) : Tách
+Klah čŭn (trt) : Tóm tắt
+Klah klap (tt) : Riêng lẻ
+Klam (đgt) : Vác
+Klang (dt) : Xương
+Klang grưh (dt) : Xương sườn
+Klap (dt) : Con mối (mối có cánh bay rang ăn được)
+Klă (tt) : Kỹ
+Klă klơ̆ng (tt) : Rõ ràng
+Klăk jơ̆ng bê klê jơ̆ng ŭn (tng) : Ý nói người không trung thực
+Klăm (tt) : Xui xẻo
+Klei (đgt) : Đào; (dt) Dây; Tiếng; Sự, việc
+Klei bi doh (dt) : Vệ sinh
+Klei bi liê (dt) : Sự chi phí
+Klei bhiăn (dt) : Phong tục
+Klei bhiăn ala (dt) : Hiến pháp
+Klei bhiăn jăk siam : Truyền thống tốt đẹp
+Klei blah ngă (dt) : Chiến tranh
+Klei duê (dt) : Ca dao; Bài thơ
+Klei dưi blah ngă (dt) : Cuộc chiến thắng lợi, cuộc chiến thành công
+Klei dưi mil čhil mơ̆ng pô (dt) : Quyền tự chủ
+Klei đup gưt (dt) : Sự lễ phép
+Klei đưm đă (dt) : Chuyện đời xưa
+Klei êđăp ênang mgang ala (dt) : An ninh Quốc phòng
+Klei êngiê (dt) : Độc lập
+Klei hdĭp (dt) : Đời sống, cuộc sống
+Klei hgŭm đru (dt) : Sự tương trợ
+Klei mưng juăt (dt) : Thói quen
+Klei khan (dt) : Trường ca
+Klei khăp čiăng (dt) : Sở thích
+Klei kiă kriê (dt) : Sự cai trị; Sự chăm sóc
+Klei kriê čuăn (dt) : Nội quy
+Klei kŭp dăp (dt) : Trò trốn tìm
+Klei pơ̆k mñam (dt) : Việc đan lát
+Klei suaih pral (dt) : Sức khỏe
+Klei soh (dt) : Tội lỗi
+Klei yăl dliê (dt) : Câu chuyện, truyện
+Klei yăl dliê đưm (dt) : Truyện cổ tích
+Klei ruă duam (dt) : Bệnh tật
+Klei thâo săng (dt) : Sự hiểu biết
+Klei tŭ dưn (dt) : Thành quả, lợi ích
+Klei truh (dt) : Tình hình, tình thế
+Kleh (đgt) : Cởi ra, tháo ra
+Klia êlan (đgt) : Ủi đường
+Kliăng (dt) : Chìa khóa
+Kliêng pruê̆ bi kpă : Gióng hàng cho thẳng
+Klih (tt) : Keo
+Klih ñơ ñă (tt) : Keo kiệt
+Klĭt (dt) : Da
+Klĭt kliêng (dt) : Da dẻ
+Kluôm dhuôm (dt) : Toàn bộ, tổng quát
+Klư̆ kliă (đgt) : Xô đẩy
+Klư̆, klưng (đgt) : Xô, đẩy
+Kma muê (đgt) : Thụ phấn
+Kmah (tt) : Hào phóng
+Kman (dt) : Vi trùng
+Kmang (dt) : Mào gà
+Kmiêk (đgt) : Ôm
+Kmlô (tt) : Câm
+Kmrơ̆ng (dt) : Rừng
+Kmrơ̆ng dhông (dt) : Rừng núi
+Kmruôt (dt) : Ong ruồi
+Kmuôt tlan (dt) : Giun sán
+Kmŭn (dt) : Dưa leo; Dưa gang
+Kmŭt (dt) : Búa (đóng đinh)
+Knai (dt) : Anh em họ (anh em trai có họ hàng với nhau gọi là knai)
+Knaih (dt) : Thợ rèn
+Knap (tt) : Khổ
+Knap mñai (tt) : Khổ cực
+Knam (dt) : Mây đen
+Knam hjan (dt) : Mây mưa
+Knăm (dt) : Thứ
+Knăt (dt) : Đọt, chồi
+Knhăk (tt) : Tài
+Knhâo mbruă (tt) : Giỏi giang, thạo việc
+Knhông (tt) : Lẵng lơ
+Knhuk knhul (đgt) : Đua đòi
+Kniă (tt) : Chật
+Kniă kniêt (tt) : Chật chội
+Knĕ (đgt) : Ăn trộm
+Knga (dt) : Tai
+Kngan (dt) : Tay
+Kngăl (tt) : Điếc
+Kniêm (dt) : Máng
+Knip (dt) : Dế mèn
+Knguôr (dt) : Cái nia
+Kngư (tt) : Dốc
+Knŏng (phó từ) : Chỉ có
+Knô (tt) : Đực; Trống
+Knông lăn (dt) : Biên giới, ranh giới
+Knơ̆ng bruă (dt) : Cơ quan; Sở; Cục
+Knơ̆ng bruă čar : Tỉnh ủy
+Knuăk (dt) : Cái móc
+Knuê (trt) : Lúc nãy, hồi nãy
+Knuih (dt) : Uy, tướng
+Knuih khưm (tt) : Uy tín
+Knuih kniêng (dt) : Tính tình
+Knur (tt) : Nhọn
+Knŭk kna (dt) : Chính phủ; Nhà nước; Chính quyền
+Knŭng (dt) : Lộc vừng
+Kñĭ (tt) : Màu vàng
+Kñĭt (dt) : Nghệ
+Kñŭl (dt) : Điều
+Koh (đgt) : Chặt
+Kŏ (dt) : Đầu
+Kông (dt) : Vòng
+Kô̆ (tt) : Trắng
+Kơ (giới từ) : Cho, của, thuộc
+Kơ êdei : Sau này
+Kpa (dt) : Con ba ba
+Kpaih (dt) : Bông
+Kpal (tt) : Dày
+Kpă ênuah (tt) : Thật thà
+Kpăk (tt) : Bận
+Kpăt (đgt) : Nắm
+Kpei (dt) : Men; (đgt) Sàn sẩy
+Kphê (dt) : Cà phê
+Kpiê (dt) : Rượu
+Kpiê ruă čuă êba (tng) : Ý nói say xỉn
+Kpin (dt) : Cái khố
+Kpit (đgt) : Bóp
+Kpĭ (đgt) : Kẹp
+Kplăk (đgt) : Giật (giành giật)
+Kplŏng (đgt) : Nhảy (nhảy lên)
+Kplŭk (tt) : Dập nát (đám hoa màu, cây cỏ bị dập nát)
+Kpơ̆ng (dt) : Gốc (Gốc cây bị gãy còn nửa dưới đất và nửa trên mặt đất)
+Kpơ̆ng adrăng (dt) : Gốc rạ
+Kpŭng (dt) : Bột; Phấn
+Kpŭng ksu (dt) : Túi ni lông
+Kpư̆ hlư̆ (đgt) : Hoạt động
+Kra (dt) : Con khỉ
+Krah (dt) : Nhẫn; (đgt) Vạc, đẽo
+Kral (đgt) : Nhận ra, quen
+Kram (dt) : Tre
+Krao (đgt) : Rên
+Krăm (đgt) : Ấp
+Krăn (tt) : Tê
+Kreh kruñ (tt) : Chăm chỉ, miệt mài
+Krê̆č (dt) : Chim sáo
+Krê̆ñ (tt) : Tức giận
+Kri (tt) : Quăn
+Krĭ (đgt) : Vót
+Kriăng (tt) : Siêng, chăm
+Kriêp (tt) : Im
+Kriêp êyăng (tt) : Im ắng
+Krih (đgt) : Tưới
+Krih êa drao : Phun thuốc
+Krĭng (dt) : Vùng, miền
+Krŏng (dt) : Chông; Sâm sâm
+Krông (dt) : Sông
+Krua (dt) : Con rùa
+Krum (dt) : Gầm
+Krŭ (dt) : Bò tót
+Krŭ kdơ̆ng (dt) : Cách mạng
+Krư̆ (đgt) : Nhốt, giam
+Ksă (tt) : Chín
+Ksăk ksaĭ (tt) : Tứ tung
+Ksê (dt) : Con kiến dương
+Ksê eh (dt) : Con bọ hung
+Ksi (dt) : Cái lược
+Ksiêm dlăng (đgt) : Kiểm tra
+Ksiêm hgăm (dt) : Mật thám
+Ksiêm ruh (đgt) : Phê bình
+Ksir mtei (dt) : Nhánh chuối
+Ksĭng (trtừ) : Giáp (giáp ranh)
+Ksŏ (dt) : Phổi
+Ksơ̆k (dt) : Ma
+Ksơr (dt) : Rẫy hoang
+Ksu (dt) : Cao su
+Ksu lăm (dt) : Cục tẩy
+Ksua (dt) : Con nhím
+Ksul (đgt) : Xới
+Ksŭk ksăk (tt) : Hào hứng
+Ksŭng (đgt) : Xông lên; Xúc
+Ktah (dt) : Con đỉa
+Ktan ală (đgt) : Lườm mắt
+Ktang (tt) : Mạnh; Khỏe
+Ktang kjăp (tt) : Vững mạnh
+Ktang tĭt (tt) : Quyết liệt, ác liệt
+Ktat mnŭ (dt) : Ổ gà
+Ktar (đgt) : Khoan
+Ktăl (đgt) : Ngứa
+Ktăk (dt) : Nhựa (cây); Mủ
+Ktăm ƀuôn (dt) : Rìa làng
+Ktâo (dt) : Chấy, rận
+Ktâo asâo (dt) : Bọ chét chó
+Ktăp kŏ (đgt) : Lộn đầu
+Kteh (đgt) : Lắc
+Kthuôt (dt) : Mụn cóc
+Kthŭl (tt) : Vụng về
+Ktiă (dt) : Con két
+Ktlah (đgt) : Tách
+Ktlaih (đgt) : Tuột
+Ktiu (đgt) : Mớ ngủ
+Ktĭng êgei (tt) : Ê răng
+Ktŏng (dt) : Con mang
+Ktôñ (dt) : Rau dương xỉ người Êđê làm rau nấu ăn
+Ktơr (dt) : Bắp (ngô)
+Ktơ̆ng (đgt) : Sôi
+Ktrai (đgt) : Thả
+Ktrăm jŏng (đgt) : Dẫm chân
+Ktrâo (đgt) : Chỉ; Bồ câu
+Ktrâo mblang (đgt) : Chỉ dẫn
+Ktrei (dt) : Cái kéo
+Ktrŏ (tt) : Nặng
+Ktuê êlan (trgt) : Dọc đường
+Ktuê̆ muôr (dt) : Gò mối
+Ktuôp (dt) : Con cào cào
+Ktŭng (đgt) : Kéo
+Ktŭt (đgt) : Đánh rắm
+Ktut (đgt) : Dộng
+Ktưn (đgt) : Phấn đấu
+Ktư̆ (đgt) : Đè
+Ktư̆ êyơ̆ng (tt) : Run, run rẩy
+Ktư̆ juă (đgt) : Chà đạp, áp bức
+K’ul (tt) : Buồn nôn
+K’up (tt) : Rợp
+K’up k’ap (tt) : Rậm rạp
+Ku (dt) : Cái đuôi
+Kuač (đgt) : Cào cấu
+Kuai (đgt) : Moi
+Kuaih (đgt) : Gãi; Riềng
+Kuăl (đgt) : Vòng
+Kuat (đgt) : Cái quạt (chỉ quạt máy)
+Kuêh (đgt) : Cạo
+Kuê̆č (dt) : Phẩy
+Kuê̆ñ (dt) : Con vượn
+Kuôp (dt) : Đài, núm
+K’ŭ kyăm (dt) : Ma chay; (tt) Tương tư
+K’ŭm (đgt) : Nướng bằng lá (vùi tro)
+K’ŭt (dt) : Đầu gối
+K’ŭl (đgt) : Luộc
+Kŭr (dt) : Cam pu chia
+Kwă (đgt) : Xay; Quay
+Kwăt (dt) : Kẽm
+Kwang (tt) : Dội, vang
+Kwang dar (đgt) : Bao vây
+Kwar čư̆ chiăng (dt) : Miền núi
+Kwăr (đgt) : Khuấy
+Kwưh akâo : Cầu xin
+Kyâo mtâo (dt) : Cây cối
+Kyâo yuôm (dt) : Gỗ quý
+Kyua (lt) : Vì
+Kyua dah (lt) : Bởi vì, tại vì
+La (dt) : Lá lách
+La griêô (đgt) (Pr) : Biểu tình
+Lang (đgt) : Trải
+Lač (đgt) : Nói; Bảo
+Lai čhum ao (đgt) : Xả quần áo (giặt xả)
+Lak (dt) : Hắc lào
+Lam (dt) : Lưỡi lam
+Lap (tt) : Thoả thuê
+Lă (tt) : Bạc (bạc màu)
+Lăm (đgt) : Xóa
+Lăm lap (tt) : Gian lận
+Lăn (dt) : Đất
+Lăn ala, lăn čar (dt) : Đất nước
+Lăn dap mnai (dt) : Đồng bằng
+Lăn êa (dt) : Tổ quốc
+Lăn kla (dt) : Đất hoang hóa bạc màu
+Leh (đgt) : Rồi
+Leh anăn (liên từ) : Và
+Lĕ (đgt) : Rơi; Lặn
+Lĕ buh (đgt) : Ngã
+Lĕ bŭt (đgt) : Mắc lừa
+Liê (tt) : Tốn
+Lik (đgt) : Tan
+Lir (dt) : Dế trũi
+Ling (đgt) : Tràn
+Lĭng kahan (dt) : Bộ đội, lính
+Lŏ (dt) : Ruộng; (đgt) Lại; (phó từ) Nữa
+Lŏ hblŏk (đgt) : Hối hận, hối tiếc
+Lŏ rŭ mdơ̆ng (đgt) : Khôi phục
+Lŏ wĭt hriăm (đgt) : Ôn tập
+Lông (đgt) : Thử
+Lu (tt) : Nhiều
+Luar (đgt) : Dối, láo, xạo
+Luê (đgt) : Bơi
+Lui (đgt) : Bỏ
+Luh (đgt) : Rụng
+Luh liê (đgt) : Rơi rớt, mất mát (nói về thiệt hại)
+Luêh ksua (dt) : Lông nhím
+Lun (đgt) : Nuốt
+Lung (dt) : Lứa
+Lŭč (đgt) : Mất
+Lŭč liê (đgt) : Tốn kém
+Lŭk (đgt) : Trộn
+Lŭl (tt) : Dô
+Mač mnŭ (dt) : Bọ mạt
+Mah (dt) : Vàng; Con cưng
+Mah jiăng (dt) : Anh em kết nghĩa
+M’ai dhuai (tt) : Sung sức
+Maĭ (dt) : Máy
+M’ak (tt) : Vui, mừng
+M’ak hlak (tt) : Thích thú
+M’ak mñai (tt) : Vui vẻ
+M’ak m’ưr (tt) : Thú vị
+Mal (dt) : Rui (Thanh tre đặt theo mái nhà)
+Mam (đgt) : Bú
+Man (tt) : Vừa
+Man dưn (tt) : Vừa khít, vừa vặn; Vừa phải; Trung bình
+Man đŏk mbah (tt) : Hợp khẩu vị
+Man miăn : Không vừa đâu (phủ định)
+Mañ (đgt) : Mượn
+Mang (tt) : Suông; Không làm việc gì, không ra gì
+M’ar (dt) : Giấy
+M’at (đgt) : Chườm
+Mă (đgt) : Lấy, bắt, khai thác; Làm
+Mă êa pui (đgt) : Khai thác dầu mỏ
+Măk (tt) : Bướng bỉnh
+Măk ƀai (tt) : Tàn ác
+M’ăng (tt) : Độc địa
+Măng ai tiê (tt) : Vô kể
+Măng ai ñu (đgt) : Mặc kệ nó, không sao đâu
+Măng dah (pht) : Đáng lẽ, lẽ ra
+Măl (đgt) : Bôi, thoa
+Mâo (đgt) : Có
+M’âo (tt) : Thương mến
+Mbah (dt) : Miệng, mồm; Mé cửa
+Mbăng (đgt) : Nhờ vả; Cứu giúp
+Mbeh (đgt) : Dời đi chỗ khác
+Mbĕ (đgt) : Di chuyển
+Mbha (đgt) : Chia; Cấp; Phát
+Mbhă (tt) : Gặp may, hên
+Mbhă mbhai (tt) : May mắn
+Mbhêč (đgt) : Phát sợ
+Mbhĭt mprah (tt) : Bực tức
+Mbĭt (lt) : Cùng, chung
+Mblač (đgt) : Mổ phanh ra
+Mblah (dt) : Chiến tranh
+Mblang (đgt) : Dịch thuật; Giảng (bài); Giải thích; Mở ra
+Mblei (mnia) (đgt) : Mua (bán)
+Mbliah (đgt) : Mổ, phẫu thuật
+Mbliat (đgt) : Mở ra, trải ra
+Mbliư̆ (đgt) : Tráo trở, lật lọng
+Mbliư̆ mlih (đgt) : Đồng hoá
+Mbliư̆ wĭt (đgt) : Phản bội
+Mbloh (pht) : Chốc, lát
+Mbloh ƀiă (dt) : Tí nữa
+Mbluăt (đgt) : Luồn qua
+Mbluôp (đgt) : Nối (hai đầu ống với nhau)
+Mblŭ (đgt) : Lên tiếng, cất tiếng
+Mblŭt (đgt) : Nói quá
+Mblư̆ (đgt) : Lật, trở
+Mboh (đgt) : Đậu quả (có quả), sai quả (thực vật); Đẻ trứng (động vật đẻ trứng)
+Mbŏ (đgt) : Đổ đầy, làm đầy
+Mbô (dt) : Cây sậy
+Mbông (dt) : Xà máng; Máng lợn; Máng nước
+Mbô̆ (yao) (đgt) : Đánh bắt cá bằng voi
+Mbrim mbram (tt) : Mờ mờ
+Mbruă (đgt) : Giỏi việc, thạo việc
+Mbruê (trgt) : Hôm qua
+Mbrŭ (đgt) : Làm (ruốc) mắm
+Mbrư̆ (tt) : Mẩy hạt, chắc hạt
+Mbuêh (đgt) : Vuốt, chuốt, vót (cho nhẵn)
+Mbuh (đgt) : Đeo vào
+Mbul (tt) : Làm nũng (nịu); (đgt) Giỡn, chơi
+Mbung (tt) : Bóng loáng
+Mbuôn (đgt) : Vun, đắp; (dt) Luống
+Mbuôn kkuh (đgt) : Quỳ lạy
+Mbŭ (đgt) : Vun xới
+Mbŭk (đgt) : Quậy (Say rượu quậy)
+Mƀaih (tht) : Ôi
+Mƀar (đgt) : Mặc cho (váy)
+Mƀăt (đgt) : Nêm
+Mƀâo (đgt) : Cho ngửi, làm ngửi
+Mƀăng (đgt) : Làm lỗ, đục lỗ
+Mƀhĭ (đgt) : Nghiền nát
+Mƀĭn (bi kƀĭn) (đgt) : Họp, tập trung; Cộng lại
+Mƀĭt (tt) : Còn đầy
+Mƀlă (đgt) : Nuôi, vỗ béo
+Mƀlăk (đgt) : Nuôi bộ
+Mƀlăn ală (đgt) : Trợn mắt
+Mƀleng mƀlong (tt) : Đậy vênh
+Mƀliêt (đgt) : Luồn
+Mƀlir (đgt) : Dán
+Mƀlir kal (đgt) : Niêm phong
+Mƀlĭt (đgt) : Dán (cho dính)
+Mƀlŏng mƀlơt (tt) : Gồ ghề
+Mƀluăt (đgt) : Luồn qua
+Mƀluih mƀlơih (tt) : Bơ phò
+Mƀlum (đgt) : Thuần hoá
+Mƀoh mƀal (tt) : Méo mó
+Mƀơ̆ng (đgt) : Châm (lửa)
+Mƀroh (dt) : Ải, mục
+Mƀroh mƀrăt (tt) : Ồm oàm
+Mƀuh (đgt) : Ẩm ảnh
+Mƀuiñ (tt) : Ỷ vào
+Mƀŭk (đgt) : Quấn tóc
+Mƀư̆ (đgt) : Uốn thẳng
+Mčah (đgt) : Vỡ, bể
+Mčah rai (tt) : Vỡ nát, vỡ tan
+Mčai (tt) : Nhiều, quá nhiều
+Mčaĭ ênai dhuai (đgt) : Loan tin
+Mčeh luar (đgt) : Vu khống, bịa đặt
+Mčei (tt) : Ngang sức, đều
+Mčhet mčhot (tt) : Vớ vẩn
+Mčhi : Không dám
+Mčhĭ (đgt) : Đổ thừa cho ai đó
+Mčhĭ klei soh (đgt) : Đổ tội, vu oan
+Mčhĭn (đgt) : Chỉ trích
+Mčhŏ (đgt) : Làm dơ, bẩn
+Mčhô (dt) : Mõm dài
+Mčhu (kƀông) (đgt) : Chu miệng
+Mčhuai (tt) : Nhầm lẫn
+Mčhuk ai (tt) : Nức lòng
+Mchum (đgt) : Choàng (hông)
+Mčhur (đgt) : Xui, xúi giục
+Mčhŭ (đgt) : Lẫn, lẫn lộn
+Mčhưr (đgt) : Xuyên tạc, phóng đại
+Mčiêm (đgt) : Cho ăn
+Mčiêng (tt) : Nghiêng
+Mčuê (đgt) : Nối
+Mčuit (tt) : Chéo
+Mčuit mčuat (tt) : Xoắn xuýt
+Mčuôp (bi kčuôp) (dt) : Tảo hôn
+Mda (tt) : Non; Trẻ
+Mdah (đgt) : Chiếu; Bày tỏ; Phô ra, trình diễn
+Mdah klei blŭ (đgt) : Phát biểu
+Mdan (đgt) : Đặt ngồi
+Mdang (đgt) : Sưởi (ấm)
+Mdar (đgt) : Cho quay, xoay
+Mdăk mduê (tt) : Cầu kỳ
+Mdăp (đgt) : Giấu giếm, bưng bít
+Mdeh (trt) : Nhé
+Mdei (đgt) : Nghỉ
+Mdei bhiâo (đgt) : Nghỉ giải lao, nghỉ chốc lát
+Mdei msăn (đgt) : Nghỉ ngơi
+Mdei prŏng (đgt) : Nghỉ hè
+Mdê (mdhê) (tt) : Khác
+Mdê gah gôk (tt) : Khác lạ
+Mdê mdô (tt) : Bất đồng
+Mdê̆č (đgt) : Tránh, né, lẫn
+Mdê̆č mdar (tt) : Quanh co; Tráo trở, lật lọng
+Mdhă (dt) : Ván
+Mdhung mdhiang (tt) : Rề rà, dài dòng
+Mdhô̆ (mdô̆) (dt) : Cái ghế
+Mdhŭr (dt) : Mdhŭr (một nhánh người Êđê)
+Mdhư̆ (tt) : Ngào ngạt
+Mdian (đgt) : Ảo thuật
+Mdiăng (đgt) : Chở
+Mdiê (dt) : Lúa
+Mdiê kuê (dt) : Lúa gạo
+Mdiêr (tt) : Vòng vo
+Mdih (trgt) : Hôm kia; (đgt) Thức giấc
+Mdih pĭt (đgt) : Thức dậy, ngủ dậy
+Mding mdoang (tt) : Choáng váng
+Mdiông (đgt) : Giao phối (con chó)
+Mdit mduôt (tt) : Lỉnh kỉnh
+Mdĭ mdĭn (tt) : Dồn dập
+Mdĭng mdŏng (tt) : Tòng teng
+Mdjah (đgt) : Chấm vào
+Mdjah mdjik (tt) : Bậy bạ, bừa bãi
+Mdjăp (đgt) : Làm đủ, bổ sung cho đủ
+Mdjâo (đgt) : Dú chín
+Mdjĕ (tt) : Làm nhẹ, đặt nhẹ
+Mdjiê (đgt) : Giết
+Mdjiêô (đgt) : Để một bên
+Mdjik (đgt) : Ghép đôi
+Mdjip mdjap (tt) : Què quặt
+Mdjoh (đgt) : Làm nũng (nịu)
+Mdjŏ (đgt) : Đối chiếu; Làm trúng
+Mdjuê (đgt) : Để giống, làm giống
+Mdlưh (đgt) : Lật đổ; Hạ xuống
+Mdlưh rai (đgt) : Lật đổ, phá hoại
+Mdoh (đgt) : Vệ sinh, làm sạch
+Mdŏng (dt) : Tên của một loài chim
+Mdô̆ (dt) : Cái ghế
+Mdơ̆k (dt) : Cây môn thục
+Mdơ̆k m’ơr (tt) : Rùm beng
+Mdơ̆ng (đgt) : Dựng lên; Cất; Dọn
+Mdơ̆ng brei ruah (đgt) : Đề cử
+Mdrao (đgt) : Chữa
+Mdrao mgŭn (dt) : Y tế
+Mdriâo (đgt) : Reo hò
+Mdriêng (djiê) (dt) : Chết tai nạn
+Mdrŏng (tt) : Giàu
+Mdrŏng sah (tt) : Giàu sang
+Mdrung (tt) : Nghiêng
+Mdu (đgt) : Giảm nhẹ, vặn nhẹ
+Mdua (dt) : Đôi
+Mdua mdua (dt) : Từng cặp
+Mduê (đgt) : Nối
+Mdul (dt) : Đỡ
+Mduôn (tt) : Già
+Mduôn khua (tt) : Già cả
+Mdŭm (tt) : Bằng nhau (so sánh)
+Mdưh (đgt) : Đặt xuống (dạng cây, cột)
+Mdưm (đgt) : Đặt (sẵn)
+Mđai (đgt) : Đẻ (con vật, gia súc)
+Mđam (đgt) : Muối (dưa); Ngâm
+Mđang (đgt) : Lật ngửa, để ngửa
+Mđao (tt) : Ấm
+Mđao khŭ (tt) : Ấm áp
+Mđaŏ (đgt) : Đố; Thuần dưỡng
+Mđar (đgt) : Đôn đốc, chỉ bảo
+Mđat (đgt) : Chườm
+Mđet mđok (đgt) : Ưỡn ẹo
+Mđê̆č (đgt) : Dệt hoa văn; không ăn thua
+Mđhih mđhuaih (tt) : Yểu điệu
+Mđhuk (đgt) : Nuông chiều
+Mđiă (tt) : Nắng
+Mđiă ăm (tt) : Nóng hầm
+Mđiâo (tt) : (Người thuận tay) trái
+Mđiâo mang (tt) : Xem không ra gì
+Mđiăl (đgt) : Chọc ghẹo, trêu
+Mđiêô (đgt) : Đưa lén
+Mđih (đgt) : Đặt cho nằm
+Mđing hmư̆ (đgt) : Lắng nghe
+Mđing thao (đgt) : Nghiêng chậu
+Mđĭ (đgt) : Nâng
+Mđĭ kdlưn (đgt) : Nâng lên
+Mđĭ mđal (tt) : Chập chùng
+Mđoh (đgt) : Kéo (gỗ); Dẫn (nước)
+Mđŏk (tt) : Đanh đá
+Mđơr (tt) : Bằng nhau (so sánh bề ngang)
+Mđơt (tt) : Cộc (quần, áo)
+Mđuê̆ (đgt) : Di dời
+Mđrăk mđrê (tt) : Rộn ràng
+Mđrăm (pt) : Đồng thanh; (trt) Cùng
+Mđrăm mbĭt (tt) : Nhịp nhàng
+Mđring mđrông (tt) : Dài dặc
+Mđrĭng mđrĭng (tt) : Song song
+Mđrông (tt) : Khúc dài
+Mđruê̆ mđrông (đgt) : Nối đuôi nhau, liên tiếp, liên tục
+Mđua (đgt) : Đội (cho)
+Mđung (tt) : Rực rỡ
+Mđung asăp (đgt) : Phát thanh
+Mđung hla (đgt) : Thả diều
+Mđung mdiê (đgt) : Rê lúa
+Mđup (đgt) : Đưa (lên)
+Mđup myơr (đgt) : Dâng, tặng, cho
+Mđur (đgt) : Mua chuộc
+Mđŭ (đgt) : Hứng
+Mđŭk mđŭl (tt) : Uể oải
+Mđưh ai (đgt) : Chọc tức
+Mđưn (tt) : Huênh hoang, ngoa
+Mgaih (đgt) : Dọn sạch
+Mgam (đgt) : Tiếp, ghép cây
+Mgang (đgt) : Phòng; Bảo thủ; Bảo vệ
+Mgao (đgt) : Quá trớn, quá mức
+Mgap (tt) : May mắn (Dùng cho người đi săn)
+Mgar (dt) : Lòng chảo
+Mgăk mgưi (tt) : Ngất ngưởng
+Mgăl (đgt) : Cãi lại
+Mgăm (dt) : Chim gầm ghì
+Mgăn (đgt) : Ngang
+Mgăt (dt) : Người chăn dắt
+Mgăt êdeh (dt) : Tài xế
+Mgei (đgt) : Rung, rung chuyển
+Mgê̆č (tt) : Tinh
+Mghă (đgt) : Đỡ
+Mghăm (tt) : Rầm (tiếng đổ)
+Mghăp (đgt) : Chớp lấy thời cơ, tiện thể
+Mghŭm mghăm (tt) : Rầm rầm
+Mgi (trgt) : Ngày mai
+Mgi aguah dih (dt) : Nay mai
+Mgiăm (đgt) : Xê lại gần
+Mgoh (đgt) : Trau chuốt, vệ sinh
+Mgô (đgt) : Làm cong
+Mgô̆ (đgt) : Ép
+Mgô̆ hrŭn (đgt) : Bó buộc
+Mgô̆ m’an (đgt) : Ép buộc, bắt buộc
+Mgơ̆ng (đt) : Đặt, để
+Mgơ̆ng brei ruah (đgt) : Ứng cử
+Mgrăn (đgt) : Làm cán
+Mgrăng (đgt) : Hòa giải
+Mgrông (đgt) : Áp tải
+Mgu (tt) : Ngốc
+Mguăt mguê (tt) : Ngoằn ngoèo
+Mguôp (đgt) : Góp; Kết hợp; Kết đôi
+Mgur (dt) : Chim trĩ
+Mgưt (đgt) : Giả vờ, giả bộ
+Mhač (tt) : Cởi mở, vui tính; (đgt) Nói thầm
+Mhač čhač (tt) : Niềm nở
+Mhai (đgt) : Tràn ra
+Mhang (đgt) : Hơ (lửa)
+Mhao (đgt) : Thèm; Khát
+Mhăk mhai (tt) : Xởi lởi, cởi mở
+Mhăm (tt) : Rầm
+Mhâo (dt) : Ngực
+Mhêñ (đgt) : Dứ (nhử)
+Mhêñ mhu (đgt) : Ngấp nghé, dòm ngó
+Mhê̆č mhăr (tt) : Tinh ranh; Minh mẫn; Mưu trí
+Mhiâo (đgt) : Quát, đốp
+Mhing (đgt) : Chất đống
+Mhip mhap (tt) : Bê bết
+Mhrĭng mhrăm (tt) : Nhăn nhó
+Mhrŏ (đgt) : Giảm
+Mhua (tt) : Dài thườn thượt
+Mhui mhai (tt) : Chan hòa
+Mhuĭ (đgt) : Doạ
+Mhung mhing (tt) : Cả đống, ê hề
+Mhuôl (đgt) : Xông hơi
+Mhưk (tt) : Rực
+Mhưng (đgt) : Hơ
+Mhưp (đgt) : Dứ (nhử)
+Mia (đgt) : Bôi; Sơn
+M’ia (tt) : Nhão, loãng
+Miăm miăm (đgt) : Lẩm bẩm
+M’iêk (đgt) : Đái
+Miêng (dt) : Má
+M’iêng (dt) : Váy
+Miêu (dt) : Con mèo
+Mih mưh (tt) : Tò mò
+Mil čhil (dt) : Tột cùng, tối cao; Dân chủ
+Min (dt) : Mịn
+Mĭn (đgt) : Nghĩ
+M’ĭt (đgt) : Gửi
+M’ĭt hră (đgt) : Gửi thư
+Mja (dt) : Con chồn
+Mjai (đgt) : Độn, trộn
+Mjan (đgt) : Thúc giục
+Mjăm (đgt) : Che giấu
+Mjăm mji (tt) : Lấp láp
+Mjâo (dt) : Thầy bói
+Mjâo mtâo (dt) : Phù thủy
+Mjeh (dt) : Hạt giống
+Mjei (tt) : Dữ tợn
+Mjet mjot (tt) : Éo lả
+Mjĕ (đt) : Đi lại với nhau
+Mjĕ mjing (đgt) : Kết nghĩa
+Mjêč mruăt (đgt) : Hối thúc
+Mjhah mjhĭng (tt) : Luộm thuộm, bù xù (tóc)
+Mjhĭt m’uôt (tt) : Thèm thuồng
+Mjhô (đgt) : Mặc dùm
+Mjhua (đgt) : Lợi dụng
+Mjhŭk mjhŭl (tt) : Rối bù
+Mjing (đgt) : Tạo ra; Làm thành
+Mjuă (đgt) : Trả giá
+Mjuăt (đgt) : Tập, luyện
+Mjuih (tt) : Nghiêm nghị, uy phong
+Mjuk (đgt) : Kết bạn (giữa phụ nữ với nhau)
+Mjum (đgt) : Dỗ, ru
+Mjut (đgt) : Mới bắt đầu nuôi
+Mjưh (đgt) : Dừng lại
+Mkai (dt) : Dưa hấu
+Mkao (dt) : Cú mèo
+Mkă (đgt) : Cân; Đo; (tt) So
+Mkăk mkai (tt) : Ngổn ngang
+Mkăm (đgt) : Chất đống
+Mkăn (tt) : Khác
+Mkăp (đgt) : Trang bị
+Mkăp mgang (đgt) : Bảo hiểm
+Mkeč mkoč (tt) : Loằng ngoằng
+Mkeh mkoh (dt) : Sự khác nhau
+Mkĕ (đgt) : Nối chặt, dê
+Mkiêt mkuôm (đgt) : Tiết kiệm, dành dụm
+Mkĭt (dt) : Lúa râu (Tên của một giống lúa)
+Mkhik mkhak (tt) : Quê mùa
+Mkhiăng (tt) : Nét mặt dữ dằn
+Mkhĭt mkhŭt (tt) : Cứng quào quạo
+Mkhơh : Tư thế đứng như trời trồng
+Mkhuôt (đgt) : Làm cạn
+Mkhư̆ (đgt) : Cản, cấm, ngăn
+Mkhư̆ mgang (đgt) : Ngăn chặn
+Mklă (đgt) : Làm rõ
+Mklăk (tt) : Ngược
+Mklin mguôp (đgt) : Tổng hợp
+Mklŏ (đgt) : Nặn thành cục
+Mkŏ (đgt) : Lắp, dựng
+Mkra (đgt) : Làm; Chế biến; Sửa chữa
+Mkrah (dt) : Một nửa
+Mkrah dưh (tt) : Lỡ dở, nhỡ
+Mkriâo (đgt) : Đặt xung quanh gốc để cây chết
+Mkruôp (tt) : Chặn, gập lại
+Mkrum (đgt) : Hùn lại
+Mkua (đgt) : Chất thêm, chồng lên
+Mkuê̆ (dt) : Tấm
+Mkuôm (đgt) : Giành dụm
+Mkŭm mkăm (tt) : Ngổn ngang
+Mkŭp (đgt) : Vập; Úp
+Mkưh mkăm (dt) : Đống; Vô vàn
+Mla (dt) : Ngà
+Mlam (dt) : Đêm
+Mlan (dt) : Tháng; Mặt trăng
+Mlang (dt) : Chim bồ chao
+Mlăk djŏ (tt) : Trúng phóc
+Mlăng (dt) : Rau mồng tơi
+Mlăp (tt) : Trúng phập
+Mlâo (dt) : Lông
+Mlâo muñ kang (dt) : Râu cằm
+Mlei (tt) : Phạm thiêng, phạm huy
+Mlê (tt) : Ngồi thư thái
+Mlhuĕč (tt) : Ngộ nghĩnh
+Mli (mni) (đgt) : Khen
+Mliat (đgt) : Trải ra
+Mlih (đgt) : Đổi chác
+Mliêo (dt) : Buôn Mliêo
+Mliêt (tt) : Tiệt, sạch trơn; Ráo
+Mlim (đgt) : Ngậm
+Mlĭng (dt) : Chim chèo bẻo
+Mloh mlăp (tt) : Hấp tấp
+Mlŏ (dt) : Cái lọ đựng dế
+Mlơ̆ng (tt) : Hài hước
+Mlô (dt) : Họ Mlô (người Êđê)
+Mluê (dt) : Bầu khô (Qủa bầu khô loại to khoét miệng dùng để đựng gạo)
+Mluĭ (tt) : No căng
+Mluk (tt) : Ngu, đần
+Mluk mgu (tt) : Ngu dốt
+Mlum (dt) : Lang ben
+Mlŭn mtah (tt) : Trần truồng
+Mlur mpŭ (tt) : Nịnh bợ
+Mlưm (đgt) : Chạm mặt
+Mlưt (dt) : Phao câu (nổi lên mặt nước)
+Mmač (tt) : Quan tâm
+Mmah (đgt) : Nhai
+Mmai (đgt) : Nặn
+Mmao (dt) : Nấm
+Mmă (đgt) : So sánh
+Mmăt (dt) : Tối
+Mmăt tĭt (dt) : Tối mịt
+Mmăt mlam (dt) : Ban đêm
+Mmiă (đgt) : Giành
+Mmih (tt) : Ngọt
+Mmih ƀluč (tt) : Ngọt lịm
+Mmĭm (tt) : Chứa (cạn, hằn)
+Mmông (dt) : Đồng hồ
+Mmông anei (trgt) : Giờ này, lúc này, ngay bây giờ
+Mmông mtei (dt) : Bắp chuối
+Mmơr (tt) : Nhột
+Mmuiñ (đgt) : Hát
+Mmuôn (đgt) : Nặn
+Mmŭk mmăk (đgt) : Dứ đầu
+Mmŭt (đgt) : Nhét vào
+Mnah (đgt) : Bắn
+Mnal (dt) : Vải
+Mnal lăm (dt) : Giẻ lau
+Mnang (dt) : Cau
+Mnă (dt) : Tù nhân
+Mnăn (tt) : No
+Mnăm (đgt) : Uống
+Mnâo (dt) : Mùi
+Mnâo mnañ (dt) : Mùi vị
+Mneh (dt) : Dượng; (đgt) Cãi nhau
+Mnei (đgt) : Tắm
+Mnê̆č (dt) : Mưu
+Mnê̆č blah wang (dt) : Chiến lược (mưu lược chiến tranh)
+Mnê̆č hgăm (dt) : Âm mưu
+Mnêñ (tt) : Tinh nghịch
+Mnga (dt) : Hoa
+Mngač (tt) : Sáng
+Mngač bhung (tt) : Sáng trưng
+Mngač tač (tt) : Sáng sủa
+Mngah (dt) : Linh hồn
+Mngal (đgt) : Trêu ghẹo
+Mngan (dt) : Cái bát
+Mngăt (tt) : Đuối (sức)
+Mngăt êwa (dt) : Linh hồn
+Mngưi (tt) : Thơm (mùi)
+Mngưi mngăk (tt) : Thơm lừng
+Mngưñ (đgt) : Dứ (Làm cho thèm thuồng)
+Mnhar (dt) : Người Ba Na
+Mnhat (dt) : Dùi đục
+Mnhit mprah (tt) : Bực bội
+Mnhông (tt) : Bằng (theo chiều dài)
+Mni (đgt) : Khen, ca ngợi
+Mni m’uăn (đgt) : Khen ngợi
+Mnia (đgt) : Bán
+Mniă (dt) : Cái liềm
+Mniê (dt) : Con gái
+Mnik (bi nik) (đgt) : Làm rõ
+Mnĭ nei (trgt) : Bấy lâu nay
+Mnĭt (dt) : Phút
+Mnoh (dt) : Dùi chiêng, dùi trống
+Mnông (dt) : Người Mnông
+Mnơ̆ng (dt) : Đồ đạc, đồ vật
+Mnơ̆ng ƀơ̆ng huă (dt) : Thực phẩm
+Mnơ̆ng pah mưn (dt) : Phần thưởng
+Mnơ̆ng rông (dt) : Vật nuôi
+Mnuai (tt) : Tương tự
+Mnuh (đgt) : Húc
+Mnuih (dt) : Người
+Mnuih ƀuôn sang (dt) : Dân làng, nhân dân
+Mnuk (bi ênuk) : Cùng một thời điểm
+Mnuôr (dt) : Cống, rãnh
+Mnŭ (dt) : Con gà
+Mnŭng (dt) : Lạt
+Mnŭt (ana mnŭt) (dt) : Cây đa
+Mnưh (dt) : Cái quạt thờ
+Mnư̆ (dt) : Hàng rào
+Mñak (tt) : Nhờn (dầu mỡ)
+Mñam (đgt) : Đan; Dệt
+Mñah (đgt) : Loại ra, bỏ ra
+Mñao (đgt) : Vò
+Mñă (đgt) : Gặng, nhấn, nhắc lại
+Mñă đŏk (đgt) : Nhấn giọng
+Mñăk mñê (tt) : Kỹ càng
+Mñăl (tt) : Lẽ lợm
+Mñĕ (đgt) : Chuồn
+Mñê (đgt) : Kêu; Hót
+Mñê̆č mñao (đgt) : Vò nát
+Mñir (đgt) : Dụi
+Mñoh (đgt) : Đụng (tay)
+Mñơr (đgt) : Ngoáy
+Mñŭng mñĭng (tt) : Vương vấn
+Mñŭt (đgt) : Xô đẩy
+Moh măp (tt) : Cẩu thả
+Mŏng mit (dt) : Con đom đóm
+M’ô (dt) : Cây lồ ô
+Môk (đgt) : Tọng
+Mô̆ (dt) : Vợ
+Mơ mơp (tt) : Sững sờ
+Mơh (trt) : Chứ (để trả lời)
+Mơh hĕ (trt) : Không (dùng để hỏi)
+Mơp mơp (tt) : Mòn mỏi
+Mơ̆ (tht) : Không (tương tự như mơh he)
+Mơ̆ng (lt) : Từ
+Mơ̆ng knuê : Nãy giờ, hồi nãy
+Mpă : Chia làm bốn
+Mphơh (đgt) : Vểnh tai
+Mphŭn (dt) : Bắt đầu, mới bắt đầu, khởi đầu
+Mphŭñ (tt) : Béo tròn
+Mplĕ (đgt) : Thả
+Mpliê (đgt) : Bừa, phứa
+Mplư (đgt) : Lừa bịp; Nhử mồi
+Mpoh (đgt) : Dập đụng phải
+Mpơt (tt) : Hói (trán)
+Mprăp (đgt) : Sắm sửa, trang bị
+Mpruh mprăng (đgt) : Quấy rối
+Mpŭ (tt) : Kính trọng
+Mpŭ mni (tt) : Tôn vinh
+Mra (dt) : Vai
+Mrai (dt) : (Sợi) chỉ
+Mrač (tt) : Hở (bụng)
+Mran (dt) : Thuyền bè
+Mrap (tt) : Dơ dáy
+Mră (tt) : Cứng cáp, chắc
+Mrâo (tt) : Mới
+Mrâo hin (tt) : Mới đây
+Mrâo mrang (tt) : Mới mẻ
+Mring (bi ring) (đgt) : Luân phiên, đổi công
+Mrip mrap (tt) : Nhớp nhúa
+Mrĭm (tt) : Giận dữ
+Mrĭng mrit (tt) : Nheo nhóc
+Mrŏ mrŏ (tt) : Ru rù
+Mrô (dt) : Số
+Mruăt (bi ruăt) (đgt) : Hối, thúc
+Mrŭ mrŭ (tt) : Giống như mro\ mro\ (phương ngữ)
+Mrŭk mrĭk (tt) : Xù xì
+Mrŭñ mrêñ (tt) : Dữ tợn
+Mrưh (tt) : Láo xược, xấc xược
+Msa (dt) : Một cây trong bộ khung cửi
+Msah (tt) : Ướt
+Msah plô̆ (tt) : Ướt nhẹp
+Msan (dt) : Sừng (tê giác)
+Msao (đgt) : Cãi vã
+Msat (dt) : Mộ, mồ mả
+Msăm (tt) : Chua; (đgt) Đắp
+Msăm plăk (tt) : Chua lè
+Msăng (bi săng) (đgt) : Làm cho thấu hiểu
+Msăt (dt) : Rốn
+Msâo (đgt) : Ngứa
+Msâo msañ (đgt) : Ngứa ngáy
+Msei (dt) : Sắt
+Msei sđeng (dt) : Xà beng
+Msĕ (tt) : Giống
+Msĕ nik (tt) : Giống hệt
+Msĕ si (tt) : Giống như, như là
+Msip msap (tt) : Luộm thuộm
+Msir (đgt) : Bít, trám; Dàn xếp
+Msir kđi (đgt) : Hòa giải
+Msir nư (đgt) : Trả nợ
+Msĭn (tt) : Mặn
+Msô̆ (đgt) : Làm cho thấy
+Msuê̆č (tt) : Xinh xắn, tươi tắn
+Mta (dt) : Mắt; Lưỡi (dao, gươm); Thứ, loại, món
+Mta grăm (tăng tĭt) (dt) : Con bướm ma
+Mtah (tt) : Xanh, màu xanh; Tươi; Sống
+Mtal myal (tt) : Tả tơi
+Mtam (pht) : Ngay (lập tức), luôn
+Mtao (dt) : Vua, tù trưởng
+Mtao mtŭng (dt) : Vua chúa
+Mtao muôr (dt) : Mối chúa
+Mtă (đgt) : Dặn
+Mtă mtăn (đgt) : Dặn dò
+Mtăp (tt) : Bằng (theo chiều cao)
+Mtăp mđơr (tt) : Công bằng, bình đẳng
+Mtâo (dt) : Con dâu, con rể; Phù thủy làm hại, ma lai
+Mtei (dt) : Chuối
+Mthâo (đgt) : Cho biết, thông báo, báo tin
+Mthĭm (đgt) : Chẹn, chít
+Mthu (đgt) : Làm cho khô (phơi khô)
+Mthưr (đgt) : Gọi với, hú
+Mtian (dt) : Có bụng, có mang
+Mtih (dt) : Phên, vách; (tt) Trắng
+Mting (đgt) : Ghé vào, cập bến
+Mting mtuang (tt) : Chằng chịt
+Mting mtung (tt) : Chềnh ềnh
+Mtir (đgt) : Dính vào nhau
+Mtĭl (dt) : Cái tô (Làm bằng đồng, người Êđê thường dùng để cúng Giàng)
+Mtĭl mtuăl (tt) : Bận rộn
+Mtlai (đgt) : Trộn, pha
+Mtlai mtlăk (đgt) : Pha trộn
+Mtlaih (đgt) : Giải phóng
+Mtlăm (đgt) : Giấu (tật xấu)
+Mtlâo (đgt) : Chia làm 3
+Mtloh (đgt) : Dứt, đứt
+Mtluôn (đgt) : Về phía sau (quay lại)
+Mtŏ (đgt) : Dí
+Mtiŏ (đgt) : Đua, chạy đua
+Mtô (đgt) : Dạy, bảo
+Mtô mblang (đgt) : Giảng dạy
+Mtô mjuăt (đgt) : Tập luyện, giáo dục
+Mtơl (đgt) : Làm cho thấy
+Mtrang (đgt) : Soi; Rọi
+Mtroh mƀal (đgt) : Nói đại
+Mtruh (đgt) : Đưa tin, thông báo
+Mtrŭn (đgt) : Đưa xuống, hạ xuống
+Mtrŭn amung (tt) : Xịu
+Mtrŭt (đgt) : Thúc ép
+Mtrŭt mjhar (đgt) : Khuyến khích, thúc giục
+Mtrưm (đgt) : Đoán mò
+Mtrưm đaŏ (đgt) : Phán đoán
+Mtuh (đgt) : Nổ; Bị phồng
+Mtuh bhuč (đgt) : Nổ bùm
+Mtuh mtưh (tt) : Nghênh ngang
+Mtuč (asâo) (đgt) : Xua (chó) đuổi
+Mtun (tt) : No căng
+Mtung (tt) : Khểnh
+Mtuôm (bi tuôm) (đgt) : Gặp nhau
+Mtuôp (đgt) : Chắp
+Mtŭ (dt) : Ngôi sao
+Mtŭk (đgt) : Ho
+Mtŭk hnak (đgt) : Ho lao
+Mtŭk mtŭl (tt) : Tủi bụi, bề bộn
+Mtưp (đgt) : Làm lây, bị lây
+Mu (dt) : Mũ, nón
+Muê ktơr (dt) : Râu ngô
+M’uê (đgt) : Ấm khói, bắt bồ hóng
+Muk muk (tt) : Nhồm nhoàm
+Mung (dt) : Tên của một loại chiêng
+Mung mang (tt) : Rỗi rãi
+Muôr (dt) : Mối
+Mur (đgt) : Khoét sâu
+Mŭm (đgt) : Mớm
+Mŭn (dt) : Mụn
+Mŭng (dt) : Màn
+M’ŭng (tt) : Chiều chuộng
+Mŭñ mê̆ñ (tt) : Lấm lem
+Mŭr êdeh (dt) : Mui xe
+Mŭr măr (tt) : Hớt hải
+Mŭt (đgt) : Vào
+Mưč (tt) : Khinh
+Mưč chưč (đgt) : Chê bai
+Mưč mač (đgt) : Khinh bỉ
+Mưm (tt) : Gần (Tận mắt)
+Mưn (đgt) : Thuê, mướn
+Mưng (đgt) : Quen
+Mwa (dt) : Kỷ đà
+Mwaih (dt) : Một loại cây dương xỉ
+Mya (dt) : Cá sấu
+Myang (tt) : Thiêng
+Myap (đgt) : Tính kỹ
+Myah myal (tt) : Tả tơi
+Myăl (đgt) : Vào chuyện
+Myâo (tt) : Ngoài miệng nói tốt nhưng trong lòng không phải như thế
+Myŏng myưl (tt) : Bêu rếu
+Myông (đgt) : Đùn đẩy, è lại (công việc)
+Myơr (đgt) : Dâng, biểu
+Myơ̆ng (đgt) : Rồ (làm cho quay tít)
+Myui (tt) : Âm u
+Myuĭ (tt) : Mỉa mai
+Myun (tt) : May mắn, hên
+Myuôl (yuôl) (đgt) : Treo lên
+Myuôm (đgt) : Nâng giá, cắt cổ
+Myuôm klei boh (tt) : Làm to chuyện
+Myŭ (dt) : Theo hướng tây
+Myưh m’ang (tt) : Vênh váo
+Myư̆ myơ̆ng (tt) : Cuồn cuộn
+Nač (đgt) : Ganh tị
+Nač iăng (đgt) : Ghen ghét, ghen tị
+Nah (dt) : Phía, bên
+Nah pŏk (dt) : Một nửa
+Nai (dt) : Giáo viên
+Nai kai (dt) : Cán bộ công chức
+Naih (tt) : Hiếm hoi
+Nao (đgt) : Đi
+Nanao (pht) : Thường xuyên, luôn luôn
+Nă (đt) : Đấy
+Năm (dt) : Sáu
+Năng (tt) : Xứng đáng
+Năng ai (pht) : Có lẽ, có thể
+Năt (dt) : Con xì (con at trong bộ bài tú lơ khơ)
+Nĕ (đt) : Này, đấy
+Ngai (tt) : Làm ngơ
+Ngai mang : Làm lơ như không hề quen biết
+Ngak kkuê (đgt) : Ngửa cổ
+Ngañ (tt) : Ồn
+Ngañ bañ (tt) : Ồn ào
+Ngap ngap (tt) : (Nắng) Chang chang
+Ngă (đgt) : Làm, chế biến
+Ngă ƀĭng găp (đgt) : Kết bạn
+Ngă yang (đgt) : Cúng Giàng
+Ngăn (tt) : Lặng
+Ngăn drăp (dt) : Tài sản
+Ngăn đah (dt) : Tiền bạc
+Ngeh ngeh (tt) : (Lo) ngay ngáy
+Ngêč ngiâo (tt) : Ngớ
+Ngêk ngôk (tt) : Đãng trí
+Ngêñ bêñ (đgt) : Tức giận
+Nghar pui (dt) : Than hồng
+Ngiêk (dt) : Chim ri
+Ngiêr (đgt) : Quay (đầu)
+Nging ngông (tt) : Thẫn thờ
+Ngŏ (dt) : Phía đông
+Ngŏk (tt) : Ngẩn
+Ngŏng (tt) : Ngẩn ngơ
+Ngôk (đgt) : Uống (ực một hơi)
+Ngông (dt) : Ngỗng
+Ngơ ngăr (tt) : Cứng đầu (Tỏ thái độ không vừa ý)
+Ngơ ngăk (đgt) : Ngất
+Ngơ ngŏk (tt) : Ngẩn người ra
+Ngơ ngĕ (tt) : Chăm chú
+Ngơ ngĭn (tt) : Lặng như tờ (nước)
+Ngơ ngông (tt) : Tịt, mù tịt không biết gì cả
+Ngơ ngŭk (tt) : Ủ rũ
+Ngơ ngư̆ (tt) : Thiu thiu (ngủ)
+Ngơi (tt) : Làm lơ
+Ngua kŏ (đgt) : Dội lên đầu
+Ngur (tt) : (Trái) ương
+Ngur buč (tt) : Chín rục
+Ngŭr ngăr (đgt) : Lắc đầu (tỏ thái độ không vừa lòng)
+Ngưk kŏ (đgt) : Ngước đầu, ngẩng đầu
+Ngưñ ngưñ (đgt) : Dứ (làm cho thèm)
+Nhô (tt) : Bầu dục
+Ni na (dt) : Rêu
+Nik (tt) : Rõ
+Nik tam (tt) : Rõ ràng
+Niê (dt) : Họ Niê của người Êđê
+N’nung (dt) : Thòng lọng
+No : Kìa
+Nŏ : Đấy, đó
+Nơ nŭr (đgt) : (Rốn) lồi ra
+Nơ̆ng dŏ (đt) : Cái gì
+Nô (dt) : Con cưng (gọi con trai)
+Nun (kan ênun) (dt) : (Cá) chạch
+Nut (dt) : Nút
+Nŭñ nêñ (tt) : Dữ tợn
+Nư (dt) : Nợ
+Ñač (đgt) : Trúng, chạm, khắc
+Ñah (đgt) : Bùng ra, xổ ra
+Ñah đuê̆ (đgt) : Xa lánh
+Ñah ñah (tt) : Éo le
+Ñao ñao (tt) : Từ chỉ âm thanh thanh ve ve; Ồn ào; Léo nhéo
+Ñap ñap (tt) : Ùn ùn
+Ñăk (đgt) : Nhấc, bắc (lên, xuống); Nhắc nhở; Tránh đi
+Ñăk êlan (đgt) : Tránh đường
+Ñăm ñăm (tt) : Lờ lợ (ngọt)
+Ñăt (đgt) : Im; Kỳ cọ
+Ñăm ñi (tt) : Hồ đồ
+Ñeh (đgt) : Bấm; Hất; Hích
+Ñĕ (đgt) : Giãn; Né; Tránh
+Ñe dê̆č (đgt) : Né tránh
+Ñeng ñŏng (đgt) : Nhong nhong
+Ñê̆č (đgt) : Vò; Nghiền
+Ñê̆ñ (đgt) : Làm nhàu
+Ñê̆ñ m’ar (đgt) : Làm nhàu giấy
+Ñê̆ñ ñê (tt) : Tít
+Ñiêp (tt) : Ngon
+Ñil ñil (tt) : Giòn giót
+Ñip (dt) : Nhíp
+Ñit ñit (đgt) : Mắc kẹt (đi xe mưa lầy, dính mắc kẹt)
+Ñĭng (đgt) : Mắc phải
+Ñĭp (tt) : (Tính tình) Nghiêm túc
+Ñhŏk (đgt) : Thót
+Ñhŏk ñhŏk (đgt) : Thon thót
+Ñoh ñăt (tt) : Hộc tốc; Tất bật
+Ñŏng ñŏng (đgt) : Lăng xăng
+Ñơ hñăn (tt) : Rúm
+Ñơ hñê̆ñ (tt) : Xệch
+Ñơ ñă (đgt) : Rịt
+Ñơ ñĕ (đgt) : Rịt (chặp); Chịt
+Ñu (đt) : Nó, hắn, ông, y, ... (đại từ ngôi thứ 3 số ít)
+Ñu pô : Mình
+Ñuăl (dt) : Lưới
+Ñuh ñuh (tt) : Từ chỉ âm thanh sột soạt
+Ñuôm (đgt) : Nhuộm
+Ñuôt (tt) : Dai
+Ñur (đgt) : Lẩn; Lủi; Bò, lê; Chen
+Ñur ăm (đgt) : Lùi
+Ñur hiu (đgt) : Lủi
+Ñur ñŭ (đgt) : Rúc
+Ñŭ (đgt) : Hụp; Lặn
+Ñŭ kma (đgt) : Tham dự
+Ñŭñ ñê̆ñ (tt) : Nhăn nhó
+Ñut (tt) : E dè
+Oč oč (tt) : (Đói) Cồn cào
+O oăr : Từ chỉ âm thanh tiếng xe máy
+Ot ot : Từ chỉ âm thanh gọi heo về ăn
+Ŏng (đt) : Mày (xưng hô thân mật với người ngang hàng hay hàng dưới)
+Ô ô (tt) : Hu hu (mô tả tiếng khóc); Từ chỉ âm thanh rào rào
+Ôč ôč (tt) : Reng reng (mô phỏng tiếng lục lạc kêu)
+Ôh (tt) : Không (từ phủ định)
+Ôk (dt) : Gian trong, gian sau dùng để nấu ăn, ngủ (nhà dài Êđê)
+Ông ông (tt) : Rào rào
+Ô-ê̆č (dt) : Loạt
+Ŏ (đgt) : Ối, mửa, nôn; Thổ; (dt) Mang
+Ŏ eh (dt) : Tả (dịch tả)
+Ơ (tht) : Vâng, ừ, dạ (để trả lời khẳng định); Thưa; Ờ, ới, ơi (để gọi); Ù; Ồ
+Ơ hĕ : Ù nhỉ; Ù nè, suýt nữa quên
+Ơ ơh (pht) : Ừ, không (để trả lời phủ định)
+Ơ yang (dt) : Trời
+Ơ̆k ơ̆k (tt) : Từ chỉ âm thanh tiếng nấc ậc ậc (khậc khậc)
+Ơi (tht) : Ơi (để gọi)
+Ơih (tht) : Ơi, dạ
+Ơ̆ : Có, dạ
+Ơ̆ng (tt) : Tái; Tái mét
+Ơ̆ng mơ hmăp (tt) : Xanh mét
+Ơ̆r ơ̆r (tt) : Từ chỉ âm thanh xôn xao
+Pa (đgt) : Dang
+Pač ƀô̆ (đgt) : Rửa mặt
+Pah (đgt) : Vỗ; Tát; Đánh
+Pah pač (tt) : Lật đật
+Pah mưn (đgt) : Thuê mướn
+Pai (dt) : Con thỏ
+Pai mă (đgt) : Với lấy
+Paih (đgt) : Bươi
+Pak (dt) : Bẹ; Tàu
+Pam (đgt) : Luột
+Pan lŭ (dt) : Con trùn (giun)
+Pang (đgt) : Ngăn, cản
+Pao (đgt) : Đánh
+Pap (dt) : Tội
+Pap brei (đgt) : Tha thứ
+Pap đei (tt) : Tội lắm
+Pap mñai (tt) : Tội nghiệp
+Pat (dt) : Cá diếc; (đgt) Vót
+Pă (dt) : Bốn
+Păk (tt) : Tách (tiếng nổ)
+Păk kê (dt) : Tắc kè
+Păk kra (dt) : Chim đa đa
+Păl ak (dt) : Nách
+Păl ao (dt) : Tay áo
+Păl bŏk (dt) : Bắp tay
+Păl kngan (dt) : Cánh tay
+Păm (dt) : Cây bồ kết; Trái bồ kết
+Păn (đgt) : Quấn; Đóng; Băng bó
+Păng (đgt) : Thưng; Ngăn
+Păt (dt) : Cây bồ hòn; Quả bồ hòn
+Păt čiăng (lt) : Hầu như
+Păt čiăng djŏ (lt) : Gần đúng, gần trúng
+Păt čiăng jih (lt) : Gần hết, hầu hết
+Păt dah (lt) : Hình như
+Păp mă (đgt) : Chộp lấy
+Peh (đgt) : Tông (nhẹ)
+Pen (dt) (Pr) : Cái kìm
+Pep (đt) : Tiếng hổ kêu
+Pĕ (đgt) : Hái; Đánh
+Pê (tt) : Xẹp
+Pê kdjuôt (tt) : Héo hon
+Pê puăt (tt) : Xẹp lép
+Pê rat (Pr) (dt) : Du đãng, lưu manh
+Pêng pông (tt) : Méo, méo mó
+Pê̆ñ (đgt) : Huơ
+Pha (dt) : Đùi
+Phai (đt) : Mở rộng ra
+Phao (dt) : Súng
+Phao briêng (dt) : Pháo hoa
+Phao m’ar (dt) : Pháo
+Phat (đgt) : Đục
+Phat atâo (đgt) : Giỗ tổ tiên (Cúng người đã chết)
+Phat ênoh kjoh giê (đgt) : Luận tội, tuyên án
+Phat kđi (đgt) : Xử tội
+Phă (tĭng) (dt) : Phía
+Phăk phăk (tt) : Tách tách
+Phăl măp (tt) : Rắn rỏi
+Phăl kjăp (tt) : Chắc nịch
+Phăp (đgt) : Căm phập vào
+Phăn (đgt) : Khoán
+Phăr (đgt) : Giật mình; (pht) Chợt
+Phep (dt) (Yuăn) : Phép
+Phê drao (đgt) : Bỏ bùa
+Phêč mčah (đgt) : Vỡ toang
+Phi (dt) : Thùng lớn (200 lít)
+Phi phi (tt) : Phì phì
+Phiang (đgt) : Lấy luôn; Trải ra; Quơ lấy
+Phiat kƀông (đgt) : Bĩu môi
+Phiêng (đt) : Cắn nghiêng một bên
+Phing phing (pht) : Đùng đùng
+Phiơr (dt) : Máy bay; Cá chim; (đgt) Bay
+Phĭ (dt) : Mật; (tt) Đắng
+Phĭ phĭt phĭt (tt) : Hơi đắng đắng
+Phĭk phĭk (tt) : Thùi thụi
+Phĭk rĭk (tt) : Thình thịch
+Phĭng ngơi (tt) : Lẽ lợm
+Phĭr (tt) : Dẹt
+Phĭt (tt) : Lẽ
+Phĭt ngơi (tt) : Lẽ lợm
+Phon (đgt) : Nhảy
+Phŏk phu (tt) : Hổn hển
+Phơ̆ng (pht) : Đứt phăng
+Phu phu (pht) : Phù phù
+Phuăr (đgt) : Nhảy phóc lên
+Phuăt tloh (đgt) : Đứt phăng
+Phuč (tt) : Đùng
+Phung (dt) : Đàn, bầy
+Phung êgap (dt) : Phường săn bắn
+Phuôr phuôr (tt) : Háo hức
+Phŭ (tt) : Đùng; (dt) Mía lùi
+Phŭk phŭk (tt) : Thắc thỏm
+Phŭl (đgt) : Bật gốc
+Phŭl phŭl (đgt) : Phì phà
+Phŭn (dt) : Gốc; Chân
+Phŭn agha (dt) : Gốc rễ, cội nguồn
+Phŭn bruă (dt) : Bộ, Viện, cơ quan đầu ngành
+Phŭn dô (dt) : Xưa kia
+Phŭn ksâo (dt) : Bầu vú
+Phŭn msăt (dt) : (Cái) rốn
+Phŭr (đgt) : Xổng ra
+Phưi (đgt) : Thả
+Phưi tha (đgt) : Thả rong
+Phưl (đgt) : Cuốc đứt
+Phưp (đgt) : Bong ra
+Pi (dt) : Kèn làm bằng cuống lá bí đỏ
+Pi pu (tt) : Phập phồng
+Pia (dt) : Cách gọi; Vần
+Piăng (dt) : Cá kèo
+Piăt (đgt) : Xếp gọn
+Piăt êmiêt (đgt) : Sắp xếp
+Piêt (dt) : Con ve (cắn trâu bò)
+Piêu (dt) : Cái gùi
+Pik (đgt) : Thoa, bôi
+Pil (pr) (dt) : Pin
+Pin êa (dt) : Bến nước
+Pin puôn (tt) : Rụt rè
+Ping čư̆ (dt) : Triền núi, sườn núi
+Ping pưng (tt) : To bản
+Pioh (đgt) : Cất; (pht) Để
+Piơ̆k (tt) : Xanh dương
+Piu (dt) : Tình nhân
+Pĭng pŏng (dt) : Bóng bàn
+Pĭt (đgt) : Ngủ
+Pla (đgt) : Trồng; Cấy
+Pla jưn (đgt) : Cắm trại
+Plah (đgt) : Giành giật, chiếm
+Plah mă (đgt) : Chiếm đoạt
+Plah mmiă (đgt) : Xâm chiếm
+Plah wah (đgt) : Xen giữa
+Plao (dt) : Đảo; Vô sinh; Mày đay (bệnh ngoài da); (đgt) Tiễn đưa
+Plat (đgt) : Đánh, quất
+Pleh (đgt) : Hái; Tước; Tẻ
+Pleh pliâo (đgt) : Trật (lật)
+Plă jŏng (dt) : Lòng bàn chân
+Plă kngan (dt) : Lòng bàn tay
+Plăk wĭt (đgt) : Quay về (đi chưa đến nơi đã về giữa chừng)
+Plăm (dt) : Tinh hoàn (động vật)
+Plăn (đgt) : Trợn
+Plăng (dt) : Cây sả
+Ple, awăt (tt) : Yếu
+Plei (dt) : Bí đỏ, bí rợ
+Plĕ (đgt) : Thả rơi
+Plê (dt) : Dương vật
+Plêč (đgt) : Tránh khỏi; Vo
+Pliah (đgt) : Sượt qua
+Pliă plia (tt) : Lang thang; Bậy b bạ; Bừa bãi
+Pliêr (dt) : Mưa đá; Tuyết
+Pliêu (dt) : Chào mào
+Plim (Pr) (dt) : Bút mực; Ngòi bút mực
+Plin (đgt) : Lê la
+Plin plan (đgt) : Lê lết
+Pling (đgt) : Cho chảy ra
+Plĭng (dt) : Con cánh cam
+Plĭp (đgt) : (Đánh) vụt
+Plŏ, plŭ (đgt) : Bịch
+Plue (tt) : Nhàn rỗi
+Pluh (dt) : Mười, chục
+Pluih (tt) : Thua
+Plum (dt) : Con vắt
+Poh (đgt) : Đập dập
+Poh yă (dt) : Sóng
+Pom (Pr) (đgt) : Bơm
+Pŏ (đgt) : Bứng
+Pŏk (đgt) : Mở; (tl) Từ dùng để đếm số trang, số quyển
+Pŏk ƀai (đgt) : Mở rộng
+Pŏk phai (đgt) : Mở mang
+Pŏk pui kmlăi (đgt) : Bật đèn điện
+Pô (dt) : Chủ
+Pô krơ̆ng (dt) : Người làm chứng
+Pô lăn (dt) : Chủ đất (về mặt tinh thần)
+Pô mphŭn čưm (dt) : Người sáng lập
+Pô phŭn (dt) : Chủ nhân
+Pôk (dt) : Bẹ; Vườn tược
+Pông (dt) : Lồng
+Pông êdeh (dt) : Bánh xe
+Pông kruê (dt) : Tay quay xa
+Pơ (tt) : Hô
+Pơ pŭm (đgt) : Xoã xuống
+Pơt (tt) : Ngắn ngủn
+Pơ̆i hla (đgt) : Chạy diều
+Pơ̆k (đgt) : Động tác dệt vải
+Pơ̆k mñam (dt) : Dệt vải
+Pơ̆ng (đgt) : Đóng; Giàn đựng cơm trong nhà mồ
+Pra (dt) : Giàn
+Prač (tt) : (Trúng) Phạch
+Prah (đgt) : Dập; Đập
+Prah prač (tt) : Vương vãi
+Praih (tt) : Rơi vãi
+Pral (tt) : Nhanh
+Praĭ (dt) : Mỡ; Dầu
+Pram (đgt) : Rấp (lấp)
+Prang (đgt) : Chỉ động tác gà mẹ xù lông xoè cánh bảo vệ con
+Prao : Tên chung của các loài rắn to
+Pră (đgt) : Tít ra; Rơi tõm; (dt) Bạc (kim loại)
+Prăk (dt) : Tiền; Bạc
+Prăk hliê (dt) : Tiền lẻ
+Prăk kăk (dt) : Tiền bạc
+Prăm (tt) : Thâm, tím
+Prăm jŭ (tt) : Thâm tím
+Prăn (dt) : Vết lằn do roi đánh
+Prăng (dt) : Pháp
+Prăp (đgt) : Sửa soạn
+Prăp êmiêt (đgt) : Chuẩn bị
+Prăt (tt) : Xơ xác
+Pre (dt) : Thẳng, phanh
+Prĕ prĕ (tt) : Lâm râm; Nho nhỏ
+Pri (Pr) (dt) : Phần thưởng
+Pri pria (đgt) : Xoè
+Priêl (đgt) : Chọc tức
+Priêng (dt) : Thính (gạo rang xay)
+Prih (tt) : Tua tủa
+Prin prun (tt) : Khệ nệ
+Pring (đgt) : Tập bay
+Priu (đgt) : Nổi da gà, sần gai ốc
+Priu ê-ăt (tt) : Ớn lạnh
+Prĭl (dt) : Cà rí
+Proh (đgt) : Xói mòn
+Proh ĭ (đgt) : Sẩy thai
+Prŏng (tt) : To, lớn
+Prŏng prĭn (tt) : To lớn
+Prŏng pơ̆k (tt) : To bản
+Prôč (dt) : Ruột
+Prôč êbeh (dt) : Ruột thừa
+Prôk (dt) : Con sóc
+Prơ̆ng (dt) : Sọt lớn để đựng lúa; (tt) Dữ
+Prơ̆ng puôt (dt) : Cái giỏ để tuốt lúa
+Pruč (tt) : Toẹt
+Pruê (đgt) : Rải, rắc
+Pruê hbâo (đgt) : Bón phân
+Pruê̆ (dt) : Câu; Dãy; Dòng; Hàng
+Pruih (đgt) : Xịt, phun
+Prung (dt) : Cái gùi đan thưa
+Prŭ prŭ (đgt) : Ào ào
+Prŭk (đgt) : Phập, phịch
+Prŭng (đgt) : Xua, đuổi
+Prŭt, pruăt (đgt) : Đứt phăng
+Prưh (đgt) : Đuổi đi
+Prưng prang (đgt) : Xua đuổi
+Pu pi (tt) : Mũm mĩm
+Puah (đgt) : Thiến
+Puăn (dt) : Rau muống
+Puăng (dt) : Điểm
+Puh (đgt) : Lùa; Thổi; (tt) Bạc màu
+Pui (dt) : Lửa
+Pui ƀơ̆ng (đgt) : Cháy
+Pui hrip (đgt) : Điện giật
+Pui kƀong (dt) : Đuốc
+Pui kmlă (dt) : Điện
+Pui ktuê (đgt) : Cháy lan
+Pui pit (dt) : Đèn pin
+Puih (dt) : Đông (mùa)
+Pum (dt) : Bụi, rậm
+Pum kyâo (dt) : Bụi cây
+Pum yă pum yai (tt) : Um tùm
+Pun (dt) : Con cheo; (đgt) Ủ ấm
+Puôr (dt) : Mồ hôi trộm
+Puôt (đgt) : Tuốt
+Puôt wiă (đgt) : Gặt hái
+Put (dt) : Cây bấc
+Put mtuh (dt) : Thuốc nổ
+Pŭ (đgt) : Bế; Bê; Cất
+Pŭk (đgt) : Quậy
+Pŭk ală (dt) : Mi mắt
+Pŭk piăk (tt) : Nhợt nhạt
+Pŭl (pht) : Bệt
+Pŭng (dt) : Khoai từ
+Pŭñ pañ, puñ pêñ (tt) : Đen đủi
+Pŭr (dt) : Rằm
+Pưč (đgt) : Lột xem
+Pưh (đgt) : Quạt; Thổi
+Pưi (đgt) : Vẫy
+Pưk (dt) : Cái chòi
+Pưng (đgt) : Tạt đi
+Pưu pưu (tt) : (Nói) to
+Rač (đgt) : Bứt; Suốt, tuốt
+Rah (đgt) : Gieo
+Rai (dt) : Con rồng; (tt) Tan nát
+Rai brŭ (tt) : Thối nát
+Rai lik (tt) : Tan nát
+Rai răk (tt) : Tan tành
+Rai tuič (tt) : Tan rã
+Raih (dt) : Bươi ra; (tt) Thạo
+Raih tô (dt) : Anh em cọc chèo (đồng hao)
+Rak (tt) : Hườm
+Ram (tt) : Tàn
+Ram rai (tt) : Tan hoang; Tàn lụi
+Rang (đgt) : Phơi; Bày ra
+Rang angĭn (đgt) : Hóng gió, hóng mát
+Rañ (tt) : Căng; Nghiện
+Rao (đgt) : Rửa
+Ră (tt) : Tham
+Ră ră (tt) : Rả rích
+Răk (đgt) : Kể
+Răk tuič (đgt) : Thuộc lòng
+Răm pui (đgt) : Nhóm lửa
+Răng (đgt) : Giữ
+Răng kriê (đgt) : Giữ gìn
+Răng mgang (đgt) : Phòng ngừa
+Răng pioh (đgt) : Lưu giữ (lưu truyền)
+Răp răp (tt) : Ra rả
+Reh (đgt) : Cắt; Thái
+Riap (đgt) : (Đan) Lát
+Riă (đgt) : Ninh, hầm
+Riăk riăk (tt) : Reng reng
+Riăng (đgt) : Dắt (tay)
+Riăp riăp (tt) : Rào rào
+Riêk (đgt) : Rạch
+Riêl (tt) : Lẽ lợm
+Riêm (đgt) : Viền
+Riêng gah (tt) : Xung quanh
+Riêu (dt) : Cái gùi của người Jrai
+Ring (đgt) : Đổi công; (tt) Xiêu vẹo
+Ring ba (đgt) : Dìu dắt
+Ring rang (tt) : Loạng choạng
+Riŏ (đgt) : Nghiến, xông
+Rit (đgt) : Xích lại
+Riu (đgt) : Rê
+Riu yang (đgt) : Cúng Giàng
+Rĭng (đgt) : Nộp; Chiêu mộ, triệu tập, thu về; (dt) Bộ
+Rĭng riâo (dt) : Chũm choẹ, lục lạc
+Rĭng prăk (đgt) : Thu tiền
+Rĭng rai (dt) : Con ve (sầu)
+Rĭt (đgt) : Xê, dịch
+Roh (dt) : Giặc; Rẽa
+Roh gah (dt) : Giặc giã
+Rom (dt) : Rượu rum
+Rŏng (dt) : Lưng
+Rŏng jŏng (dt) : Mu bàn chân
+Rŏng lăn (dt) : Mặt đất
+Rŏng rai (dt) : Chít (sau chút)
+Rŏng rĕ (dt) : Chuột
+Rô (dt) : Chuồng gia cầm
+Rôč (đgt) : Rơi; Nhỏ giọt
+Rôk (đgt) : Đi qua đám đông
+Rông (đgt) : Nuôi
+Rông ba (đgt) : Nuôi nấng
+Rông mnơ̆ng (dt) : Chăn nuôi
+Rô̆ (đgt) : Vượt qua
+Rơ riăp (đgt) : Rào rào
+Rơ riêm (tt) : Chi chít
+Rơ rôč (tt) : Ròng ròng
+Rơi (tt) : Vừa thưa vừa hô
+Rơ̆k (dt) : Cỏ
+Rơ̆k sĭk (dt) : Cỏ may
+Rơ̆k tơ̆k (dt) : Cây cỏ
+Rơ̆ng (tt) : Bền, chắc
+Ru (đgt) : Đổ từ chai, lọ, bầu nước ra
+Ruah (đgt) : Chọn lọc
+Ruah khua (đgt) : Bầu cử
+Ruah mă (đgt) : Chọn lấy
+Ruă (đgt) : Đau; Bệnh
+Ruă duam (đgt) : Đau ốm
+Ruă kjham (đgt) : Đau nặng
+Ruă tuit (đgt) : Đau quặn
+Ruăt (tt) : Vội
+Ruăt kuăt (tt) : Vội vàng
+Ruê (dt) : Con ruồi
+Ruêh (đgt) : Sờ
+Ruê̆ (đgt) : Kết thúc; Đi thành đàn
+Ruh (đgt) : Mở ra; Gỡ, dỡ, tháo
+Ruh ksiêm (đgt) : Nhận xét
+Ruh rah (tt) : Lai rai
+Ruh ruah (pht) : Rục rịch
+Rui (đgt) : Bò
+Ruih (dt) : Ghẻ
+Ruih keh (dt) : Ghẻ lở
+Ruôm (tt) : Tấy
+Ruôp (pht) : Mãi, nhiều lần
+Ruôt (đgt) : Thắt
+Rup (dt) : Hình; Tượng
+Rŭ (đgt) : Nhổ; Nhuú; Vực dậy; Bứng; Nâng
+Rŭ êmŏng (tt) : Nở nang
+Rŭ ênua (đgt) : Trả thù
+Rŭ mdơ̆ng (đgt) : Xây dựng
+Rŭng (tt) : Rối, rối loạn; (dt) Nhà bỏ hoang
+Rŭng răng (tt) : Rối ren
+Rưng (tt) : Thưa
+Rưng ƀhưng (tt) : Thưa thớt
+Sa (dt) : Số một; Thứ hai
+Sa ai (tt) : Một lòng, đồng lòng
+Sa ƀai (dt) : Cái dũa
+Sa hnơ̆ng mĭn (tt) : Nhất trí
+Sač (dt) : Cây dâu da; Quả dâu da; (đgt) Tát nước; Đánh bắt cá
+Sah (đgt) : Mài; (tt) Nhạt, phai
+Sah brah (tt) : Rời rạc
+Sai (đgt) : Rải
+Sai êa mah (đgt) : Thếp vàng
+S’aĭ (pht) : Đều, cả
+Sak (đgt) : Kéo
+Sang (dt) : Nhà; Rạp; Chùa; Tháp
+Sang aê diê (dt) : Nhà thờ
+Sang dăng kông (dt) : Bưu điện
+Sang dhar kreh (dt) : Nhà Văn hóa
+Sang êa drao (dt) : Bệnh viện
+Sang kahan (dt) : Trại lính
+Sang kưt mmuiñ (dt) : Rạp hát
+Sal đrao (dt) : Lưỡi nứa sắc (bén)
+Sar (dt) : Lõi cây; Cuộn sợi; Mũi quay, nón
+Să (dt) : Xã; (đt) Đan
+Săl (đgt) : Nhét chặt
+Săl wăl (tt) : Chập choạng
+Săm dah (pht) : Tuy nhiên
+Săm dêč (dt) : Cây săm dê
+Săm muôr (dt) : Cây chọc lỗ tỉa lúa
+Săn (dt) : Cây hương
+Săn asei mlei (đgt) : Hy sinh
+Săng (đgt) : Hiểu
+Săng đai (dt) : Dây xích
+Săp (dt) : Khói; (đgt) Che, đậy
+Săt (đgt) : Veón; Têm; Cắt, xén
+Sbah (đgt) : Lăn đùng
+Sdăk sdai : Ngả rạ
+Seh (đgt) : Thảy, sẩy
+Seh soh (tt) : Sai sót
+Sgŏng (dt) : Giây
+Si, si ngă (đt) : Thế nào
+Si ke (dt) : Xì ke
+Si măng (dt) (Pr) : Xi măng
+Si tô hmô (dt) : Ví dụ
+Siam (tt) : Đẹp
+Siam sĭn (tt) : Đẹp đẽ
+Siam siăn (tt) : Chẳng đẹp
+Siap (dt) : Cánh
+Siă (đgt) : Sát
+Siăp (dt) : Con trai (ngao); (tt) Luột
+Siêk (đgt) : Tách ra
+Siêng (đgt) : Nêm
+Siêt (tt) : Híp; (đgt) Buộc
+Sim (đgt) : Chêm
+Sin (dt) : Ngan
+Sip sap (tt) : Cẩu thả
+Sir (tt) : Kín; Liền
+Siu (dt) : Cây trong bộ khung cửi dệt thổ cẩm
+Sĭ (đgt) : Lẹm; Khía
+Sĭk (dt) (Pr) : Đường; Cỏ may; Nhiều bọt
+Sĭn kŏ (đgt) : Chóng mặt (choáng váng)
+Sĭng (dt) : Sư tử (cách gọi sư tử trong truyện cổ tích)
+Sĭr (tt) : (Nhanh) Thoắt
+Sĭt (pht) : Thật
+Sĭt dah (pt) : Chắc rằng
+Sĭt êmĭt (tt) : Thật chính xác, đích thực
+Sĭt nik (tt) : Chắc chắn
+Sĭt suôr (tt) : Chân thành
+Smŭk (dt) : Cây tai nghé
+Snăk (pht) : Rất
+Snăk s’ưn (pht) : Rất nhiều
+Snăn (đt) : Như thế đó, như vậy
+Snei (đt) : Thế này
+Soh (tt) : Sai
+Sŏng (dt) : Đường may nối giữa hai tấm của một cái chăn thổ cẩm; Heo nhỡ
+Sô (dt) : Cái xô; (tt) Cũ
+Sô siă (tt) : Cũ kĩ, cũ rích
+Sôč klei (đgt) : Tuột ra
+Sôk (dt) : Nhau thai, rau thai; (đgt) Thụi (bằng cây)
+Sông (đgt) : Kể lể công cán
+Sô̆ (đgt) : Đụng; Trúng phong
+Sơ lĭp (dt) (Prăng) : Quần lót
+Sơh (pht) : Từ dùng để đuổi chim, thú
+Sơ̆k (dt) : Cái gùi nhỏ
+Sơ̆ng (đgt) : Đong; Lia, nêm
+Srai (đgt) : Vãi, sạ
+Sră (đgt) : Phóng
+Srăng (pht) : Sẽ
+Srêñ (dt) : Thầu dầu
+Sruah sruah : Không có
+Sruê (dt) : Sởi
+Srŭp (đgt) : Luột
+Su (dt) : Giàn su su; Quả su su
+Sua (đgt) : Lấy lại, giành lại
+Sua mă (đgt) : Chiếm lấy
+Sua wĭt (đgt) : Giành lại
+Suah (dt) : Sậy
+Suai (dt) : Cây xoài; Quả xoài; (đgt) Lấy ra, lục ra
+Suai săk (đgt) : Lục lọi
+Suaih (tt) : Khoẻ
+Suaih pral (tt) : Khoẻ mạnh
+Suan (dt) : Vàng tây
+Suă (đgt) : Giãn
+Suăi (tt) : Vất vả
+Suăi ñam (tt) : Cực nhọc
+Suăl (tt) : Lầm
+Suăng (đgt) : Vứt đi
+Suăp (đgt) : Xục vào
+Suăr (tt) : Tỉnh táo, ngay thẳng
+Suăt suang (đgt) : Xục xạo
+Suê (dt) : Cái lờ, cái đơm; (đgt) Soi lỗ; Mới trổ còn non
+Suê bruê (tt) : Lẻ tẻ
+Suêñ (đgt) : Bện; (tt) Đẹp
+Suê̆ (đgt) : Nhổ; Rút
+Suh sah (tt) : Hùng dũng, dũng mãnh
+Sui sĭn (tt) : Lâu lắc
+Sui sĭt sui sĭn (tt) : Lâu lắc lâu lơ
+Sul (đgt) : Xới
+Sun (đgt) : Lót
+Suôn (dt) : Vạt tranh cũ, nay mới mọc lại
+Suôp (tt) : Xốp
+Suôr (dt) : Vỏ, da; (tt) Giáp liền, sát
+Suôt (đgt) : Đuổi
+Suôt sông (đgt) : Xua đuổi
+Sur êwa (đgt) : Thở
+Sut (dt) : Giẻ lau; (đgt) Lau, chùi
+Sut dhông (đgt) : Lau chùi
+Sŭk (dt) : Xương sườn
+Sŭk suôr (tt) : Chân thành
+Sŭl (tt) : Tốt quá mức
+Sŭm (đgt) : Vùi
+Sŭm klŭm (đgt) : Vùi lấp
+Sŭn (đgt) : Chồng lên nhau
+Sŭp (dt) : Phở
+Sŭr (đgt) : Vượt qua
+Sŭt (dt) : Sâu róm
+Sưh (đgt) : Đuổi
+Sưh đuê̆ : Đuổi đi khỏi
+Sưk (đgt) : Xước
+Sưk sak (đgt) : Xây xước
+Sưp (dt) : Cây chôm chôm; Quả chôm chôm
+Sư̆ (đgt) : Xê ra
+Ta ală (dt) : Chột mắt
+Tač (dt) : Bãi
+Tač êngao (dt) : Bên ngoài
+Tah (đgt) : Dỡ, tháo
+Tai (tt) : Chùng
+Tai tăk (tt) : Chùng chềnh
+Taih (đgt) : Xa
+Taih tĭn (tt) : Xa tít
+Taih kbưi (tt) : Xa xôi
+Tak (đgt) : Bôi; Chấm
+Tak hrak (đgt) : Trượt ngã
+Tak mia (đgt) : Bôi trát
+Tal (đgt) : Xẻo; (dt) Thứ vị; Tầng
+Tal êlâo (dt) : Trước tiên, đầu tiên
+Tam (đgt) : Đầm (ngâm); Đặt (ngâm dưới nước)
+Tang (dt) : Cây xoan
+Tao (dt) : Khoai lang
+Tao wao (dt) : Chim tao wao
+Tap (đgt) : Lót
+Tar (tt) : Khắp
+Tar ƀar (tt) : Khắp mọi nơi, toàn bộ
+Tat (đgt) : Ném mạnh xuống đất
+Tă (đgt) : Xẻ; Phát (cỏ); Cắt may
+Tă tăn (tt) : Bậy bạ
+Tăk (đgt) : Bật; Lẩy
+Tăk ƀlăk (dt) : Long cong (Làm bằng tre để đuổi thú)
+Tăk la (dt) : Con dán
+Tăk lê lô (dt) : Con rắn mối (con thằn lằn)
+Tăk lu (dt) : Con giời
+Tăk mnâo (đgt) : Nấc cụt
+Tăk ta (dt) : Kèn tak ta
+Tăk tai (đgt) : Đu đưa
+Tăm (đgt) : Lợp; Đuổi; Lỡ
+Tăm ênua (đgt) : Đền mạng
+Tăm pah (đgt)ì : Nguyền rủa
+Tăn (đgt) : Làm cố
+Tăng (đgt) : Cãi
+Tăng mgăl (đgt) : Cãi cọ
+Tăng hik (dt) : Con bọ xanh
+Tăng măng (dt) : Con chuồn chuồn
+Tăng tĭt (dt) : Con bướm
+Tăp (đgt) : Giã (lúa)
+Tăp năng (pht) : Thỉnh thoảng
+Tâo (dt) : Cục đá; Đá cuội
+Teh (đgt) : Đánh
+Tei (dt) : Cá tra
+Tei hŭng (dt) : Đu đủ
+Tei čik, tei nan (dt) : Dứa (thơm)
+Teng teng (tt) : Keng keng
+Tĕng tŏng (tt) : Đầy
+Tê (dt) : Canh nấu với bột gạo
+Têč hnêč (đgt) : Vấp
+Têñ (tt) : Chậm
+Têñ ƀêñ (tt) : Chậm rì
+Tha (đgt) : Thả
+Thak (tt) : Trề ra
+Thar (đgt) : Lo liệu
+Tham (đgt) : Cúng hiến sinh để từ bỏ mảnh đất
+Thao (dt) : Thiếc; Thùng
+Thăt (dt) : Cái thớt
+Thâo (đgt) : Biết; (tt) Giỏi
+Thâo đup gưt (tt) : Lễ phép
+Thâo jum tue êgar (tt) : Hiếu khách
+Thâo klă : Hiểu rõ
+Thâo knal (tt) : Lịch thiệp
+Thâo krăl (đgt) : Quen biết
+Thâo răng (tt) : Cẩn thận
+Thâo săng (đgt) : Hiểu
+Theh (đgt) : Đánh
+Them (đgt) : Thêm
+Thiăm (đgt) : Thêm
+Thiê (đgt) : Cho, ban, cấp, phát
+Thiêl (đgt) : Ăn từ từ, làm từ từ
+Thiêng (đgt) : Phang
+Thiêp jông (dt) : Cây chêm rễu
+Thiêp thiêp (tt) : Thoảng qua
+Thiêr (dt) : Con mối nhỏ
+Thik thôk (tt) : Lười
+Thĭu (tt) : Thiếu
+Thơ (dt) : Người mổ thịt
+Thơt (dt) : Cái thớt
+Thu (tt) : Khô
+Thung (dt) : Ống chân, cẳng chân
+Thuôt (dt) : Mụn cóc
+Thut (đgt) : Thổi, ngửi
+Thŭn (dt) : Năm, tuổi
+Thŭn kruôp (dt) : Năm nhuận
+Thŭng (dt) : Thùng
+Thưp (đgt) : Nhấm nháp
+Thưt (đgt) : Giống như thư; Nhỏ giọt
+Thưt thưt (đgt) : Nhỏ giọt
+Thư̆ (đgt) : Ngớt; (dt) Giọt
+Ti (đt) : Đại từ chỉ nơi chốn
+Ti anôk (đt) : Ở đâu
+Ti djiêu (dt) : Bên cạnh
+Ti tluôn (dt) : Đằng sau
+Tia (đgt) : Rèn
+Tiăm tiăm (tt) : Phàn nàn
+Tian (dt) : Bụng
+Tiăng (đgt) : Tiăng tiăng (pht): Chan chát
+Tiap (đgt) : Lót
+Tiăr tiăr (tt) : Khanh khách (Vật cứng va chạm vào nhau tạo ra âm thanh)
+Tiê (dt) : Gan
+Tiê boh (dt) : Tim, trái tim
+Tiêng (dt) : Mụn nhọt; Củ bình tinh
+Tiêng liêng (dt) : Chuông
+Tiêo (đgt) : Giắt
+Tiêp (tt) : Nhói
+Tiêp tiêp (tt) : Nhoi nhói (đau nhoi nhói)
+Tiêr (đgt) : Đi vòng quanh
+Tiêt (đgt) : Cài; (dt) Hạch
+Tiêu (đgt) : Giống như tiêo
+Tih (dt) : Bắp chân; (đgt) Đào hố sâu
+Tin (dt) : Củ đậu
+Tin tun (tt) : Tròn lẳn
+Ting (đgt) : Cập bến, ghé
+Tiŏ (đgt) : Đuổi (theo)
+Tiŏ nao (đgt) : Phái đi
+Tiông (dt) : Lưỡi nỏ, mũi tên
+Tit (dt) (Yu) : Tết
+Tir (đgt) : Giống như tiêr
+Tĭ (tt) : Rách
+Tĭ rư̆č (tt) : Rách tả tơi
+Tĭ tŭl (tt) : Rách rưới
+Tĭk tăk (tt) : Tích tắc
+Tĭk (dt) : Mủ tai
+Tĭm ahĭm (đgt) : Không ưa thích
+Tĭm tŭm (tt) : Sưng, phồng lên
+Tĭng (dt) : Tính; Phía, bên
+Tĭng grĭng (tt) : Lảo đảo
+Tĭp (đgt) : Trúng phóc
+Tĭr tĭr (tt) : Ấm ấm
+Tla (đgt) : Trả
+Tlah (đgt) : Bẻ ra, chẻ ra
+Tlaih (đgt) : Thoát; Khỏi
+Tlak (đgt) : Rẽ
+Tlam (dt) : Chiều
+Tlam êngam (dt) : Chiều chiều
+Tlan (dt) : Vi khuẩn
+Tlang (dt) : Diều hâu
+Tlang hiă (dt) : Chim ó
+Tlao (đgt) : Cười
+Tlar (tt) : Láng
+Tlă (đgt) : Phả vào
+Tlăk tlăr (tt) : Ba lăng nhăng
+Tlăl (đgt) : Bịch
+Tlăm (đgt) : Che lấp
+Tlăn (dt) : Con trăn
+Tlăng (đgt) : Cuốc (đào) (lật)
+Tlăp (tt) : Cũ
+Tlăp mlăp (tt) : Cũ kỹ
+Tlăt (đgt) : Nhảy phóc
+Tlâo (dt) : Ba
+Tleh tloh (tt) : Bầy nhầy
+Tlĕ (đgt) : Ăn cắp
+Tlê (đgt) : Giã
+Tli (đgt) : Trát
+Tli tlia (tt) : Lạch bạch
+Tliăl (tt) : Thua
+Tliă tliêt (tt) : Tỉ mỉ; Sâu sắc
+Tliêng (dt) : Cái gùi lớn có nắp đậy để đựng quần áo
+Tliêp (tt) : Bất ngờ
+Tliêr (tt) : Cẩn thận, kỹ lưỡng
+Tliêt (tt) : Nhão
+Tlin (dt) : Vô sinh (động vật)
+Tling (đgt) : Buộc
+Tlip : Dính
+Tlit (tt) : Đặc
+Tlit tlat (tt) : Đặc quánh
+Tlĭr (đgt) : Thoắt
+Tloh (đgt) : Đứt
+Tlŏ (đgt) : Tiêm; Đâm
+Tlŏng (dt) : Ráy tai
+Tlŏng tlut (dt) : Cái gáy (phần sau của đầu)
+Tlơ tlêč (tt) : Lấp lánh
+Tlơ̆ng (đgt) : Đổ, đầy
+Tlô (đgt) : Đi ngoài; (dt) Phong cảnh
+Tlu (dt) : Dương vật
+Tlua (đgt) : Tưới, xới
+Tluh (đgt) : Thèm
+Tlun (đgt) : Giắt (ở dưới)
+Tlung (dt) : Dốc thoai thoải
+Tluñ (đgt) : Phỉnh
+Tluôn (dt) : Mông; Phía sau
+Tluôr (dt) : Cá chạch
+Tlŭk tlăk (đgt) : Chao động
+Tlŭm (đgt) : Phủ (che phủ)
+Tlŭn (dt) : Con nòng nọc
+Tlŭng (dt) : Vết sẹo sâu (sau khi đã khỏi)
+Tlŭp (tt) : Cụp
+Tlư (dt) : Củ ráy
+Tlưč (dt) : Đỏ hồng (màu hồng)
+Tlưh (đgt) : Xẻ
+Tlưng (đgt) : Hất
+Tlưng tlang (đgt) : Quật (mạnh)
+Tlưt (đgt) : Nhót, vọt
+Toh (đgt) : Cởi ra
+Ton (dt) : Tấn (1 tấn = 1000 kg)
+Tŏ (dt) : Cái lọ
+Tŏk (dt) : Cái gùi (vùng Ea Hleo)
+Tŏk bŏk (dt) : Một loại quả trong rừng giống quả sung nhưng không ăn được
+Tŏng bi (dt) : Hoa bìm bịp
+Tô (dt) : Bạn gái
+Tô hmô (dt) : Ví dụ
+Tô rô (dt) : Cây keo; Quả keo
+Tôč (đgt) : Rỉa
+Tôk (dt) : Cái vỏ
+Tôl (dt) : Tôn
+Tông (đgt) : Gõ (đánh); (dt) U (thịt)
+Tông lông (dt) : Cây thần thoại ở trên mặt trăng
+Tô̆ng đơ (dt) : Cái tông đơ cắt tóc
+Tơ, tơ dah (pht) : Nếu, khi (dùng trong hiện tại hoặc tương lai)
+Tơl (pht) : Thậm chí, đến nỗi
+Tơ̆ng (đgt) : Đoạn suối sâu
+Tơr bŭng (dt) : Chân gùi
+Tra (dt) : Ngày thứ ba (kể từ sau ngày hôm nay)
+Trač (đgt) : Xịt
+Trah trač (tt) : Đoảng
+Trah (đgt) : Quăng chài; Nhìn xa
+Trah dlăng (dt) : Thăm nom, phóng tầm nhìn
+Trah mdrao (đgt) : Chăm nom thuốc thang, chăm sóc y tế
+Traih (đgt) : Chải (chỉ)
+Traih mrai (đgt) : Chải chỉ bằng bàn chải
+Trak trak (đgt) : Ròng ròng
+Tram (đgt) : Ngâm
+Trang (dt) : Cỏ lau
+Trañ (dt) : Đáy gùi
+Trao (dt) : Vòng số 8 (bằng dây rừng) dùng để cùm hai chân trước của voi
+Trap (tt) : Không đủ
+Trap trap (tt) : Sâm sấp
+Trăn (dt) : Áo quan (hòm) bên ngoài
+Trăp (dt) : Đầm lầy
+Trăp čuôr (dt) : Cánh đồng, đầm lầy
+Trăp trang (dt) : (Bãi đầm) Lau sậy
+Treh (đgt) : Gạch; Kẻ
+Trei (tt) : No
+Trei mđao (tt) : No ấm
+Treng (dt) (Prăng) : Xe lửa, tàu hỏa
+Trĕ (đgt) : Rỏ, nhỏ
+Tri tria (tt) : Xòe rộng ra
+Tria (dt) : Sàn
+Triă (dt) : Cây triă (họ bằng lăng)
+Triăm (dt) : Chăn thổ cẩm có 4 đường hoa văn đỏ
+Triah (dt) : Sao hôm; Cá chép
+Triăng (đgt) : Soi
+Triêk (tt) : Chẻ; Chua loét
+Triêl (đgt) : Xén, cắt
+Triêt (dt) : Ngày thứ tư (sau ngày hôm nay)
+Trih (đgt) : Ghen
+Trih dah (đgt) : Ghen tuông
+Tring ahing (tt) : Trùng điệp
+Trĭ trŭ (tt) : Nặng nề
+Trĭt trĭt (đgt) : Từng tí một
+Trĭng (dt) : Nám, tàn nhang
+Trĭp (tt) : Vừa vặn
+Tro wêč (dt) : Chim tro wê
+Troh (dt) : Vực, thung, khe; (đgt) Đào bằng vật nhọn (xà beng, cây nhọn)
+Troh trôk (dt) : Thung lũng
+Trŏk (đgt) : Đầy ách
+Trŏng (dt) : Cà
+Trŏng drun (dt) : Quả cà chua (nhỏ bằng ngón tay)
+Trŏng msăm (dt) : Cà chua
+Trô (đgt) : Rót vào chai
+Trôč (đgt) : Nhỏ giọt; Cúng (con vật)
+Trôč mia (đgt) : Nhỏ và bôi
+Trông (đgt) : Để, gác, đè (đặt lên)
+Trông čhai (đgt) : Bàn bạc, bàn luận, thảo luận
+Trông kdrông (đgt) : Bắc cầu khỉ
+Trô̆ (đgt) : Sực nức
+Trơ̆ng (đgt) : Bén
+Truang ahuang (tt) : Sáng choang
+Truă (đgt) : Đậy; Đeo
+Truă rup (đgt) : Đội lốt
+Truăk (đgt) : Ực
+Truăn (đgt) : Chuyên tâm
+Truăn mĭn (tt) : Lo lắng
+Truêč truêč (tt) : Ít, từng tí một
+Truh (đgt) : Đến, tới
+Truih (đgt) : Dập lửa; (dt) Hôi chua
+Truih traih (tt) : Mùi thối
+Truk truk (tt) : Ào ạt
+Truk trak (tt) : Ồng ộc
+Trul tral (tt) : Nặng nề
+Trung (đgt) : Phủ phục
+Truôl (dt) : Ổi
+Truôl jang (dt) : Cây bằng lăng hoa tím
+Truôm (dt) : Con nhộng
+Trŭn (đgt) : Xuống
+Trŭt (đgt) : Đẩy
+Trưng (dt) : Lán; (đgt) Quỳ xuống
+Tu (dt) : Cái mai, cái mu
+Tu krua (dt) : Mai rùa
+Tuah (đgt) : Múc
+Tuai (dt) : Chòi tạm
+Tual (đgt) : Khoanh (tròn)
+Tual wĭl (dt) : Khoanh tròn
+Tuang (đgt) : Chăng
+Tuăk (đgt) : Móc, khoét
+Tuăng tuăng (đgt) : Đùng đùng
+Tuăp (đgt) : Trúng phóc
+Tuăr (đgt) : Phập
+Tuăt tuăt (tt) : Loắt choắt
+Tuč (đgt) : Châm
+Tue, tuê (dt) : Khách
+Tue hiu čhưn (dt) : Khách du lịch
+Tuêh (đgt) : Vét
+Tuh (đgt) : Đổ, trút
+Tuh jia (đgt) : Đóng thuế
+Tuh lăn (đgt) : Cúng thần đất
+Tuh suôr (đgt) : Lột da
+Tui (đgt) : Theo
+Tui čih (đgt) : Chép, viết
+Tui duah (đgt) : Tìm kiếm, tìm hiểu
+Tui hluê (đgt) : Đi theo
+Tui kru (đgt) : Đi theo dấu vết
+Tui si (đgt) : Giống như
+Tuič (đgt) : Kết thúc
+Tuič ai (đgt) : Tắt thở
+Tuič djuê (đgt) : Tiệt nòi, tuyệt chủng
+Tuič ruê̆ (đgt) : Kết thúc
+Tuit (đgt) : Nhéo
+Tuĭ (đgt) : Bịch
+Tuk (dt) : Dưa gang; Ché tuk
+Tum (dt) : Kỷ đà
+Tung (dt) : Gian
+Tuôm (đgt) : Gặp
+Tuôm ƀô̆ (đgt) : Gặp mặt
+Tuôr (dt) : Ốc xoắn (vặn); Tháp; Vòng, lượt; (đgt) Qua
+Tut (dt) : Cây tầm gửi
+Tur (dt) : Nền
+Tur êa krông (dt) : Đáy sông
+Tŭ ư (đgt) : Công nhận, đồng ý
+Tŭ dưn (tt) : Ích lợi
+Tŭ jing (tt) : Thành công
+Tŭč krŭč (tt) : Khật khưỡng (khiễng)
+Tŭk (đgt) : Nấu, đun; Đấm
+Tŭk riă (đgt) : Ninh, hầm
+Tŭk tŭl (tt) : Mù mịt
+Tŭk mrui (dt) : Con bọ nhỏ
+Tŭk mrŭk (dt) : Đồ dùng để đuổi chim thú
+Tŭl (đgt) : Húc; (tt) Xằng bậy
+Tŭl tăl (tt) : Chắc nịch
+Tŭm (tt) : Phồng lên
+Tŭn (đgt) : Ấn
+Tŭn tăn (đgt) : Ấn chắc chắn
+Tŭng (dt) : Cỏ gấu
+Tŭng klŭng (đgt) : Lăn lóc
+Tŭp (tt) : Phập
+Tŭr (dt) : Cây bứa; Quả bứa; (đgt) Đấm mạnh
+Tŭt (dt) : Đốt
+Tư hrư (tt) : Thoai thoải
+Tưt (tt) : Muộn
+Tưp (đgt) : Lây, truyền
+Tưp lar (tt) : Lây lan
+Tư̆ (đgt) : Nhích
+Tư̆r tư̆r (đgt) : Ấm ầm
+U (tt) : To lớn
+U u (đgt) : Vù vù
+Ua jai (pht) : Hơn, nữa, thậm chí
+Uă (đgt) : Rửa; Cưa; Kéo
+Uak (dt) : Cái thìa
+Uan (dt) : Giống như awan
+Uan dhuan (dt) : Giống như awan dhuan: Thân hình
+Uăt (tt) : Ực
+Uăm (tt) : Phù
+Uăm uăm (đgt) : Oang oang
+Uăr (tt) : Sưng vù
+Uăr uăr (tt) : Sự ồn ào, ầm ĩ
+Uăt (tt) : Yếu
+Uê (dt) : Màu nâu
+Uê pui (dt) : Khói đọng lại, bồ hóng
+Uêñ (đgt) : Quan tâm, lo lắng
+Uêñ uêñ (tt) : Nài nỉ, năn nỉ
+Uh uh (tt) : Râm ran
+Uh ưh (tt) : Anh ách (đầy bụng khó chịu vì quá no)
+Uih (đgt) : Ủi (là); Uốn; Hơ
+Ung (dt) : Chồng (vợ)
+Uôp (đgt) : Bịt
+Uôt (đgt) : Cắt
+Ur (đgt) : Kêu, la
+Ur lač (đgt) : La to (nói to)
+Ur hưn (đgt) : La lối
+Ur mpŭ (đgt) : Hoan hô
+Ut ut (tt) : Thì thầm
+U|k rŭk (đgt) : Ứng ực
+U|k ŭk (tt) : Đông đúc
+Ul (đgt) : Ủ chua
+U|l ăl (tt) : Hầm hập
+U|n (dt) : Lợn (heo)
+U|ng (tt) : Khum
+U|r (tt) : Mưng (mủ)
+U|r ŭr (tt) : Ồn ào
+Ư (đgt) : Vâng
+Ư ai (đgt) : Bằng lòng
+Ưi ưi (tt) : Ấm ỉ, lâm râm
+Ưm (tt) : Sớm
+Ưm aguah (dt) : Sáng sớm
+Ưm hĭn (dt) : Sớm hơn
+Ưm hnưm (dt) : Sớm lắm
+Ưm hrưm (dt) : Còn quá sớm
+Ưm ôk (tt) : Sớm tinh mơ
+Ưn (dt) : Cái yên
+Ưn đĭ aseh (dt) : Yên ngựa
+Ưng ưng (tt) : Hừng hực
+Ưr ưr (tt) : Rừng rực
+Ưt (đgt) : Ngớt
+Ưt ưt (đgt) : Hừ hừ
+Ưp ap (tt) : Ấm thấp
+Ư̆(đgt) : Nhịn
+Ư̆êpa (tt) : Đói kém
+Ư̆êwa (đgt) : Nín thở
+Ư̆ăn (đgt) : Nín, nhịn
+Wah (dt) : Lưỡi câu; (đgt) Câu
+Wah lač (đgt) : Cầu nguyện, làm phép
+Wah wơ (tt) : Nghêu ngao; Vất vưởng; (đgt) Quơ
+Wah wưt (đgt) : Phe phẩy
+Wah yang (đgt) : Cúng thần
+Wai (đgt) : Đạp, quay
+Wai êdeh (đgt) : Đạp xe
+Wai wưt (tt) : Chệnh choạng (lúc ẩn lúc hiện); (đgt) Vụt
+Wai tê (dt) : Ve sầu (ve tháng 3)
+Wai yut (dt) : Ve sầu (ve tháng 4)
+Waih (đgt) : Chèo
+Waih gai (đgt) : Chèo lái
+Wak wak (tt) : Toác; Ồn ào
+Wang (dt) : Quãng (đường), gian (nhà); Khuôn khổ; Ồ; Nhịp; Cột; Vạt; (đgt) Vây, dồn; Bủa
+Wang čuăn (dt) : Khuôn khổ
+Wañ (đgt) : Nhắc đến
+Wao (dt) : Cái vồng, cái ve diều (nhạc khí cột trên đầu diều)
+Wao hla (dt) : Sáo diều
+Wao wao (tt) : Vi vu
+Wap wap (đgt) : Oai oái
+War (dt) : Vườn, chuồng, trại, cũi; Trại
+War mmăt (dt) : Xà lim
+War mă kan (dt) : Đăng
+War mnă (dt) : Ngục
+Wat (tt) : Khuyết
+Wă (đgt) : Mời đến, cạy (khơi)
+Wă ba (đgt) : Đem đến
+Wă prŏng (đgt) : Mở rộng
+Wăk wai (dt) : Nhện
+Wăl (dt) : Vùng (nhỏ), sân
+Wăl anôk (dt) : Khu vực
+Wăl ƀuôn (dt) : Khu vực buôn
+Wăl hdĭp mda (dt) : Môi trường sinh sống
+Wăl klia hŏng ƀrĭk (dt) : Sân gạch
+Wăl tač (dt) : Sân
+Wăn (tt) : Rảnh, rỗi
+Wăng (dt) : Cái cuốc nói chung
+Wăng biêng (dt) : Cuốc lớn (để đập đất)
+Wăng kai (dt) : Cái cày
+Wăng ki kbao (dt) : Cuốc chim
+Wăng kuôk (dt) : Cái cuốc
+Wăng wĭt (dt) : Cái niết (một loại cuốc nhỏ để làm cỏ)
+Wăp (đgt) : Chộp
+Wăp mă (đgt) : Chộp lấy
+Wăt (dt) : Chim cút; (trt) Cả, kể cả; (đgt) Cúng (sức khỏe cho người)
+Wăt asei mlei (đgt) : Cúng sức khỏe
+Weh (đgt) : Ngoặt rẽ, ghé
+Weh đuê̆ (đgt) : Tránh
+Weh wĭt (tt) : Tong teo
+Wei (pht) : Hãy
+Wek (tt) : Ẹc
+Wek wek (tt) : Eng éc
+Wet wot (đgt) : Đánh võng
+Wĕ êwiêl (tt) : (Cười) Ngặt nghẽo
+Wĕng wŏng (tt) : (Môi) Trề
+Wê (tt) : Cong
+Wê wăn (tt) : Cong queo, khúc khuỷu
+Wêč wiâo (tt) : Méo mó
+Wê̆ñ (tt) : Cuống
+Wê̆ñ wê̆ñ (tt) : Miệt mài
+Wi wăn (đgt) : Uốn éo
+Wi wư (đgt) : Quờ quạng, chập choạng, uể oải, sờ soạng; (tt) Lẫn
+Wiă (đgt) : Gặt; Cắt
+Wiăt wăng (dt) : Một giống lúa muộn của người Êđê, cơm mềm
+Wiăt wê (dt) : Một giống lúa muộn của người Êđê, cơm cứng
+Wiâo wiâo (tt) : Trệu trạo
+Wiê (đgt) : Liệng đi, vứt bỏ
+Wiên (dt) : Vân; Khía
+Wiên kngan (dt) : Hoa tay
+Wiêng (đgt) : Lùa, dồn
+Wiêng anak (đgt) : Ủ con
+Wih (đgt) : Trở về, xế chiều
+Wik (dt) : Vẹt (một giống vẹt nhỏ con, mỏ đỏ)
+Win wăn (đgt) : Uốn éo
+Wir (đgt) : Quẹo; Ngoảnh
+Wit (đgt) : Vặn; Quặn; Xoắn
+Wit wat (tt) : Quằn quại; Vặn vẹo
+Wiu (pht) : Bỗng, bỗng dưng, đột nhiên; Quanh
+Wĭl (tt) : Tròn
+Wĭl dit (tt) : Tròn vo
+Wĭl dơ dit (tt) : Tròn vành vạnh
+Wĭl kdĭl (tt) : Tròn trĩnh
+Wĭl kơ kăt (tt) : Tròn xoe
+Wĭl mngăt (tt) : Đứng bóng
+Wĭl wơ wĭr (tt) : Tròn xoay
+Wĭr kŏ (đgt) : Chóng mặt
+Wĭr wĭr (tt) : Quanh quẩn; Lảng vảng; Lặn lội
+Wĭt (đgt) : Về; Giật; Lại
+Wĭt čô (dt) : Chim khách
+Wĭt êlŏk (đgt) : Ôn
+Wĭt hriăm (đgt) : Ôn tập
+Wĭt lač (đgt) : Trả lời
+Wĭt lač bi klă (đgt) : Giải đáp
+Wĭt mdah asei (đgt) : Đầu thú
+Wŏng wôč (tt) : Hớt
+Wôk (tt) : Ị
+Wôk rôk (tt) : Vi vu (mô phỏng tiếng ve diều)
+Wôk wôk (tt) : Oang oang, oai oái
+Wông (dt) : Bành; Khoang
+Wông êdeh (dt) : Thùng xe
+Wơ wiăr (tt) : Tít mù; (đgt) Toác
+Wơ wĭr (đgt) : Quây; (dt) Vòng tròn
+Wơp (đgt) : Chộp
+Wơr bĭt (đgt) : Quên
+Wơr dliê (đgt) : Lạc
+Wơr săng, wơr mĭn (tt) : Vô ý thức
+Wơ̆ng wơ̆ng (tt) : Xăm xăm; Thoăn thoắt; Lon ton
+Wơ̆t lĭ (dt) : Vật lý
+Wưč (đgt) : Vạch
+Wưh wưt (tt) : Tiều tụy
+Wưiñ wưiñ (tt) : Chậm rãi
+Wưng (dt) : Thời, quãng
+Wưng đaŏ (đgt) : Tiên đoán
+Wưng ênuk (dt) : Thế hệ
+Wưng krông (dt) : Châu thổ
+Wưô (dt) : Cái còi
+Wưt wưt (tt) : Chậm rì
+Wưu : Vừa
+Y : Từ tố đặt trước tên người, chỉ tên người nam giới (người Êđê)
+Ya (đt) : Gì, sao; Đâu
+Ya djŏ : Việc gì
+Ya kƀah (tt) : Thiếu gì
+Ya lač : Nói gì
+Ya lei (pht) : Những; Chẳng lẽ
+Ya ngă (đt) : Vì sao, tại sao
+Ya nơ̆ng (mnơ̆ng) (đt) : Cái gì
+Ya snăk s’ưn (tht) : Gớm
+Ya ut (dt) : Khổ qua
+Yač (tt) : Nhanh; Rộng (đo diện tích)
+Yač đĭ (đgt) : Tiến triển
+Yah (đgt) : Bạnh; Dang; (dt) Bẹt (góc); (tht) Chà
+Yah yal (tt) : Nhếch nhác, lôi thôi
+Yah ying (tt) : Tả tơi
+Yaih (đgt) : Cời
+Yak (đgt) : Vung; Xoạc
+Yak čuăn (đgt) : Thách giá (cưới)
+Yan (tt) : Mùa, tiết; Thời vụ
+Yan adiê (dt) : Thời tiết, khí hậu
+Yan bhang (dt) : Mùa khô, mùa hạ
+Yan boh mnga (dt) : Mùa thu hoạch
+Yan hjan (dt) : Mùa mưa, mùa thu
+Yan mđiă (dt) : Mùa nắng
+Yan mnga (dt) : Mùa xuân
+Yan puih (dt) : Mùa đông
+Yan wiă (dt) : Mùa gặt
+Yan puôt wiă (dt) : Mùa gặt hái
+Yang (dt) : Thần; Tiên; Giàng
+Yang adiê (tt) : Thần linh
+Yang bâo (dt) : (Thần kêu) Tên bộ chiêng quý
+Yang bưng (dt) : Thần tổ tiên, số phận
+Yang ƀơ̆ng, yang tŭ (tt) : Gở
+Yang ƀuôn (dt) : Xã hội; Nhân dân
+Yang ƀuôn mil čhil (tt) : Xã hội chủ nghĩa
+Yang čư̆ (dt) : Thần núi
+Yang êa (dt) : Thần nước, hà bá
+Yang grăm (dt) : Thiên lôi
+Yang hruê (dt) : Mặt trời, ban ngày
+Yang hruê ƀlĕ (đgt) : Mặt trời mọc
+Yang hruê dơ̆ng (dt) : Buổi trưa (mặt trời đứng bóng)
+Yang hruê lĕ (đgt) : Mặt trời lặn
+Yang hruê wih : Mặt trời xế bóng
+Yang jhat (dt) : Ma quỷ
+Yang lăn (dt) : Thổ công
+Yang liê (dt) : Thần ma quỷ
+Yang mlan (dt) : Mặt trăng
+Yang m’hưp (tht) : Trời ơi
+Yang mya (dt) : Thuồng luồng
+Yao (đgt) : Đánh bắt cá bằng tay
+Yao kan (đgt) : Xúc cá
+Yao kriu (đgt) : Giuốc cá bằng thuốc độc
+Yao siêk (đgt) : Chao
+Yao mbô̆ (đgt) : Đánh cá (bắt cá bằng cách gióm sục bùn, buộc cá phải nổi lên bắt)
+Yap (đgt) : Đếm, tính; Kiểm; Trọng
+Yap ênoh (đgt) : Điểm số
+Yap mklăk (đgt) : Đếm ngược
+Yap mơ̆ng hruê anei : Kể từ hôm nay
+Yap sa dơ̆ng (đgt) : Đếm xuôi
+Yă (dt) : Bà; (đgt) Dạo
+Yăl (đgt) : Kể
+Yăl dliê (đgt) : Kể chuyện; Thổ lộ
+Yăl dliê ti anăp (đgt) : Tường thuật
+Yăm : Chuyển màu
+Yăng (dt) : Tên một loại chum
+Yăng đar (trgt) : Mọi khi, mọi ngày, bình thường
+Yâo (tt) : Đẹp, vui; Nhã
+Yâo kƀăt (tt) : Nhã nhặn, duyên dáng; Kỳ diệu
+Yâo jăk (tt) : Hạnh phúc
+Yâo m’ak (tt) : Đầm ấm; Kỳ diệu
+Ying yông (tt) : Vẹo vọ
+Yĭng (tt) : Nát
+Yĭr yŭr (tt) : Vêu vao
+Yŏng (đgt) : Bắc, nhấc, nâng, bê, bưng; Cất; Chổng; Khiến
+Yŏng đĭ (đgt) : Nhấc lên
+Yŏng đrư̆ (đgt) : Cất vó, kéo vó
+Yŏng jŏng (đgt) : Giơ chân
+Yŏng jŏng kngan (đgt) : Điệu bộ
+Yŏng kang (đgt) : Vểnh môi
+Yŏng kđul (đgt) : Kiễng gót
+Yŏng kčok (đgt) : Nâng cốc
+Yŏng yưl (tt) : Ưu tiên; Vun xới
+Yô (đgt) : Tiếng thưa gửi trân trọng của người lái buôn Lào hay Khmer; Rủ xuống, lả
+Yôk yôk (tt) : Vi vu
+Yông (dt) : Xà nhà
+Yơ yăng (tt) : Tít tắp, dài dặc
+Yơ yơ̆ng (tt) : Tuồn tuột
+Yơ yuăr (tt) : Vều
+Yơ yư̆ (pht) : Nghỉm
+Yơh (trt) : Vậy, chứ, chớ; Đó; Chưa
+Yơh anei (trt) : Đây
+Yơng (dt) : Sư sãi
+Yơr (đgt) : Giơ lên; Tầm
+Yơr kngan (đgt) : Giơ tay, đầu hàng
+Yơ̆ (trt) : Chứ; (tht) Cơ; Mà
+Yơ̆ng (đgt) : Run, rung, xoay; Reo; (tt) Bủn rủn
+Yơ̆ng kboh (đgt) : Rung cảm
+Yơ̆ng mgei (đgt) : Rung chuyển
+Yơ̆ng rơ ri : Run cầm cập
+Yu kič (dt) : Du kích
+Yua (đgt) : Dùng; Sử dụng; Áp dụng
+Yua hjăn (tt) : Dùng riêng, tư hữu
+Yua ngă (đgt) : Thực hành
+Yuăn (dt) : Người Kinh (người Việt)
+Yuê̆ (đgt) : Nhạo
+Yui (dt) : Bọ hà
+Yuh (tt) : Quá thì, đúng tuổi; Rung
+Yuh mnga (dt) : Bản chất
+Yuh yah (đgt) : Lay mạnh người khác (tỏ thái độ bực tức)
+Yun (dt) : Vía
+Yun anei (dt) : Trần gian
+Yuôl (đgt) : Treo
+Yuôm (tt) : Đắt, quý, báu, cần thiết, có ích
+Yuôm bhăn (tt) : Vô giá; Trọng đại; Cần thiết; Quan trọng; Thiêng liêng
+Yuôm yĭn (tt) : Đắt đỏ
+Yuôr (dt) : Cây canh kina rừng
+Yuôt (đgt) : Bám
+Yut yat (tt) : Đung đưa
+Yŭ (dt) : (Hướng) Tây
+Yŭ ngŏ (dt) : Phương hướng
+Yŭk (dt) : Đũng
+Yŭm (tt) : Mắn (nhiều), đông
+Yŭn (đgt) : Rung
+Yŭng jing (đgt) : Đứng sững
+Yŭr (dt) : Dái
+Yŭr tluôn (dt) : Mông, ít
+Yưh yưp (tt) : Chậm chạp; Lụn bại
+Yưl (đgt) : Kênh (kê lên); Nâng
+Yưl đĭ (đgt) : Nâng lên
+Yưp yưp (tt) : Rón rén
+Yư̆ (dt) : Loại lờ bằng ống lồ ô chẻ 1 đầu đan toe miệng phễu; (tt) Về; Héo; Lịm
+Yư̆ bư̆ (đgt) : Nấn ná
+Yư̆ yăm (đgt) : Hôn mê
+Yư̆ yơ̆ng (đgt) : Buông
+Yư̆ yư̆ (tt) : Chầm chậm
 
         if (!state.isAuthReady) {
             console.warn("Authentication not ready. Cannot load initial dictionary data.");
