@@ -49,24 +49,6 @@
             background-color: #1d4ed8; /* blue-700 */
             transform: scale(1.05);
         }
-        .button-secondary {
-            background-color: #f3f4f6; /* gray-100 */
-            color: #1f2937; /* gray-900 */
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .button-secondary:hover {
-            background-color: #e5e7eb; /* gray-200 */
-            transform: scale(1.05);
-        }
-        .button-danger {
-            background-color: #ef4444; /* red-500 */
-            color: white;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .button-danger:hover {
-            background-color: #dc2626; /* red-600 */
-            transform: scale(1.05);
-        }
         .message-box {
             position: fixed;
             top: 20px;
@@ -95,18 +77,29 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+        /* AI Assistant Styles */
+        #aiAssistantButton {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+        #aiChatContainer {
+            position: fixed;
+            bottom: 6rem;
+            right: 2rem;
+            z-index: 998;
+            transition: all 0.3s ease-in-out;
+        }
     </style>
-    <!-- Firebase SDKs -->
+    <!-- Firebase SDKs are no longer needed for the dictionary but kept for potential future auth features -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Expose Firebase and other key modules to the global window object
+        
         window.firebaseModules = {
             initializeApp,
             auth: { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged },
-            firestore: { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs }
         };
     </script>
 </head>
@@ -135,12 +128,12 @@
                     </div>
                     <div class="flex flex-col space-y-4">
                         <label for="outputText" class="font-semibold text-slate-800">Kết quả dịch</label>
-                           <div class="relative w-full">
+                            <div class="relative w-full">
                                 <textarea id="outputText" rows="8" readonly class="w-full p-4 rounded-lg bg-slate-100 border-2 border-slate-200 resize-none" placeholder="Kết quả dịch sẽ hiển thị ở đây..."></textarea>
                                 <button id="speakTranslatedTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition">
                                     <span>🔊</span>
                                 </button>
-                           </div>
+                            </div>
                     </div>
                 </div>
 
@@ -158,18 +151,17 @@
                         <span class="button-text">Tóm tắt</span>
                     </button>
                 </div>
-                   <div id="additionalOutputWrapper" class="mt-6 hidden">
-                    <label for="additionalOutput" class="font-semibold text-slate-800">Kết quả bổ sung</label>
-                    <div class="relative w-full mt-2">
-                        <textarea id="additionalOutput" rows="4" readonly class="w-full p-4 rounded-lg bg-slate-100 border-2 border-slate-200 resize-none"></textarea>
-                        <button id="speakAdditionalTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition">
-                               <span>🔊</span>
-                        </button>
-                    </div>
-                </div>
+                    <div id="additionalOutputWrapper" class="mt-6 hidden">
+                     <label for="additionalOutput" class="font-semibold text-slate-800">Kết quả bổ sung</label>
+                     <div class="relative w-full mt-2">
+                         <textarea id="additionalOutput" rows="4" readonly class="w-full p-4 rounded-lg bg-slate-100 border-2 border-slate-200 resize-none"></textarea>
+                         <button id="speakAdditionalTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition">
+                                <span>🔊</span>
+                         </button>
+                     </div>
+                 </div>
             </div>
             
-            <!-- Generate Paragraph Section -->
             <div class="card rounded-2xl shadow-lg p-6 md:p-8 mt-10">
                 <h2 class="text-2xl font-bold text-slate-900 mb-4 text-center">Tạo Đoạn Văn</h2>
                 <p class="mb-6 text-slate-700 text-center">
@@ -197,9 +189,9 @@
                         <label for="vietParagraphOutput" class="font-semibold text-slate-800">Bản dịch tiếng Việt</label>
                         <div class="relative w-full">
                             <textarea id="vietParagraphOutput" rows="8" readonly class="w-full p-4 rounded-lg bg-slate-100 border-2 border-slate-200 resize-none"></textarea>
-                             <button id="speakVietParagraphButton" title="Phát âm bản dịch" class="absolute bottom-3 right-3 p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition">
+                               <button id="speakVietParagraphButton" title="Phát âm bản dịch" class="absolute bottom-3 right-3 p-2 rounded-full bg-slate-200 hover:bg-slate-300 transition">
                                 <span>🔊</span>
-                             </button>
+                               </button>
                         </div>
                     </div>
                 </div>
@@ -208,7 +200,7 @@
             <div class="mt-10">
                 <div class="mb-4 border-b border-slate-300 flex justify-center">
                     <button data-tab="imageTab" class="tab-button text-lg font-medium py-2 px-6 border-b-2 transition active">Dịch từ ảnh</button>
-                    <button data-tab="dictionaryTab" class="tab-button text-lg font-medium py-2 px-6 border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition">Từ điển cá nhân</button>
+                    <button data-tab="dictionaryTab" class="tab-button text-lg font-medium py-2 px-6 border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition">Mục tra từ</button>
                 </div>
 
                 <div class="tab-content card rounded-2xl shadow-lg p-6 md:p-8">
@@ -225,39 +217,18 @@
                                 <button id="removeImageButton" class="absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-md text-red-500 hover:bg-red-50 text-xl font-bold">&times;</button>
                             </div>
                         </div>
-                        <button id="translateImageButton" class="w-full flex items-center justify-center gap-2 px-8 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-transform transform hover:scale-105 disabled:bg-slate-400 disabled:cursor-not-allowed disabled:transform-none">
+                        <button id="translateImageButton" class="w-full flex items-center justify-center gap-2 px-8 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition-transform transform hover:scale-105 disabled:bg-slate-400 disabled:cursor-not-allowed disabled:transform-none" disabled>
                             <span class="button-icon">📷</span>
                             <span class="button-text">Dịch từ ảnh</span>
                         </button>
                     </div>
 
                     <div id="dictionaryTab" class="hidden space-y-6">
-                        <p class="text-slate-700">Xây dựng từ điển của riêng bạn. Các bản dịch bạn thêm vào đây sẽ được ưu tiên sử dụng, giúp cải thiện độ chính xác theo thời gian.</p>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-3">Thêm từ mới</h3>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <input type="text" id="newEdeText" placeholder="Nhập từ tiếng Ê-đê" class="flex-1 p-3 rounded-lg border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                                <input type="text" id="newVietText" placeholder="Nhập nghĩa tiếng Việt" class="flex-1 p-3 rounded-lg border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
-                                <button id="addTermButton" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105">Thêm</button>
-                            </div>
-                        </div>
-                        
+                        <p class="text-slate-700">Đây là danh sách từ vựng nội bộ được tích hợp sẵn trong ứng dụng. Các từ này sẽ được ưu tiên khi dịch.</p>
                         <div class="mt-6 pt-4 border-t border-slate-200">
-                            <h3 class="text-lg font-semibold mb-3">Tải từ điển từ File</h3>
-                            <p class="text-slate-600 text-sm mb-2">Chọn một file CSV (.csv) hoặc JSON (.json) chứa các cặp từ điển của bạn. Định dạng file CSV: <code class="bg-slate-100 p-1 rounded">"Từ Ê-đê","Nghĩa tiếng Việt"</code>. Định dạng file JSON: <code class="bg-slate-100 p-1 rounded">[{ "ede": "từ Ê-đê", "viet": "từ tiếng Việt" }]</code></p>
-                            <div class="flex flex-col sm:flex-row gap-4 items-center">
-                                <input type="file" id="loadDictionaryFileInput" accept=".csv, .json" class="flex-1 p-2 rounded-lg border-2 border-slate-200">
-                                <button id="loadDictionaryFromFileButton" class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105">
-                                    <span class="button-icon">📂</span>
-                                    <span class="button-text">Tải từ File</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 pt-4 border-t border-slate-200">
-                            <h3 class="lg font-semibold mb-3">Các bản dịch của bạn</h3>
-                            <div id="customTranslationsList" class="max-h-80 overflow-y-auto space-y-3 pr-2">
-                                <p class="text-slate-500 text-center py-4" id="dictionaryPlaceholder">Từ điển cá nhân của bạn đang trống.</p>
+                            <h3 class="lg font-semibold mb-3">Danh sách từ vựng nội bộ</h3>
+                            <div id="internalDictionaryList" class="max-h-96 overflow-y-auto space-y-3 pr-2">
+                                <p class="text-slate-500 text-center py-4" id="dictionaryPlaceholder">Đang tải từ điển...</p>
                             </div>
                         </div>
                     </div>
@@ -266,413 +237,43 @@
         </main>
         
         <footer class="text-center mt-10 text-slate-500 text-sm">
-            <p>Phát triển bởi Gemini &copy; 2025</p>
-            <p id="userIdDisplay" class="mt-1 opacity-70">Đang chờ xác thực người dùng...</p>
+            <p>Phát triển bởi Bằng &copy; 2025</p>
         </footer>
+    </div>
+    
+    <!-- AI Assistant -->
+    <button id="aiAssistantButton" title="Trợ lý AI Ngôn ngữ" class="w-16 h-16 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center text-3xl hover:bg-blue-700 transition-transform transform hover:scale-110">
+        👮
+    </button>
+    <div id="aiChatContainer" class="w-full max-w-md bg-white rounded-2xl shadow-2xl card hidden origin-bottom-right">
+        <div class="p-4 border-b flex justify-between items-center">
+            <h3 class="text-lg font-bold">Trợ lý AI Ngôn ngữ</h3>
+            <button id="closeChatButton" class="text-2xl font-bold text-slate-500 hover:text-slate-800">&times;</button>
+        </div>
+        <div id="chatMessages" class="p-4 h-80 overflow-y-auto space-y-4">
+             <div class="flex items-start gap-3">
+                <div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0">🤖</div>
+                <div class="bg-slate-100 p-3 rounded-lg">
+                    <p class="text-sm">Xin chào! Tôi có thể giúp gì cho bạn về ngôn ngữ và văn hóa Ê-đê?</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 border-t">
+            <div class="flex gap-2">
+                <input type="text" id="chatInput" placeholder="Hỏi tôi bất cứ điều gì..." class="flex-1 p-3 rounded-lg border-2 border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                <button id="sendChatButton" class="px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-transform transform hover:scale-105">Gửi</button>
+            </div>
+        </div>
     </div>
 
     <!-- Custom Message Box -->
     <div id="messageBox" class="message-box"></div>
 
-<script>
+<script type="module">
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- GLOBAL STATE & UI ELEMENTS ---
-    const state = {
-        isAuthReady: false,
-        isLoading: false,
-        currentTab: 'imageTab',
-        userId: null,
-        dictionary: [],
-        selectedImageFile: null,
-        recognition: null,
-        isRecording: false,
-        speechSynthesisUtterance: null,
-    };
-
-    const ui = {
-        inputText: document.getElementById('inputText'),
-        outputText: document.getElementById('outputText'),
-        additionalOutput: document.getElementById('additionalOutput'),
-        additionalOutputWrapper: document.getElementById('additionalOutputWrapper'),
-        translateButton: document.getElementById('translateButton'),
-        generateExamplesButton: document.getElementById('generateExamplesButton'),
-        summarizeExplainButton: document.getElementById('summarizeExplainButton'),
-        recordButton: document.getElementById('recordButton'),
-        speakTranslatedTextButton: document.getElementById('speakTranslatedTextButton'),
-        speakAdditionalTextButton: document.getElementById('speakAdditionalTextButton'),
-        tabs: document.querySelectorAll('.tab-button'),
-        tabContents: document.querySelectorAll('.tab-content > div'),
-        imageInput: document.getElementById('imageInput'),
-        dropZone: document.getElementById('dropZone'),
-        imagePlaceholder: document.getElementById('imagePlaceholder'),
-        imagePreviewWrapper: document.getElementById('imagePreviewWrapper'),
-        imagePreview: document.getElementById('imagePreview'),
-        removeImageButton: document.getElementById('removeImageButton'),
-        translateImageButton: document.getElementById('translateImageButton'),
-        newEdeText: document.getElementById('newEdeText'),
-        newVietText: document.getElementById('newVietText'),
-        addTermButton: document.getElementById('addTermButton'),
-        customTranslationsList: document.getElementById('customTranslationsList'),
-        dictionaryPlaceholder: document.getElementById('dictionaryPlaceholder'),
-        userIdDisplay: document.getElementById('userIdDisplay'),
-        paragraphKeywords: document.getElementById('paragraphKeywords'),
-        generateParagraphButton: document.getElementById('generateParagraphButton'),
-        paragraphOutputWrapper: document.getElementById('paragraphOutputWrapper'),
-        edeParagraphOutput: document.getElementById('edeParagraphOutput'),
-        vietParagraphOutput: document.getElementById('vietParagraphOutput'),
-        speakEdeParagraphButton: document.getElementById('speakEdeParagraphButton'),
-        speakVietParagraphButton: document.getElementById('speakVietParagraphButton'),
-        loadDictionaryFileInput: document.getElementById('loadDictionaryFileInput'),
-        loadDictionaryFromFileButton: document.getElementById('loadDictionaryFromFileButton'),
-        messageBox: document.getElementById('messageBox'),
-    };
-
-    // --- FIREBASE INITIALIZATION & AUTHENTICATION ---
-    let app, db, auth;
-    async function initializeFirebase() {
-        try {
-            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-            const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-            const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-            if (!firebaseConfig.projectId) {
-                showMessage("Lỗi: Cấu hình Firebase không hợp lệ. Vui lòng kiểm tra lại.");
-                return;
-            }
-
-            const { initializeApp } = window.firebaseModules;
-            app = initializeApp(firebaseConfig);
-            
-            const { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } = window.firebaseModules.auth;
-            auth = getAuth(app);
-            
-            const { getFirestore } = window.firebaseModules.firestore;
-            db = getFirestore(app);
-
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    state.userId = user.uid;
-                    ui.userIdDisplay.textContent = `ID Người dùng: ${user.uid}`;
-                    state.isAuthReady = true;
-                    initDictionaryListener();
-                    // Load initial dictionary data from the .docx file content
-                    loadInitialDictionaryData();
-                } else {
-                    signIn(initialAuthToken);
-                }
-            });
-        } catch (error) {
-            console.error("Firebase Initialization Error:", error);
-            showMessage(`Lỗi khởi tạo Firebase: ${error.message}`, 5000);
-        }
-    }
-    
-    async function signIn(initialAuthToken) {
-        try {
-            const { signInAnonymously, signInWithCustomToken } = window.firebaseModules.auth;
-            if (initialAuthToken) {
-                await signInWithCustomToken(auth, initialAuthToken);
-            } else {
-                await signInAnonymously(auth);
-            }
-        } catch (error) {
-            console.error("Firebase Sign-in Error:", error);
-            showMessage(`Lỗi xác thực: ${error.message}`, 5000);
-            ui.userIdDisplay.textContent = `Lỗi xác thực: ${error.message}`;
-        }
-    }
-
-    // --- UTILITY FUNCTIONS ---
-    function showMessage(message, duration = 3000) {
-        ui.messageBox.textContent = message;
-        ui.messageBox.classList.add('show');
-        setTimeout(() => {
-            ui.messageBox.classList.remove('show');
-        }, duration);
-    }
-
-    function setLoadingState(button, isLoading, originalText) {
-        const textSpan = button.querySelector('.button-text');
-        const iconSpan = button.querySelector('.button-icon');
-        
-        if (isLoading) {
-            state.isLoading = true;
-            button.disabled = true;
-            textSpan.textContent = 'Đang xử lý...';
-            iconSpan.innerHTML = '<div class="loader"></div>';
-        } else {
-            state.isLoading = false;
-            button.disabled = false;
-            textSpan.textContent = originalText;
-            switch(originalText) {
-                case 'Dịch': iconSpan.innerHTML = '✨'; break;
-                case 'Tạo ví dụ': iconSpan.innerHTML = '💡'; break;
-                case 'Tóm tắt': iconSpan.innerHTML = '📝'; break;
-                case 'Tạo Đoạn Văn': iconSpan.innerHTML = '📖'; break;
-                case 'Dịch từ ảnh': iconSpan.innerHTML = '📷'; break;
-                case 'Tải từ File': iconSpan.innerHTML = '📂'; break;
-            }
-        }
-    }
-    
-    function renderDictionary() {
-        ui.customTranslationsList.innerHTML = '';
-        if (state.dictionary.length === 0) {
-            ui.customTranslationsList.appendChild(ui.dictionaryPlaceholder);
-            ui.dictionaryPlaceholder.classList.remove('hidden');
-        } else {
-            ui.dictionaryPlaceholder.classList.add('hidden');
-            state.dictionary.forEach(term => {
-                const item = document.createElement('div');
-                item.className = 'dictionary-item flex justify-between items-center p-3 rounded-lg border border-slate-200 transition-all duration-300';
-                item.innerHTML = `
-                    <div>
-                        <p class="font-semibold text-slate-800">${term.ede}</p>
-                        <p class="text-sm text-slate-500">${term.viet}</p>
-                    </div>
-                    <button data-id="${term.id}" class="delete-term-btn text-red-500 hover:text-red-700 p-1 rounded-full text-lg">&times;</button>
-                `;
-                ui.customTranslationsList.appendChild(item);
-            });
-        }
-    }
-
-    // --- GEMINI API CALLS ---
-    async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20') {
-        const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-        let chatHistory = [];
-        let parts = [{ text: prompt }];
-
-        if (imageData) {
-            parts.push({
-                inlineData: {
-                    mimeType: imageData.mimeType,
-                    data: imageData.data
-                }
-            });
-        }
-        chatHistory.push({ role: "user", parts: parts });
-        const payload = { contents: chatHistory };
-
-        let retryCount = 0;
-        const maxRetries = 3;
-        while (retryCount < maxRetries) {
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    if (response.status === 429) {
-                        const delay = Math.pow(2, retryCount) * 1000 + Math.random() * 1000;
-                        console.warn(`Throttled. Retrying in ${delay}ms...`);
-                        await new Promise(res => setTimeout(res, delay));
-                        retryCount++;
-                        continue;
-                    }
-                    const errorData = await response.json();
-                    throw new Error(`Lỗi API: ${response.status} - ${errorData.error.message || 'Lỗi không xác định'}`);
-                }
-
-                const result = await response.json();
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    return result.candidates[0].content.parts[0].text;
-                } else {
-                    throw new Error("Cấu trúc phản hồi API không mong muốn.");
-                }
-            } catch (error) {
-                console.error("Lỗi khi gọi API Gemini:", error);
-                if (retryCount >= maxRetries - 1) {
-                    throw error;
-                }
-                retryCount++;
-            }
-        }
-    }
-
-    // --- MAIN APPLICATION LOGIC ---
-    async function handleTranslate() {
-        if (state.isLoading || !ui.inputText.value.trim()) return;
-        setLoadingState(ui.translateButton, true, 'Dịch');
-        ui.outputText.value = '';
-        ui.additionalOutputWrapper.classList.add('hidden');
-        
-        const inputTextLower = ui.inputText.value.trim().toLowerCase();
-
-        const customMatch = state.dictionary.find(t => t.ede.toLowerCase() === inputTextLower || t.viet.toLowerCase() === inputTextLower);
-        if (customMatch) {
-            const translatedText = customMatch.ede.toLowerCase() === inputTextLower ? customMatch.viet : customMatch.ede;
-            ui.outputText.value = translatedText + " (từ từ điển cá nhân)";
-            setLoadingState(ui.translateButton, false, 'Dịch');
-            return;
-        }
-        
-        const prompt = `Bạn là một công cụ dịch thuật chuyên nghiệp. Hãy dịch văn bản sau đây giữa tiếng Việt và tiếng Ê-đê. Nếu văn bản là tiếng Việt, hãy dịch sang tiếng Ê-đê. Nếu văn bản là tiếng Ê-đê, hãy dịch sang tiếng Việt. Chỉ trả về văn bản đã dịch, không thêm bất kỳ giải thích nào. Văn bản cần dịch: ${ui.inputText.value}`;
-
-        try {
-            const translatedText = await callGeminiAPI(prompt);
-            ui.outputText.value = translatedText;
-        } catch (error) {
-            ui.outputText.value = `Đã xảy ra lỗi trong quá trình dịch: ${error.message}`;
-            showMessage(`Lỗi dịch: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.translateButton, false, 'Dịch');
-        }
-    }
-
-    async function handleGenerateExamples() {
-        if (state.isLoading || !ui.outputText.value.trim() || ui.outputText.value.includes("Kết quả dịch sẽ hiển thị ở đây")) return;
-        setLoadingState(ui.generateExamplesButton, true, 'Tạo ví dụ');
-        ui.additionalOutput.value = '';
-        
-        const prompt = `Tạo 3 câu ví dụ sử dụng từ hoặc cụm từ "${ui.outputText.value}" trong ngữ cảnh khác nhau. Các câu ví dụ này nên được dịch sang ngôn ngữ còn lại (nếu từ gốc là tiếng Việt, ví dụ là tiếng Ê-đê và ngược lại). Chỉ trả về các câu ví dụ, mỗi câu trên một dòng mới, không thêm bất kỳ giải thích nào.`;
-
-        try {
-            const examples = await callGeminiAPI(prompt);
-            ui.additionalOutput.value = examples;
-            ui.additionalOutputWrapper.classList.remove('hidden');
-        } catch (error) {
-            ui.additionalOutput.value = `Đã xảy ra lỗi khi tạo ví dụ: ${error.message}`;
-            showMessage(`Lỗi tạo ví dụ: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
-        }
-    }
-
-    async function handleSummarize() {
-        if (state.isLoading || !ui.outputText.value.trim() || ui.outputText.value.includes("Kết quả dịch sẽ hiển thị ở đây")) return;
-        setLoadingState(ui.summarizeExplainButton, true, 'Tóm tắt');
-        ui.additionalOutput.value = '';
-
-        const prompt = `Tóm tắt hoặc giải thích ngắn gọn ý nghĩa của văn bản sau: "${ui.outputText.value}". Nếu văn bản phức tạp, hãy giải thích các điểm chính. Chỉ trả về phần tóm tắt/giải thích, không thêm bất kỳ giải thích nào khác.`;
-
-        try {
-            const summary = await callGeminiAPI(prompt);
-            ui.additionalOutput.value = summary;
-            ui.additionalOutputWrapper.classList.remove('hidden');
-        } catch (error) {
-            ui.additionalOutput.value = `Đã xảy ra lỗi khi tóm tắt/giải thích: ${error.message}`;
-            showMessage(`Lỗi tóm tắt: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.summarizeExplainButton, false, 'Tóm tắt');
-        }
-    }
-    
-    // --- PARAGRAPH GENERATION LOGIC ---
-    async function handleGenerateParagraph() {
-        if (state.isLoading || !ui.paragraphKeywords.value.trim()) return;
-        setLoadingState(ui.generateParagraphButton, true, 'Tạo Đoạn Văn');
-        ui.edeParagraphOutput.value = '';
-        ui.vietParagraphOutput.value = '';
-        ui.paragraphOutputWrapper.classList.add('hidden');
-
-        const prompt = `Tạo một đoạn văn khoảng 50-70 từ bằng tiếng Ê-đê về chủ đề: "${ui.paragraphKeywords.value}". Sau đó, dịch đoạn văn đó sang tiếng Việt. Sử dụng định dạng sau để dễ dàng phân tách: 
-        Tiếng Ê-đê:
-        [Đoạn văn tiếng Ê-đê]
-
-        Tiếng Việt:
-        [Đoạn văn tiếng Việt]`;
-
-        try {
-            const rawResponse = await callGeminiAPI(prompt);
-            const edeParagraph = rawResponse.match(/Tiếng Ê-đê:\n([\s\S]*?)\n\nTiếng Việt:/i);
-            const vietParagraph = rawResponse.match(/Tiếng Việt:\n([\s\S]*)/i);
-
-            if (edeParagraph && vietParagraph) {
-                ui.edeParagraphOutput.value = edeParagraph[1].trim();
-                ui.vietParagraphOutput.value = vietParagraph[1].trim();
-            } else {
-                // Fallback if parsing fails
-                ui.edeParagraphOutput.value = rawResponse;
-                ui.vietParagraphOutput.value = 'Không thể phân tách bản dịch. Vui lòng thử lại hoặc điều chỉnh từ khóa.';
-            }
-
-            ui.paragraphOutputWrapper.classList.remove('hidden');
-        } catch (error) {
-            ui.edeParagraphOutput.value = `Đã xảy ra lỗi khi tạo đoạn văn: ${error.message}`;
-            ui.vietParagraphOutput.value = `Đã xảy ra lỗi khi tạo đoạn văn: ${error.message}`;
-            showMessage(`Lỗi tạo đoạn văn: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.generateParagraphButton, false, 'Tạo Đoạn Văn');
-        }
-    }
-
-
-    // --- IMAGE TRANSLATION LOGIC ---
-    function handleImageSelection(file) {
-        if (file && file.type.startsWith('image/')) {
-            state.selectedImageFile = file;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                ui.imagePreview.src = e.target.result;
-                ui.imagePlaceholder.classList.add('hidden');
-                ui.imagePreviewWrapper.classList.remove('hidden');
-                ui.translateImageButton.disabled = false;
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    async function handleTranslateImage() {
-        if(state.isLoading || !state.selectedImageFile) return;
-        setLoadingState(ui.translateImageButton, true, 'Dịch từ ảnh');
-        ui.outputText.value = '';
-        ui.additionalOutputWrapper.classList.add('hidden');
-
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-            const base64Image = reader.result.split(',')[1];
-            const mimeType = state.selectedImageFile.type;
-
-            // Prompt has been updated for better OCR and translation
-            const prompt = `Trích xuất tất cả văn bản từ hình ảnh này. Sau đó, dịch văn bản đó sang tiếng Việt nếu văn bản gốc là tiếng Ê-đê, hoặc sang tiếng Ê-đê nếu văn bản gốc là tiếng Việt. Nếu không phải cả hai, chỉ cung cấp văn bản đã trích xuất. Chỉ xuất ra văn bản đã dịch hoặc văn bản đã trích xuất nếu không thể dịch. Không thêm bất kỳ lời giải thích nào khác.`;
-            
-            try {
-                const translatedText = await callGeminiAPI(prompt, { data: base64Image, mimeType: mimeType });
-                ui.outputText.value = translatedText;
-            } catch (error) {
-                ui.outputText.value = `Đã xảy ra lỗi khi dịch từ ảnh: ${error.message}`;
-                showMessage(`Lỗi dịch ảnh: ${error.message}`, 5000);
-            } finally {
-                setLoadingState(ui.translateImageButton, false, 'Dịch từ ảnh');
-            }
-        };
-        reader.readAsDataURL(state.selectedImageFile);
-    }
-    
-    // --- FIREBASE DICTIONARY FUNCTIONS ---
-    function initDictionaryListener() {
-        if (!db || !state.userId || !state.isAuthReady) {
-            console.warn("Firestore or User ID not ready for dictionary listener.");
-            return;
-        }
-        const { collection, onSnapshot } = window.firebaseModules.firestore;
-        const customDictionaryRef = collection(db, `artifacts/${__app_id}/users/${state.userId}/customDictionary`);
-        
-        onSnapshot(customDictionaryRef, (snapshot) => {
-            state.dictionary = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            renderDictionary();
-        }, (error) => {
-            console.error("Error listening to dictionary changes:", error);
-            showMessage(`Lỗi tải từ điển: ${error.message}`, 5000);
-        });
-    }
-    
-               // Dictionary Lookup States
-            const [dictionaryWord, setDictionaryWord] = useState('');
-            const [dictionaryResult, setDictionaryResult] = useState('');
-            const [isLoadingDictionary, setIsLoadingDictionary] = useState(false);
-            const [sourceDictionaryLang, setSourceDictionaryLang] = useState('ede');
-            const [targetDictionaryLang, setTargetDictionaryLang] = useState('vietnamese');
-
-            // Hardcoded Êđê-Vietnamese dictionary for demonstration
-            const edeDictionary = useMemo(() => [
+    // --- INTERNAL DICTIONARY DATA ---
+    const internalDictionary = [
                 { "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
                 { "ede": "Abăn", "meanings": [{ "type": "dt", "vietnamese": "Cái chăn (mền)" }] },
                 { "ede": "Abŭ", "meanings": [{ "type": "dt", "vietnamese": "Cái hũ" }] },
@@ -4675,302 +4276,359 @@ document.addEventListener('DOMContentLoaded', () => {
                 { "ede": "Yư̆ bư̆", "meanings": [{ "type": "đgt", "vietnamese": "Nấn ná" }] },
                 { "ede": "Yư̆ yăm", "meanings": [{ "type": "đgt", "vietnamese": "Hôn mê" }] },
                 { "ede": "Yư̆ yơ̆ng", "meanings": [{ "type": "đgt", "vietnamese": "Buông" }] },
-                { "ede": "Yư̆ yư̆", "meanings": [{ "type": "tt", "vietnamese": "Chầm chậm" }] }
-            ], []);
-          
-        if (!state.isAuthReady) {
-            console.warn("Authentication not ready. Cannot load initial dictionary data.");
-            return;
-        }
+                { "ede": "Yư̆ yư̆", "meanings": [{ "type": "tt", "vietnamese": "Chầm chậm" }] },
+    ];
 
-        const lines = docxContent.split('\n').map(line => line.trim()).filter(line => line.length > 0 && !line.startsWith('Từ,Nghĩa') && !line.startsWith('A,') && !line.startsWith('B,'));
-        const newTerms = [];
-        lines.forEach(line => {
-            const parts = line.split(',');
-            if (parts.length >= 2) {
-                const ede = parts[0].trim();
-                const viet = parts.slice(1).join(',').trim();
-                if (ede && viet) {
-                    newTerms.push({ ede, viet });
-                }
-            }
-        });
-        
-        try {
-            const { collection, getDocs, addDoc } = window.firebaseModules.firestore;
-            const customDictionaryRef = collection(db, `artifacts/${__app_id}/users/${state.userId}/customDictionary`);
-            const existingDocsSnapshot = await getDocs(customDictionaryRef);
-            const existingTerms = new Set(existingDocsSnapshot.docs.map(doc => `${doc.data().ede.toLowerCase()}|${doc.data().viet.toLowerCase()}`));
+    // --- GLOBAL STATE & UI ELEMENTS ---
+    const state = {
+        isLoading: false,
+        isChatLoading: false,
+    };
 
-            let addedCount = 0;
-            const promises = newTerms.map(async term => {
-                const termKey = `${term.ede.toLowerCase()}|${term.viet.toLowerCase()}`;
-                if (!existingTerms.has(termKey)) {
-                    await addDoc(customDictionaryRef, { ede: term.ede, viet: term.viet, timestamp: Date.now() });
-                    addedCount++;
-                    existingTerms.add(termKey); // Add to local set to prevent duplicates from this batch
-                }
-            });
+    const ui = {
+        // Main App UI
+        inputText: document.getElementById('inputText'),
+        outputText: document.getElementById('outputText'),
+        additionalOutput: document.getElementById('additionalOutput'),
+        additionalOutputWrapper: document.getElementById('additionalOutputWrapper'),
+        translateButton: document.getElementById('translateButton'),
+        generateExamplesButton: document.getElementById('generateExamplesButton'),
+        summarizeExplainButton: document.getElementById('summarizeExplainButton'),
+        recordButton: document.getElementById('recordButton'),
+        speakTranslatedTextButton: document.getElementById('speakTranslatedTextButton'),
+        speakAdditionalTextButton: document.getElementById('speakAdditionalTextButton'),
+        tabs: document.querySelectorAll('.tab-button'),
+        tabContents: document.querySelectorAll('.tab-content > div'),
+        imageInput: document.getElementById('imageInput'),
+        dropZone: document.getElementById('dropZone'),
+        imagePlaceholder: document.getElementById('imagePlaceholder'),
+        imagePreviewWrapper: document.getElementById('imagePreviewWrapper'),
+        imagePreview: document.getElementById('imagePreview'),
+        removeImageButton: document.getElementById('removeImageButton'),
+        translateImageButton: document.getElementById('translateImageButton'),
+        internalDictionaryList: document.getElementById('internalDictionaryList'),
+        dictionaryPlaceholder: document.getElementById('dictionaryPlaceholder'),
+        paragraphKeywords: document.getElementById('paragraphKeywords'),
+        generateParagraphButton: document.getElementById('generateParagraphButton'),
+        paragraphOutputWrapper: document.getElementById('paragraphOutputWrapper'),
+        edeParagraphOutput: document.getElementById('edeParagraphOutput'),
+        vietParagraphOutput: document.getElementById('vietParagraphOutput'),
+        speakEdeParagraphButton: document.getElementById('speakEdeParagraphButton'),
+        speakVietParagraphButton: document.getElementById('speakVietParagraphButton'),
+        messageBox: document.getElementById('messageBox'),
+        // AI Assistant UI
+        aiAssistantButton: document.getElementById('aiAssistantButton'),
+        aiChatContainer: document.getElementById('aiChatContainer'),
+        closeChatButton: document.getElementById('closeChatButton'),
+        chatMessages: document.getElementById('chatMessages'),
+        chatInput: document.getElementById('chatInput'),
+        sendChatButton: document.getElementById('sendChatButton'),
+    };
 
-            await Promise.all(promises);
-            console.log(`Successfully added ${addedCount} new terms from the file.`);
-            showMessage(`Đã thêm thành công ${addedCount} từ vào từ điển cá nhân!`, 3000);
-        } catch (error) {
-            console.error("Error loading initial dictionary data:", error);
-            showMessage(`Lỗi khi tải từ điển từ file: ${error.message}`, 5000);
-        }
+    // --- UTILITY FUNCTIONS ---
+    function showMessage(message, duration = 3000) {
+        ui.messageBox.textContent = message;
+        ui.messageBox.classList.add('show');
+        setTimeout(() => {
+            ui.messageBox.classList.remove('show');
+        }, duration);
     }
 
-
-    async function handleAddTerm() {
-        if (!state.isAuthReady) {
-            showMessage("Chưa sẵn sàng để thêm từ. Vui lòng thử lại sau.", 3000);
-            return;
-        }
-        const ede = ui.newEdeText.value.trim();
-        const viet = ui.newVietText.value.trim();
-        if (ede && viet) {
-            // Check for duplicates before adding
-            const isDuplicate = state.dictionary.some(term => 
-                term.ede.toLowerCase() === ede.toLowerCase() &&
-                term.viet.toLowerCase() === viet.toLowerCase()
-            );
-
-            if (isDuplicate) {
-                showMessage("Từ này đã có trong từ điển của bạn.", 3000);
-                return;
-            }
-
-            try {
-                const { collection, addDoc } = window.firebaseModules.firestore;
-                const customDictionaryRef = collection(db, `artifacts/${__app_id}/users/${state.userId}/customDictionary`);
-                await addDoc(customDictionaryRef, { ede, viet, timestamp: Date.now() });
-                ui.newEdeText.value = '';
-                ui.newVietText.value = '';
-                showMessage("Đã thêm từ mới vào từ điển cá nhân!", 2000);
-            } catch (error) {
-                console.error("Error adding document: ", error);
-                showMessage(`Lỗi khi thêm từ: ${error.message}`, 5000);
-            }
+    function setLoadingState(button, isLoading, originalText) {
+        const textSpan = button.querySelector('.button-text');
+        const iconSpan = button.querySelector('.button-icon');
+        
+        if (isLoading) {
+            state.isLoading = true;
+            button.disabled = true;
+            if (textSpan) textSpan.textContent = 'Đang xử lý...';
+            if (iconSpan) iconSpan.innerHTML = '<div class="loader"></div>';
         } else {
-            showMessage("Vui lòng nhập cả từ Ê-đê và nghĩa tiếng Việt.", 3000);
-        }
-    }
-
-    async function handleDeleteTerm(e) {
-        if (!state.isAuthReady) {
-            showMessage("Chưa sẵn sàng để xóa từ. Vui lòng thử lại sau.", 3000);
-            return;
-        }
-        if (e.target.classList.contains('delete-term-btn')) {
-            const id = e.target.dataset.id;
-            try {
-                const { doc, deleteDoc } = window.firebaseModules.firestore;
-                const termRef = doc(db, `artifacts/${__app_id}/users/${state.userId}/customDictionary`, id);
-                await deleteDoc(termRef);
-                showMessage("Đã xóa từ khỏi từ điển cá nhân.", 2000);
-            } catch (error) {
-                console.error("Error removing document: ", error);
-                showMessage(`Lỗi khi xóa từ: ${error.message}`, 5000);
-            }
-        }
-    }
-
-    async function handleLoadDictionaryFromFile() {
-        if (!state.isAuthReady) {
-            showMessage("Chưa sẵn sàng để tải từ điển. Vui lòng thử lại sau.", 3000);
-            return;
-        }
-        const file = ui.loadDictionaryFileInput.files[0];
-        if (!file) {
-            showMessage("Vui lòng chọn một file để tải.", 3000);
-            return;
-        }
-        
-        setLoadingState(ui.loadDictionaryFromFileButton, true, 'Tải từ File');
-        const fileType = file.name.split('.').pop().toLowerCase();
-        
-        const reader = new FileReader();
-        reader.onload = async (e) => {
-            try {
-                let loadedData = [];
-                if (fileType === 'json') {
-                    loadedData = JSON.parse(e.target.result);
-                    if (!Array.isArray(loadedData) || !loadedData.every(item => item.ede && item.viet)) {
-                        throw new Error("Invalid JSON format. Expected an array of objects with 'ede' and 'viet' properties.");
-                    }
-                } else if (fileType === 'csv') {
-                    const lines = e.target.result.split('\n').filter(line => line.trim() !== '');
-                    if (lines[0].trim().toLowerCase() !== '"từ Ê-đê","nghĩa tiếng Việt"' && lines[0].trim().toLowerCase() !== 'từ Ê-đê,nghĩa tiếng Việt') {
-                        throw new Error("Invalid CSV format. Header should be 'Từ Ê-đê,Nghĩa tiếng Việt'.");
-                    }
-                    lines.slice(1).forEach(line => {
-                        const [ede, viet] = line.split(/,"|",/);
-                        if (ede && viet) {
-                            loadedData.push({ ede: ede.replace(/"/g, '').trim(), viet: viet.replace(/"/g, '').trim() });
-                        }
-                    });
-                } else {
-                    throw new Error("Unsupported file type. Please use .json or .csv.");
+            state.isLoading = false;
+            button.disabled = false;
+            if (textSpan) textSpan.textContent = originalText;
+            if (iconSpan) {
+                switch(originalText) {
+                    case 'Dịch': iconSpan.innerHTML = '✨'; break;
+                    case 'Tạo ví dụ': iconSpan.innerHTML = '💡'; break;
+                    case 'Tóm tắt': iconSpan.innerHTML = '📝'; break;
+                    case 'Tạo Đoạn Văn': iconSpan.innerHTML = '📖'; break;
+                    case 'Dịch từ ảnh': iconSpan.innerHTML = '📷'; break;
                 }
-
-                const { collection, addDoc } = window.firebaseModules.firestore;
-                const customDictionaryRef = collection(db, `artifacts/${__app_id}/users/${state.userId}/customDictionary`);
-                let addedCount = 0;
-                
-                const promises = loadedData.map(async newItem => {
-                    const isDuplicate = state.dictionary.some(existingItem =>
-                        existingItem.ede.toLowerCase() === newItem.ede.toLowerCase() &&
-                        existingItem.viet.toLowerCase() === newItem.viet.toLowerCase()
-                    );
-                    if (!isDuplicate) {
-                        await addDoc(customDictionaryRef, { ede: newItem.ede, viet: newItem.viet, timestamp: Date.now() });
-                        addedCount++;
-                    }
-                });
-
-                await Promise.all(promises);
-                showMessage(`Đã tải thành công ${addedCount} từ vào từ điển!`, 3000);
-
-            } catch (error) {
-                showMessage(`Lỗi khi đọc file: ${error.message}. Vui lòng đảm bảo file có định dạng hợp lệ.`, 5000);
-                console.error("Error parsing dictionary file:", error);
-            } finally {
-                setLoadingState(ui.loadDictionaryFromFileButton, false, 'Tải từ File');
             }
-        };
-        reader.onerror = () => {
-            showMessage("Không thể đọc file. Vui lòng thử lại.", 5000);
-            setLoadingState(ui.loadDictionaryFromFileButton, false, 'Tải từ File');
-        };
-        reader.readAsText(file);
+        }
     }
     
-    // --- SPEECH & TEXT-TO-SPEECH ---
-    function setupSpeechRecognition() {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SpeechRecognition) {
-            ui.recordButton.disabled = true;
-            ui.recordButton.title = "Trình duyệt không hỗ trợ ghi âm giọng nói.";
-            showMessage("Trình duyệt của bạn không hỗ trợ ghi âm giọng nói.", 5000);
+    function renderInternalDictionary() {
+        ui.internalDictionaryList.innerHTML = '';
+        if (internalDictionary.length === 0) {
+            ui.dictionaryPlaceholder.textContent = 'Từ điển nội bộ trống.';
+            ui.internalDictionaryList.appendChild(ui.dictionaryPlaceholder);
+        } else {
+            const sortedDictionary = [...internalDictionary].sort((a, b) => a.ede.localeCompare(b.ede));
+            sortedDictionary.forEach(term => {
+                const meaningsHtml = term.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; ');
+                const item = document.createElement('div');
+                item.className = 'dictionary-item p-3 rounded-lg border border-slate-200';
+                item.innerHTML = `
+                    <div>
+                        <p class="font-semibold text-slate-800">${term.ede}</p>
+                        <p class="text-sm text-slate-500">${meaningsHtml}</p>
+                    </div>
+                `;
+                ui.internalDictionaryList.appendChild(item);
+            });
+        }
+    }
+
+    // --- GEMINI API CALLS ---
+    async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20') {
+        const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k"; // API key is provided by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+        let parts = [{ text: prompt }];
+
+        if (imageData) {
+            parts.push({
+                inlineData: { mimeType: imageData.mimeType, data: imageData.data }
+            });
+        }
+        
+        const payload = { contents: [{ role: "user", parts: parts }] };
+        
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Lỗi API: ${response.status} - ${errorData.error?.message || 'Lỗi không xác định'}`);
+            }
+
+            const result = await response.json();
+            if (result.candidates && result.candidates[0]?.content?.parts?.[0]?.text) {
+                return result.candidates[0].content.parts[0].text;
+            } else {
+                const blockReason = result.candidates?.[0]?.finishReason;
+                if (blockReason === 'SAFETY' || blockReason === 'OTHER') {
+                     throw new Error(`Yêu cầu bị chặn vì lý do: ${blockReason}.`);
+                }
+                throw new Error("Cấu trúc phản hồi API không hợp lệ.");
+            }
+        } catch (error) {
+            console.error("Lỗi khi gọi API Gemini:", error);
+            throw error;
+        }
+    }
+
+    // --- MAIN APPLICATION LOGIC ---
+    async function handleTranslate() {
+        if (state.isLoading || !ui.inputText.value.trim()) return;
+        setLoadingState(ui.translateButton, true, 'Dịch');
+        ui.outputText.value = '';
+        ui.additionalOutputWrapper.classList.add('hidden');
+        
+        const inputTextLower = ui.inputText.value.trim().toLowerCase();
+        
+        // 1. Check internal dictionary first
+        const internalMatch = internalDictionary.find(t => t.ede.toLowerCase() === inputTextLower);
+        if (internalMatch) {
+            const translatedText = internalMatch.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; ');
+            ui.outputText.value = translatedText + " (từ từ điển nội bộ)";
+            setLoadingState(ui.translateButton, false, 'Dịch');
             return;
         }
-        state.recognition = new SpeechRecognition();
-        state.recognition.continuous = false;
-        state.recognition.interimResults = false;
-        state.recognition.lang = 'vi-VN';
-
-        state.recognition.onstart = () => {
-            state.isRecording = true;
-            ui.recordButton.querySelector('.record-icon').classList.add('recording');
-            ui.recordButton.title = "Đang ghi âm...";
-        };
-        state.recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            ui.inputText.value = transcript;
-            state.isRecording = false;
-            ui.recordButton.querySelector('.record-icon').classList.remove('recording');
-            ui.recordButton.title = "Ghi âm giọng nói";
-        };
-        state.recognition.onerror = (event) => {
-            console.error("Speech recognition error:", event.error);
-            showMessage(`Lỗi ghi âm: ${event.error}`, 5000);
-            state.isRecording = false;
-            ui.recordButton.querySelector('.record-icon').classList.remove('recording');
-            ui.recordButton.title = "Ghi âm giọng nói";
-        };
-        state.recognition.onend = () => {
-            state.isRecording = false;
-            ui.recordButton.querySelector('.record-icon').classList.remove('recording');
-            ui.recordButton.title = "Ghi âm giọng nói";
-        };
-    }
-
-    function speakText(text, lang = 'vi-VN') {
-        if ('speechSynthesis' in window) {
-            if (state.speechSynthesisUtterance && speechSynthesis.speaking) {
-                speechSynthesis.cancel();
-            }
-            state.speechSynthesisUtterance = new SpeechSynthesisUtterance(text);
-            state.speechSynthesisUtterance.lang = lang;
-            speechSynthesis.speak(state.speechSynthesisUtterance);
-        } else {
-            showMessage("Trình duyệt của bạn không hỗ trợ phát âm văn bản.", 3000);
+        
+        // 2. If not found, call API
+        const prompt = `Bạn là một công cụ dịch thuật chuyên nghiệp. Hãy dịch văn bản sau đây giữa tiếng Việt và tiếng Ê-đê. Nếu văn bản là tiếng Việt, hãy dịch sang tiếng Ê-đê. Nếu văn bản là tiếng Ê-đê, hãy dịch sang tiếng Việt. Chỉ trả về văn bản đã dịch, không thêm bất kỳ giải thích nào. Văn bản cần dịch: ${ui.inputText.value}`;
+        try {
+            const translatedText = await callGeminiAPI(prompt);
+            ui.outputText.value = translatedText;
+        } catch (error) {
+            ui.outputText.value = `Đã xảy ra lỗi: ${error.message}`;
+            showMessage(`Lỗi dịch: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.translateButton, false, 'Dịch');
         }
     }
 
-    // --- EVENT LISTENERS & INITIAL SETUP ---
-    function setupTabs() {
-        ui.tabs.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.dataset.tab;
-                if (tabId === state.currentTab) return;
+    // Other handlers (generateExamples, summarize, etc.) remain the same...
+    async function handleGenerateExamples() {
+        if (state.isLoading || !ui.outputText.value.trim() || ui.outputText.value.includes("Kết quả dịch sẽ hiển thị ở đây")) return;
+        setLoadingState(ui.generateExamplesButton, true, 'Tạo ví dụ');
+        ui.additionalOutput.value = '';
+        const prompt = `Tạo 3 câu ví dụ sử dụng từ hoặc cụm từ "${ui.outputText.value}" trong ngữ cảnh khác nhau. Các câu ví dụ này nên được dịch sang ngôn ngữ còn lại (nếu từ gốc là tiếng Việt, ví dụ là tiếng Ê-đê và ngược lại). Chỉ trả về các câu ví dụ, mỗi câu trên một dòng mới.`;
+        try {
+            const examples = await callGeminiAPI(prompt);
+            ui.additionalOutput.value = examples;
+            ui.additionalOutputWrapper.classList.remove('hidden');
+        } catch (error) {
+            ui.additionalOutput.value = `Đã xảy ra lỗi: ${error.message}`;
+            showMessage(`Lỗi tạo ví dụ: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
+        }
+    }
 
-                ui.tabs.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+    async function handleSummarize() {
+        if (state.isLoading || !ui.outputText.value.trim() || ui.outputText.value.includes("Kết quả dịch sẽ hiển thị ở đây")) return;
+        setLoadingState(ui.summarizeExplainButton, true, 'Tóm tắt');
+        ui.additionalOutput.value = '';
+        const prompt = `Tóm tắt hoặc giải thích ngắn gọn ý nghĩa của văn bản sau: "${ui.outputText.value}". Chỉ trả về phần tóm tắt/giải thích.`;
+        try {
+            const summary = await callGeminiAPI(prompt);
+            ui.additionalOutput.value = summary;
+            ui.additionalOutputWrapper.classList.remove('hidden');
+        } catch (error) {
+            ui.additionalOutput.value = `Đã xảy ra lỗi: ${error.message}`;
+            showMessage(`Lỗi tóm tắt: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.summarizeExplainButton, false, 'Tóm tắt');
+        }
+    }
+    
+    async function handleGenerateParagraph() {
+        if (state.isLoading || !ui.paragraphKeywords.value.trim()) return;
+        setLoadingState(ui.generateParagraphButton, true, 'Tạo Đoạn Văn');
+        ui.edeParagraphOutput.value = '';
+        ui.vietParagraphOutput.value = '';
+        ui.paragraphOutputWrapper.classList.add('hidden');
+        const prompt = `Tạo một đoạn văn khoảng 50-70 từ bằng tiếng Ê-đê về chủ đề: "${ui.paragraphKeywords.value}". Sau đó, dịch đoạn văn đó sang tiếng Việt. Sử dụng định dạng sau để dễ dàng phân tách: \nTiếng Ê-đê:\n[Đoạn văn tiếng Ê-đê]\n\nTiếng Việt:\n[Đoạn văn tiếng Việt]`;
+        try {
+            const rawResponse = await callGeminiAPI(prompt);
+            const edeParagraph = rawResponse.match(/Tiếng Ê-đê:\n([\s\S]*?)\n\nTiếng Việt:/i);
+            const vietParagraph = rawResponse.match(/Tiếng Việt:\n([\s\S]*)/i);
+            if (edeParagraph && vietParagraph) {
+                ui.edeParagraphOutput.value = edeParagraph[1].trim();
+                ui.vietParagraphOutput.value = vietParagraph[1].trim();
+            } else {
+                ui.edeParagraphOutput.value = rawResponse;
+                ui.vietParagraphOutput.value = 'Không thể phân tách bản dịch.';
+            }
+            ui.paragraphOutputWrapper.classList.remove('hidden');
+        } catch (error) {
+            ui.edeParagraphOutput.value = `Đã xảy ra lỗi: ${error.message}`;
+            showMessage(`Lỗi tạo đoạn văn: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.generateParagraphButton, false, 'Tạo Đoạn Văn');
+        }
+    }
 
-                ui.tabContents.forEach(content => content.classList.add('hidden'));
-                document.getElementById(tabId).classList.remove('hidden');
-                
-                state.currentTab = tabId;
+    function handleImageSelection(file) {
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                ui.imagePreview.src = e.target.result;
+                ui.imagePlaceholder.classList.add('hidden');
+                ui.imagePreviewWrapper.classList.remove('hidden');
+                ui.translateImageButton.disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    async function handleTranslateImage() {
+        if(state.isLoading || !ui.imagePreview.src) return;
+        setLoadingState(ui.translateImageButton, true, 'Dịch từ ảnh');
+        ui.outputText.value = '';
+        ui.additionalOutputWrapper.classList.add('hidden');
+        const base64Image = ui.imagePreview.src.split(',')[1];
+        const mimeType = ui.imagePreview.src.match(/data:(.*);/)[1];
+        const prompt = `Trích xuất tất cả văn bản từ hình ảnh này. Sau đó, dịch văn bản đó sang tiếng Việt nếu văn bản gốc là tiếng Ê-đê, hoặc sang tiếng Ê-đê nếu văn bản gốc là tiếng Việt. Chỉ xuất ra văn bản đã dịch.`;
+        try {
+            const translatedText = await callGeminiAPI(prompt, { data: base64Image, mimeType: mimeType });
+            ui.outputText.value = translatedText;
+        } catch (error) {
+            ui.outputText.value = `Đã xảy ra lỗi: ${error.message}`;
+            showMessage(`Lỗi dịch ảnh: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.translateImageButton, false, 'Dịch từ ảnh');
+        }
+    }
+
+    // --- AI ASSISTANT LOGIC ---
+    function toggleChat() {
+        ui.aiChatContainer.classList.toggle('hidden');
+    }
+
+    function addChatMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        if (sender === 'user') {
+            messageDiv.className = 'flex items-start gap-3 justify-end';
+            messageDiv.innerHTML = `<div class="bg-blue-600 text-white p-3 rounded-lg max-w-xs"><p class="text-sm">${message}</p></div><div class="w-8 h-8 bg-slate-200 text-slate-600 rounded-full flex items-center justify-center flex-shrink-0">👤</div>`;
+        } else {
+            messageDiv.className = 'flex items-start gap-3';
+            messageDiv.innerHTML = `<div class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center flex-shrink-0">🤖</div><div class="bg-slate-100 p-3 rounded-lg max-w-xs"><p class="text-sm">${message}</p></div>`;
+        }
+        ui.chatMessages.appendChild(messageDiv);
+        ui.chatMessages.scrollTop = ui.chatMessages.scrollHeight;
+    }
+    
+    async function handleAIChat() {
+        const userInput = ui.chatInput.value.trim();
+        if (!userInput || state.isChatLoading) return;
+        addChatMessage(userInput, 'user');
+        ui.chatInput.value = '';
+        state.isChatLoading = true;
+        addChatMessage('<div class="loader"></div>', 'ai');
+        const prompt = `Bạn là một trợ lý ảo am hiểu về ngôn ngữ và văn hóa của người Ê-đê. Hãy trả lời câu hỏi sau một cách thân thiện và súc tích: "${userInput}"`;
+        try {
+            const response = await callGeminiAPI(prompt);
+            ui.chatMessages.removeChild(ui.chatMessages.lastChild);
+            addChatMessage(response, 'ai');
+        } catch (error) {
+            ui.chatMessages.removeChild(ui.chatMessages.lastChild);
+            addChatMessage(`Xin lỗi, tôi gặp lỗi: ${error.message}`, 'ai');
+        } finally {
+            state.isChatLoading = false;
+        }
+    }
+
+    // --- EVENT LISTENERS ---
+    ui.translateButton.addEventListener('click', handleTranslate);
+    ui.generateExamplesButton.addEventListener('click', handleGenerateExamples);
+    ui.summarizeExplainButton.addEventListener('click', handleSummarize);
+    ui.generateParagraphButton.addEventListener('click', handleGenerateParagraph);
+    ui.translateImageButton.addEventListener('click', handleTranslateImage);
+    
+    ui.tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTab = tab.dataset.tab;
+            ui.tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            ui.tabContents.forEach(content => {
+                content.id === targetTab ? content.classList.remove('hidden') : content.classList.add('hidden');
             });
         });
-    }
+    });
 
-    function setupEventListeners() {
-        ui.translateButton.addEventListener('click', handleTranslate);
-        ui.generateExamplesButton.addEventListener('click', handleGenerateExamples);
-        ui.summarizeExplainButton.addEventListener('click', handleSummarize);
-        ui.generateParagraphButton.addEventListener('click', handleGenerateParagraph);
-        ui.recordButton.addEventListener('click', () => {
-            if (state.isRecording) {
-                state.recognition.stop();
-            } else {
-                ui.inputText.value = '';
-                state.recognition.start();
-            }
-        });
-        ui.dropZone.addEventListener('click', () => ui.imageInput.click());
-        ui.imageInput.addEventListener('change', (e) => handleImageSelection(e.target.files[0]));
-        ui.dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault(); e.stopPropagation();
-            ui.dropZone.classList.add('border-blue-500', 'bg-blue-50');
-        });
-        ui.dropZone.addEventListener('dragleave', (e) => {
-            e.preventDefault(); e.stopPropagation();
-            ui.dropZone.classList.remove('border-blue-500', 'bg-blue-50');
-        });
-        ui.dropZone.addEventListener('drop', (e) => {
-            e.preventDefault(); e.stopPropagation();
-            ui.dropZone.classList.remove('border-blue-500', 'bg-blue-50');
-            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                handleImageSelection(e.dataTransfer.files[0]);
-            }
-        });
-        ui.removeImageButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            state.selectedImageFile = null;
-            ui.imageInput.value = '';
-            ui.imagePreview.src = '';
-            ui.imagePlaceholder.classList.remove('hidden');
-            ui.imagePreviewWrapper.classList.add('hidden');
-            ui.translateImageButton.disabled = true;
-        });
-        ui.translateImageButton.addEventListener('click', handleTranslateImage);
-        ui.addTermButton.addEventListener('click', handleAddTerm);
-        ui.customTranslationsList.addEventListener('click', handleDeleteTerm);
-        ui.loadDictionaryFromFileButton.addEventListener('click', handleLoadDictionaryFromFile);
-        ui.speakTranslatedTextButton.addEventListener('click', () => speakText(ui.outputText.value));
-        ui.speakAdditionalTextButton.addEventListener('click', () => speakText(ui.additionalOutput.value));
-        ui.speakEdeParagraphButton.addEventListener('click', () => speakText(ui.edeParagraphOutput.value, 'vi-VN')); // Assuming Vietnamese TTS can handle Ede text for now
-        ui.speakVietParagraphButton.addEventListener('click', () => speakText(ui.vietParagraphOutput.value, 'vi-VN'));
-    }
+    // Image Drag and Drop
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => ui.dropZone.addEventListener(eventName, e => { e.preventDefault(); e.stopPropagation(); }));
+    ['dragenter', 'dragover'].forEach(eventName => ui.dropZone.addEventListener(eventName, () => ui.dropZone.classList.add('bg-blue-100', 'border-blue-600')));
+    ['dragleave', 'drop'].forEach(eventName => ui.dropZone.addEventListener(eventName, () => ui.dropZone.classList.remove('bg-blue-100', 'border-blue-600')));
+    ui.dropZone.addEventListener('drop', (e) => handleImageSelection(e.dataTransfer.files[0]));
+    ui.dropZone.addEventListener('click', () => ui.imageInput.click());
+    ui.imageInput.addEventListener('change', (e) => handleImageSelection(e.target.files[0]));
+    ui.removeImageButton.addEventListener('click', () => {
+        ui.imageInput.value = '';
+        ui.imagePreview.src = '';
+        ui.imagePreviewWrapper.classList.add('hidden');
+        ui.imagePlaceholder.classList.remove('hidden');
+        ui.translateImageButton.disabled = true;
+    });
 
-    // --- MAIN ENTRY POINT ---
-    initializeFirebase();
-    setupTabs();
-    setupSpeechRecognition();
-    setupEventListeners();
+    // AI Assistant Listeners
+    ui.aiAssistantButton.addEventListener('click', toggleChat);
+    ui.closeChatButton.addEventListener('click', toggleChat);
+    ui.sendChatButton.addEventListener('click', handleAIChat);
+    ui.chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleAIChat();
+    });
+
+    // --- INITIALIZATION ---
+    renderInternalDictionary();
 });
 </script>
 </body>
