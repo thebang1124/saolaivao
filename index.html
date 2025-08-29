@@ -222,7 +222,7 @@
         </main>
         
         <footer class="text-center mt-10 text-sm" style="color: var(--text-secondary);">
-            <p>Phát triển bởi Thế Bằng &copy; 2024</p>
+            <p>Phát triển bởi Thế Bằng &copy; 2025</p>
         </footer>
     </div>
     
@@ -4353,7 +4353,7 @@ try {
     }
 
     async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20', chatHistory = []) {
-        const apiKey = ""; 
+        const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k"; 
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
         const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [{inlineData: imageData}] : [])] }];
         try {
