@@ -10,63 +10,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root, [data-theme="light"] {
-            --bg-primary: #f0f4f8;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #f1f5f9;
-            --text-primary: #1e293b;
-            --text-secondary: #475569;
-            --border-color: #e2e8f0;
-            --primary-color: #2563eb;
-            --primary-hover: #1d4ed8;
-            --accent-color: #f59e0b;
-            --accent-hover: #d97706;
+            --bg-primary: #f0f4f8; --bg-secondary: #ffffff; --bg-tertiary: #f1f5f9;
+            --text-primary: #1e293b; --text-secondary: #475569; --border-color: #e2e8f0;
+            --primary-color: #2563eb; --primary-hover: #1d4ed8; --accent-color: #f59e0b;
             --drum-pattern-color: #475569;
         }
         [data-theme="dark"] {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --border-color: #334155;
-            --primary-color: #3b82f6;
-            --primary-hover: #2563eb;
-            --accent-color: #f59e0b;
-            --accent-hover: #d97706;
+            --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-tertiary: #334155;
+            --text-primary: #f1f5f9; --text-secondary: #94a3b8; --border-color: #334155;
+            --primary-color: #3b82f6; --primary-hover: #2563eb; --accent-color: #f59e0b;
             --drum-pattern-color: #f1f5f9;
         }
         [data-theme="gold"] {
-            --bg-primary: #fffbeb;
-            --bg-secondary: #fefce8;
-            --bg-tertiary: #fef9c3;
-            --text-primary: #78350f;
-            --text-secondary: #a16207;
-            --border-color: #fde68a;
-            --primary-color: #ca8a04;
-            --primary-hover: #a16207;
-            --accent-color: #b91c1c;
-            --accent-hover: #991b1b;
+            --bg-primary: #fffbeb; --bg-secondary: #fefce8; --bg-tertiary: #fef9c3;
+            --text-primary: #78350f; --text-secondary: #a16207; --border-color: #fde68a;
+            --primary-color: #ca8a04; --primary-hover: #a16207; --accent-color: #b91c1c;
             --drum-pattern-color: #ca8a04;
         }
         [data-theme="slate"] {
-            --bg-primary: #f1f5f9;
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #e2e8f0;
-            --text-primary: #334155;
-            --text-secondary: #64748b;
-            --border-color: #cbd5e1;
-            --primary-color: #64748b;
-            --primary-hover: #475569;
-            --accent-color: #16a34a;
-            --accent-hover: #15803d;
+            --bg-primary: #f1f5f9; --bg-secondary: #ffffff; --bg-tertiary: #e2e8f0;
+            --text-primary: #334155; --text-secondary: #64748b; --border-color: #cbd5e1;
+            --primary-color: #64748b; --primary-hover: #475569; --accent-color: #16a34a;
             --drum-pattern-color: #64748b;
+        }
+        [data-theme="green"] {
+            --bg-primary: #f0fdf4; --bg-secondary: #ffffff; --bg-tertiary: #dcfce7;
+            --text-primary: #14532d; --text-secondary: #166534; --border-color: #bbf7d0;
+            --primary-color: #22c55e; --primary-hover: #16a34a; --accent-color: #f97316;
+            --drum-pattern-color: #166534;
+        }
+        [data-theme="rose"] {
+            --bg-primary: #fff1f2; --bg-secondary: #ffffff; --bg-tertiary: #ffe4e6;
+            --text-primary: #881337; --text-secondary: #9f1239; --border-color: #fecdd3;
+            --primary-color: #f43f5e; --primary-hover: #e11d48; --accent-color: #0891b2;
+            --drum-pattern-color: #9f1239;
         }
 
         body {
             font-family: 'Be Vietnam Pro', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E".replace('%239C92AC', getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').replace('#', '%23')));
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         .card {
@@ -115,6 +98,8 @@
                     <option value="dark">Tối</option>
                     <option value="gold">Vàng Đồng</option>
                     <option value="slate">Xám Xanh</option>
+                    <option value="green">Xanh Lá</option>
+                    <option value="rose">Hồng Phấn</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2" style="color: var(--text-secondary);">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -144,6 +129,9 @@
                     </button>
                     <button id="generateExamplesButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-lg shadow-md font-semibold" style="background-color: var(--accent-color); color: white;">
                         <span class="button-icon">💡</span><span class="button-text">Tạo ví dụ</span>
+                    </button>
+                    <button id="summarizeButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-lg shadow-md font-semibold" style="background-color: #6d28d9; color: white;">
+                        <span class="button-icon">📝</span><span class="button-text">Tóm tắt</span>
                     </button>
                 </div>
                 <div id="additionalOutputWrapper" class="mt-6 hidden">
@@ -4299,7 +4287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20', chatHistory = []) {
         const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-        const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [imageData] : [])] }];
+        const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [{inlineData: imageData}] : [])] }];
         try {
             const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents }) });
             if (!response.ok) {
@@ -4355,6 +4343,20 @@ document.addEventListener('DOMContentLoaded', () => {
             setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
         }
     }
+
+    async function handleSummarize() {
+        if (state.isLoading || !ui.outputText.value.trim()) return showMessage("Vui lòng dịch một nội dung trước khi tóm tắt.");
+        setLoadingState(ui.summarizeButton, true, 'Tóm tắt');
+        const prompt = `Tóm tắt hoặc giải thích ngắn gọn ý nghĩa của văn bản sau: "${ui.outputText.value}". Chỉ trả về phần tóm tắt/giải thích.`;
+        try {
+            ui.additionalOutput.value = await callGeminiAPI(prompt);
+            ui.additionalOutputWrapper.classList.remove('hidden');
+        } catch (error) {
+            showMessage(`Lỗi tóm tắt: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.summarizeButton, false, 'Tóm tắt');
+        }
+    }
     
     async function handleGenerateParagraph() {
         if (state.isLoading || !ui.paragraphKeywords.value.trim()) return;
@@ -4384,13 +4386,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const dictionaryString = internalDictionary.map(t => `${t.ede}: ${t.meanings.map(m=>m.vietnamese).join('/')}`).join('; ');
         try {
             const extractPrompt = `Trích xuất văn bản từ ảnh.`;
-            const extractedText = await callGeminiAPI(extractPrompt, { inlineData: { mimeType, data: base64Image } });
+            const extractedText = await callGeminiAPI(extractPrompt, { mimeType, data: base64Image });
             
             const words = extractedText.split(/\s+/);
             ui.wordByWordImageText.value = words.map(word => {
                 const cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
-                const match = internalDictionary.find(t => t.ede.toLowerCase() === cleanWord);
-                return match ? match.meanings[0].vietnamese : word;
+                const match = internalDictionary.find(t => t.ede.toLowerCase() === cleanWord || t.meanings.some(m => m.vietnamese.toLowerCase() === cleanWord));
+                if (match) {
+                    return match.ede.toLowerCase() === cleanWord ? match.meanings[0].vietnamese : match.ede;
+                }
+                return word;
             }).join(' ');
 
             const contextualPrompt = `Dịch văn bản sau giữa Việt và Ê-đê. Ưu tiên dùng từ trong danh sách: [${dictionaryString}]. Văn bản: "${extractedText}"`;
@@ -4450,20 +4455,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const textColor = sender === 'user' ? 'white' : 'var(--text-primary)';
         const icon = sender === 'user' ? '👤' : 'AI';
         messageDiv.innerHTML = `<div class="p-3 rounded-lg max-w-xs" style="background-color: ${bgColor}; color: ${textColor};"><p class="text-sm">${message}</p></div>`;
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0';
+        iconDiv.textContent = icon;
         if (sender === 'user') {
-            const userIcon = document.createElement('div');
-            userIcon.className = 'w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0';
-            userIcon.style.backgroundColor = 'var(--bg-tertiary)';
-            userIcon.style.color = 'var(--text-secondary)';
-            userIcon.textContent = icon;
-            messageDiv.appendChild(userIcon);
+            iconDiv.style.backgroundColor = 'var(--bg-tertiary)';
+            iconDiv.style.color = 'var(--text-secondary)';
+            messageDiv.appendChild(iconDiv);
         } else {
-            const aiIcon = document.createElement('div');
-            aiIcon.className = 'w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0';
-            aiIcon.style.backgroundColor = 'var(--primary-color)';
-            aiIcon.style.color = 'white';
-            aiIcon.textContent = icon;
-            messageDiv.prepend(aiIcon);
+            iconDiv.style.backgroundColor = 'var(--primary-color)';
+            iconDiv.style.color = 'white';
+            messageDiv.prepend(iconDiv);
         }
         ui.chatMessages.appendChild(messageDiv);
         ui.chatMessages.scrollTop = ui.chatMessages.scrollHeight;
@@ -4472,7 +4474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- EVENT LISTENERS ---
     ui.translateButton.addEventListener('click', handleTranslate);
     ui.generateExamplesButton.addEventListener('click', handleGenerateExamples);
-    ui.summarizeExplainButton.addEventListener('click', () => { /* Logic for summarize can be added here */ });
+    ui.summarizeButton.addEventListener('click', handleSummarize);
     ui.generateParagraphButton.addEventListener('click', handleGenerateParagraph);
     ui.translateImageButton.addEventListener('click', handleTranslateImage);
     
@@ -4496,7 +4498,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ['dragleave', 'drop'].forEach(ev => ui.dropZone.addEventListener(ev, () => ui.dropZone.style.borderColor = 'var(--border-color)'));
     ui.dropZone.addEventListener('drop', (e) => handleImageSelection(e.dataTransfer.files[0]));
     ui.dropZone.addEventListener('click', () => ui.imageInput.click());
-    ui.imageInput.addEventListener('change', (e) => handleImageSelection(e.target.files[0]));
     ui.removeImageButton.addEventListener('click', () => {
         ui.imageInput.value = ''; ui.imagePreview.src = '';
         ui.imagePreviewWrapper.classList.add('hidden');
