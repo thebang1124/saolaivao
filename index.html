@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* CSS Styles - Giữ nguyên như cũ */
         :root, [data-theme="light"] {
             --bg-primary: #f0f4f8; --bg-secondary: #ffffff; --bg-tertiary: #f1f5f9;
             --text-primary: #1e293b; --text-secondary: #475569; --border-color: #e2e8f0;
@@ -85,6 +86,7 @@
 </head>
 <body class="antialiased">
 
+    <!-- Giao diện người dùng (HTML) - Giữ nguyên như cũ -->
     <div class="min-h-screen p-4 sm:p-6 md:p-8 flex flex-col items-center">
         <header class="w-full max-w-4xl mx-auto flex justify-between items-center mb-8">
             <div class="text-left">
@@ -186,15 +188,18 @@
                 </div>
             </div>
         </main>
-        
+
         <footer class="text-center mt-10 text-sm" style="color: var(--text-secondary);">
             <p>Phát triển bởi Thế Bằng &copy; 2025</p>
         </footer>
     </div>
-    
+
+    <!-- Nút trợ lý AI -->
     <button id="aiAssistantButton" title="Trợ lý AI Ngôn ngữ" class="w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-3xl transition-transform transform hover:scale-110" style="background-color: var(--primary-color); color: white;">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
     </button>
+
+    <!-- Khung chat AI -->
     <div id="aiChatContainer" class="w-full max-w-md rounded-2xl shadow-2xl card hidden origin-bottom-right">
         <div class="p-4 border-b flex justify-between items-center" style="border-color: var(--border-color);"><h3 class="text-lg font-bold">Trợ lý AI Ngôn ngữ</h3><button id="closeChatButton" class="text-2xl font-bold" style="color: var(--text-secondary);">&times;</button></div>
         <div id="chatMessages" class="p-4 h-80 overflow-y-auto space-y-4">
@@ -205,13 +210,41 @@
         </div>
     </div>
 
+    <!-- Thông báo -->
     <div id="messageBox" class="message-box"></div>
 
 <script type="module">
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. KHAI BÁO BIẾN VÀ DOM ---
 
+    // **DOM caching**: Lưu trữ các phần tử DOM để sử dụng lại, giúp tăng tốc độ truy cập
+    const ui = {}; // Tạo một đối tượng để lưu trữ các phần tử giao diện
+    [
+        "inputText", "outputText", "translateButton", "generateExamplesButton", "summarizeButton",
+        "additionalOutput", "additionalOutputWrapper", "paragraphKeywords", "generateParagraphButton",
+        "edeParagraphOutput", "vietParagraphOutput", "paragraphOutputWrapper", "themeSelector",
+        "aiAssistantButton", "aiChatContainer", "closeChatButton", "chatMessages", "chatInput", "sendChatButton",
+        "messageBox", "dropZone", "imageInput", "imagePlaceholder", "imagePreviewWrapper", "imagePreview",
+        "removeImageButton", "translateImageButton", "imageTranslateResultWrapper", "wordByWordImageText", "contextualImageText",
+        "internalDictionaryList", "dictionaryPlaceholder", "speakTranslatedTextButton", "speakAdditionalTextButton",
+    ].forEach(id => ui[id] = document.getElementById(id)); // Gán các phần tử DOM vào đối tượng ui
+
+    // Lưu tabs và tabContents
+    ui.tabs = document.querySelectorAll('.tab-button');
+    ui.tabContents = document.querySelectorAll('.tab-content > div');
+
+    // **State**: Quản lý trạng thái của ứng dụng
+    const state = {
+        isLoading: false, // Trạng thái đang tải
+        isChatLoading: false, // Trạng thái đang tải chat
+        chatHistory: [], // Lịch sử chat
+        speechSynthesis: window.speechSynthesis, // API đọc văn bản
+        voices: [], // Danh sách giọng đọc
+    };
+
+    // **Dữ liệu từ điển**: Mảng các từ vựng
     const internalDictionary = [
-                { "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
+        { "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
 { "ede": "Abăn", "meanings": [{ "type": "dt", "vietnamese": "Cái chăn (mền)" }] },
 { "ede": "Abŭ", "meanings": [{ "type": "dt", "vietnamese": "Cái hũ" }] },
 { "ede": "Adei", "meanings": [{ "type": "dt", "vietnamese": "Em" }] },
@@ -4213,136 +4246,105 @@ document.addEventListener('DOMContentLoaded', () => {
 { "ede": "Yư̆ bư̆", "meanings": [{ "type": "đgt", "vietnamese": "Nấn ná" }] },
 { "ede": "Yư̆ yăm", "meanings": [{ "type": "đgt", "vietnamese": "Hôn mê" }] },
 { "ede": "Yư̆ yơ̆ng", "meanings": [{ "type": "đgt", "vietnamese": "Buông" }] },
-{ "ede": "Yư̆ yư̆", "meanings": [{ "type": "tt", "vietnamese": "Chầm chậm" }] },          
+{ "ede": "Yư̆ yư̆", "meanings": [{ "type": "tt", "vietnamese": "Chầm chậm" }] },
     ];
 
-    const state = { isLoading: false, isChatLoading: false, chatHistory: [], speechSynthesis: window.speechSynthesis, voices: [] };
-    const ui = Object.fromEntries(Array.from(document.querySelectorAll('[id]')).map(el => [el.id, el]));
-    Object.assign(ui, { tabs: document.querySelectorAll('.tab-button'), tabContents: document.querySelectorAll('.tab-content > div') });
+    // --- 2. HÀM HỖ TRỢ ---
 
-    function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim();
-        document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
+    // **loadVoices**: Tải danh sách giọng đọc tiếng Việt
+    function loadVoices() {
+        state.voices = state.speechSynthesis.getVoices().filter(voice => voice.lang.startsWith('vi'));
+    }
+    loadVoices(); // Tải ngay khi trang web được tải
+    if (state.speechSynthesis.onvoiceschanged !== undefined) {
+        state.speechSynthesis.onvoiceschanged = loadVoices; // Tải lại khi danh sách giọng đọc thay đổi
     }
 
-    ui.themeSelector.addEventListener('change', (e) => {
-        const theme = e.target.value;
-        applyTheme(theme);
-        localStorage.setItem('selectedTheme', theme);
-    });
+    // **debounce**: Hàm giúp giảm tần suất gọi một hàm
+    function debounce(fn, delay) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => fn(...args), delay);
+        };
+    }
 
-    const savedTheme = localStorage.getItem('selectedTheme') || 'light';
-    ui.themeSelector.value = savedTheme;
-    applyTheme(savedTheme);
+    // **applyTheme**: Áp dụng giao diện cho trang web
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme); // Đặt thuộc tính data-theme
+        const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim(); // Lấy màu từ CSS
+        document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`; // Đặt background
+    }
 
-    function loadVoices() { state.voices = state.speechSynthesis.getVoices().filter(voice => voice.lang.startsWith('vi')); }
-    loadVoices();
-    if (state.speechSynthesis.onvoiceschanged !== undefined) { state.speechSynthesis.onvoiceschanged = loadVoices; }
-
+    // **speakText**: Đọc văn bản
     function speakText(text) {
-        if (state.speechSynthesis.speaking) { state.speechSynthesis.cancel(); }
+        if (state.speechSynthesis.speaking) { state.speechSynthesis.cancel(); } // Dừng nếu đang đọc
         if (text) {
-            const utterance = new SpeechSynthesisUtterance(text);
-            if (state.voices.length > 1) utterance.voice = state.voices[1];
+            const utterance = new SpeechSynthesisUtterance(text); // Tạo đối tượng văn bản
+            if (state.voices.length > 1) utterance.voice = state.voices[1]; // Chọn giọng đọc
             else if (state.voices.length > 0) utterance.voice = state.voices[0];
-            utterance.rate = 1.2;
-            state.speechSynthesis.speak(utterance);
+            utterance.rate = 1.2; // Tốc độ đọc
+            state.speechSynthesis.speak(utterance); // Đọc
         }
     }
 
+    // **showMessage**: Hiển thị thông báo
     function showMessage(message, duration = 3000) {
-        ui.messageBox.textContent = message;
-        ui.messageBox.classList.add('show');
-        setTimeout(() => ui.messageBox.classList.remove('show'), duration);
+        ui.messageBox.textContent = message; // Đặt nội dung thông báo
+        ui.messageBox.classList.add('show'); // Hiển thị thông báo
+        setTimeout(() => ui.messageBox.classList.remove('show'), duration); // Ẩn sau một khoảng thời gian
     }
 
+    // **setLoadingState**: Thay đổi trạng thái nút (loading/không loading)
     function setLoadingState(button, isLoading, originalText) {
-        const textSpan = button.querySelector('.button-text');
-        const iconSpan = button.querySelector('.button-icon');
-        state.isLoading = isLoading;
-        button.disabled = isLoading;
-        if (textSpan) textSpan.textContent = isLoading ? 'Đang xử lý...' : originalText;
-        if (iconSpan) iconSpan.innerHTML = isLoading ? '<div class="loader"></div>' : { 'Dịch': '✨', 'Tạo ví dụ': '💡', 'Tóm tắt': '📝', 'Tạo Đoạn Văn': '📖', 'Dịch từ ảnh': '📷' }[originalText];
+        const textSpan = button.querySelector('.button-text'); // Phần tử chứa chữ
+        const iconSpan = button.querySelector('.button-icon'); // Phần tử chứa biểu tượng
+        state.isLoading = isLoading; // Cập nhật trạng thái
+        button.disabled = isLoading; // Vô hiệu hóa nút
+        if (textSpan) textSpan.textContent = isLoading ? 'Đang xử lý...' : originalText; // Thay đổi chữ
+        if (iconSpan) iconSpan.innerHTML = isLoading ? '<div class="loader"></div>' : { 'Dịch': '✨', 'Tạo ví dụ': '💡', 'Tóm tắt': '📝', 'Tạo Đoạn Văn': '📖', 'Dịch từ ảnh': '📷' }[originalText]; // Thay đổi biểu tượng
     }
-    
+
+    // **renderInternalDictionary**: Hiển thị danh sách từ vựng
     function renderInternalDictionary() {
-        ui.internalDictionaryList.innerHTML = '';
+        // Kiểm tra xem đã render chưa
+        if (ui.internalDictionaryList.getAttribute('data-rendered') === 'true') return;
+        ui.internalDictionaryList.setAttribute('data-rendered', 'true');
+
+        ui.internalDictionaryList.innerHTML = ''; // Xóa nội dung cũ
         if (internalDictionary.length === 0) {
             ui.dictionaryPlaceholder.textContent = 'Từ điển nội bộ trống.';
             ui.internalDictionaryList.appendChild(ui.dictionaryPlaceholder);
         } else {
-            const sortedDictionary = [...internalDictionary].sort((a, b) => a.ede.localeCompare(b.ede));
+            const sortedDictionary = [...internalDictionary].sort((a, b) => a.ede.localeCompare(b.ede)); // Sắp xếp từ vựng
+            const frag = document.createDocumentFragment(); // Tạo fragment để tăng tốc độ render
             sortedDictionary.forEach(term => {
-                const meaningsHtml = term.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; ');
+                const meaningsHtml = term.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; '); // Tạo chuỗi nghĩa
                 const item = document.createElement('div');
                 item.className = 'dictionary-item p-3 rounded-lg border';
                 item.style.borderColor = 'var(--border-color)';
                 item.innerHTML = `<div><p class="font-semibold">${term.ede}</p><p class="text-sm" style="color: var(--text-secondary);">${meaningsHtml}</p></div>`;
-                ui.internalDictionaryList.appendChild(item);
+                frag.appendChild(item);
             });
+            ui.internalDictionaryList.appendChild(frag); // Thêm vào DOM
         }
     }
 
+    // --- 3. HÀM XỬ LÝ CHÍNH ---
+
+    // **callGeminiAPI**: Gọi API Gemini để dịch
     async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20', chatHistory = []) {
-        const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k";
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-        const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [{inlineData: imageData}] : [])] }];
+        const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k"; // API key của bạn
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`; // URL API
+        const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [{inlineData: imageData}] : [])] }]; // Tạo nội dung yêu cầu
         try {
-            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents }) });
+            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents }) }); // Gọi API
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(`Lỗi API: ${response.status} - ${errorData.error?.message || 'Lỗi không xác định'}`);
+                throw new Error(`Lỗi API: ${response.status} - ${errorData.error?.message || 'Lỗi không xác định'}`); // Xử lý lỗi
             }
-            const result = await response.json();
+            const result = await response.json(); // Lấy kết quả
             if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                return result.candidates[0].content.parts[0].text;
+                return result.candidates[0].content.parts[0].text; // Trả về kết quả
             }
             const blockReason = result.candidates?.[0]?.finishReason;
-            throw new Error(blockReason ? `Yêu cầu bị chặn vì lý do: ${blockReason}.` : "Phản hồi API không hợp lệ.");
-        } catch (error) {
-            console.error("Lỗi API Gemini:", error);
-            throw error;
-        }
-    }
-
-    async function handleTranslate() {
-        if (state.isLoading || !ui.inputText.value.trim()) return;
-        setLoadingState(ui.translateButton, true, 'Dịch');
-        ui.outputText.value = '';
-        const inputTextLower = ui.inputText.value.trim().toLowerCase();
-        const internalMatch = internalDictionary.find(t => t.ede.toLowerCase() === inputTextLower || t.meanings.some(m => m.vietnamese.toLowerCase() === inputTextLower));
-        if (internalMatch) {
-            ui.outputText.value = (internalMatch.ede.toLowerCase() === inputTextLower ? internalMatch.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; ') : internalMatch.ede) + " (từ từ điển nội bộ)";
-            setLoadingState(ui.translateButton, false, 'Dịch');
-            return;
-        }
-        const prompt = `Dịch văn bản sau giữa tiếng Việt và Ê-đê. Chỉ trả về văn bản đã dịch. Văn bản: ${ui.inputText.value}`;
-        try {
-            ui.outputText.value = await callGeminiAPI(prompt);
-        } catch (error) {
-            ui.outputText.value = `Lỗi: ${error.message}`;
-            showMessage(`Lỗi dịch: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.translateButton, false, 'Dịch');
-        }
-    }
-
-    async function handleGenerateExamples() {
-        if (state.isLoading || !ui.inputText.value.trim()) return showMessage("Vui lòng nhập một từ để tạo ví dụ.");
-        setLoadingState(ui.generateExamplesButton, true, 'Tạo ví dụ');
-        const originalWord = ui.inputText.value.trim();
-        const dictionaryString = internalDictionary.map(t => `${t.ede}: ${t.meanings.map(m=>m.vietnamese).join('/')}`).join('; ');
-        const prompt = `Với từ gốc là "${originalWord}", tạo 3 câu ví dụ tiếng Ê-đê và dịch sang tiếng Việt. Ưu tiên dùng từ trong danh sách: [${dictionaryString}]. Định dạng:\n1. [Câu Ê-đê]\n   - Dịch: [Câu Việt]\n...`;
-        try {
-            ui.additionalOutput.value = await callGeminiAPI(prompt);
-            ui.additionalOutputWrapper.classList.remove('hidden');
-        } catch (error) {
-            showMessage(`Lỗi tạo ví dụ: ${error.message}`, 5000);
-        } finally {
-            setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
-        }
-    }
-
-    async function handleSummarize() {
-        if (state.isLoading || !ui.outputText.value.trim()) return showMessage("Vui lòng dịch một nội dung trước khi tóm tắt.");
