@@ -9,41 +9,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Styles - Giữ nguyên như cũ */
         :root, [data-theme="light"] {
             --bg-primary: #f0f4f8; --bg-secondary: #ffffff; --bg-tertiary: #f1f5f9;
             --text-primary: #1e293b; --text-secondary: #475569; --border-color: #e2e8f0;
             --primary-color: #2563eb; --primary-hover: #1d4ed8; --accent-color: #f59e0b;
+            --secondary-color: #475569; --secondary-hover: #334155;
             --drum-pattern-color: #475569;
         }
         [data-theme="dark"] {
             --bg-primary: #0f172a; --bg-secondary: #1e293b; --bg-tertiary: #334155;
             --text-primary: #f1f5f9; --text-secondary: #94a3b8; --border-color: #334155;
             --primary-color: #3b82f6; --primary-hover: #2563eb; --accent-color: #f59e0b;
+            --secondary-color: #94a3b8; --secondary-hover: #f1f5f9;
             --drum-pattern-color: #f1f5f9;
         }
         [data-theme="gold"] {
             --bg-primary: #fffbeb; --bg-secondary: #fefce8; --bg-tertiary: #fef9c3;
             --text-primary: #78350f; --text-secondary: #a16207; --border-color: #fde68a;
             --primary-color: #ca8a04; --primary-hover: #a16207; --accent-color: #b91c1c;
+            --secondary-color: #a16207; --secondary-hover: #78350f;
             --drum-pattern-color: #ca8a04;
         }
         [data-theme="slate"] {
             --bg-primary: #f1f5f9; --bg-secondary: #ffffff; --bg-tertiary: #e2e8f0;
             --text-primary: #334155; --text-secondary: #64748b; --border-color: #cbd5e1;
             --primary-color: #64748b; --primary-hover: #475569; --accent-color: #16a34a;
+            --secondary-color: #94a3b8; --secondary-hover: #64748b;
             --drum-pattern-color: #64748b;
         }
         [data-theme="green"] {
             --bg-primary: #f0fdf4; --bg-secondary: #ffffff; --bg-tertiary: #dcfce7;
             --text-primary: #14532d; --text-secondary: #166534; --border-color: #bbf7d0;
             --primary-color: #22c55e; --primary-hover: #16a34a; --accent-color: #f97316;
+            --secondary-color: #16a34a; --secondary-hover: #15803d;
             --drum-pattern-color: #166534;
         }
         [data-theme="rose"] {
             --bg-primary: #fff1f2; --bg-secondary: #ffffff; --bg-tertiary: #ffe4e6;
             --text-primary: #881337; --text-secondary: #9f1239; --border-color: #fecdd3;
             --primary-color: #f43f5e; --primary-hover: #e11d48; --accent-color: #0891b2;
+            --secondary-color: #be123c; --secondary-hover: #9f1239;
             --drum-pattern-color: #9f1239;
         }
 
@@ -64,7 +69,7 @@
             background-color: color-mix(in srgb, var(--primary-color) 15%, transparent);
         }
         .loader {
-            border: 4px solid #f3f3f3;
+            border: 4px solid color-mix(in srgb, var(--primary-color) 20%, transparent);
             border-top: 4px solid var(--primary-color);
             border-radius: 50%;
             width: 24px;
@@ -77,25 +82,44 @@
             background-color: #111827; color: white; padding: 15px 25px;
             border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             z-index: 1000; opacity: 0; visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            transform: translate(-50%, -20px);
         }
-        .message-box.show { opacity: 1; visibility: visible; }
+        .message-box.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
         #aiAssistantButton { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; }
-        #aiChatContainer { position: fixed; bottom: 6rem; right: 2rem; z-index: 998; transition: all 0.3s ease-in-out; }
+        #aiChatContainer { 
+            position: fixed; bottom: 6rem; right: 2rem; z-index: 998; 
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform-origin: bottom right;
+        }
+        #aiChatContainer.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+        /* Cải tiến: Thêm style cho focus state */
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color) !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 25%, transparent);
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Giao diện người dùng (HTML) - Giữ nguyên như cũ -->
     <div class="min-h-screen p-4 sm:p-6 md:p-8 flex flex-col items-center">
         <header class="w-full max-w-4xl mx-auto flex justify-between items-center mb-8">
-            <div class="text-left">
-                <h1 class="text-3xl sm:text-4xl font-extrabold" style="color: var(--text-primary);">Trình Dịch Ê-đê</h1>
-                <p class="mt-1 text-md" style="color: var(--text-secondary);">Khám Phá Ngôn Ngữ & Văn Hóa</p>
+            <div class="flex items-center gap-3">
+                 <!-- Cải tiến: Thêm icon cho header -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                <div class="text-left">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold" style="color: var(--text-primary);">Trình Dịch Ê-đê</h1>
+                    <p class="mt-1 text-md" style="color: var(--text-secondary);">Khám Phá Ngôn Ngữ & Văn Hóa</p>
+                </div>
             </div>
             <div class="relative">
                 <label for="theme-selector" class="sr-only">Chọn giao diện</label>
-                <select id="theme-selector" class="appearance-none rounded-lg py-2 pl-3 pr-8 border-2" style="background-color: var(--bg-secondary); border-color: var(--border-color); color: var(--text-primary);">
+                <select id="theme-selector" class="appearance-none rounded-lg py-2 pl-3 pr-8 border-2 transition form-input" style="background-color: var(--bg-secondary); border-color: var(--border-color); color: var(--text-primary);">
                     <option value="light">Sáng</option>
                     <option value="dark">Tối</option>
                     <option value="gold">Vàng Đồng</option>
@@ -114,33 +138,34 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="flex flex-col space-y-4">
                         <label for="inputText" class="font-semibold">Văn bản gốc (Việt hoặc Ê-đê)</label>
-                        <textarea id="inputText" rows="8" class="w-full p-4 rounded-lg border-2 transition duration-300 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Nhập văn bản cần dịch..."></textarea>
+                        <textarea id="inputText" rows="8" class="form-input w-full p-4 rounded-lg border-2 transition duration-300 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Nhập văn bản cần dịch..."></textarea>
                     </div>
                     <div class="flex flex-col space-y-4">
                         <label for="outputText" class="font-semibold">Kết quả dịch</label>
                         <div class="relative w-full">
-                            <textarea id="outputText" rows="8" readonly class="w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Kết quả dịch sẽ hiển thị ở đây..."></textarea>
-                            <button id="speakTranslatedTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full" style="background-color: var(--bg-secondary); color: var(--text-secondary);"><span class="text-xl">🔊</span></button>
+                            <textarea id="outputText" rows="8" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Kết quả dịch sẽ hiển thị ở đây..."></textarea>
+                            <button id="speakTranslatedTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition" style="background-color: var(--bg-secondary); color: var(--text-secondary);"></button>
                         </div>
                     </div>
                 </div>
 
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button id="translateButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold" style="background-color: var(--primary-color); color: white;">
-                        <span class="button-icon">✨</span><span class="button-text">Dịch</span>
+                    <!-- Cải tiến: Phân cấp nút bấm -->
+                    <button id="translateButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold transition-transform transform hover:scale-105" style="background-color: var(--primary-color); color: white;">
+                        <span class="button-icon"></span><span class="button-text">Dịch</span>
                     </button>
-                    <button id="generateExamplesButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-lg shadow-md font-semibold" style="background-color: var(--accent-color); color: white;">
-                        <span class="button-icon">💡</span><span class="button-text">Tạo ví dụ</span>
+                    <button id="generateExamplesButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-transform transform hover:scale-105" style="background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color);">
+                        <span class="button-icon"></span><span class="button-text">Tạo ví dụ</span>
                     </button>
-                    <button id="summarizeButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-lg shadow-md font-semibold" style="background-color: #6d28d9; color: white;">
-                        <span class="button-icon">📝</span><span class="button-text">Tóm tắt</span>
+                    <button id="summarizeButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition-transform transform hover:scale-105" style="background-color: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color);">
+                        <span class="button-icon"></span><span class="button-text">Tóm tắt</span>
                     </button>
                 </div>
                 <div id="additionalOutputWrapper" class="mt-6 hidden">
                      <label for="additionalOutput" class="font-semibold">Kết quả bổ sung</label>
                      <div class="relative w-full mt-2">
-                         <textarea id="additionalOutput" rows="5" readonly class="w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea>
-                         <button id="speakAdditionalTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full" style="background-color: var(--bg-secondary); color: var(--text-secondary);"><span class="text-xl">🔊</span></button>
+                         <textarea id="additionalOutput" rows="5" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea>
+                         <button id="speakAdditionalTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition" style="background-color: var(--bg-secondary); color: var(--text-secondary);"></button>
                      </div>
                 </div>
             </div>
@@ -149,14 +174,14 @@
                 <h2 class="text-2xl font-bold mb-4 text-center">Tạo Đoạn Văn</h2>
                 <div class="flex flex-col space-y-4">
                     <label for="paragraphKeywords" class="font-semibold">Từ khóa/Chủ đề:</label>
-                    <textarea id="paragraphKeywords" rows="3" class="w-full p-4 rounded-lg border-2 transition duration-300 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Ví dụ: Lễ hội cồng chiêng, nghề dệt thổ cẩm..."></textarea>
+                    <textarea id="paragraphKeywords" rows="3" class="form-input w-full p-4 rounded-lg border-2 transition duration-300 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Ví dụ: Lễ hội cồng chiêng, nghề dệt thổ cẩm..."></textarea>
                 </div>
-                <button id="generateParagraphButton" class="mt-6 w-full flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold" style="background-color: var(--primary-color); color: white;">
-                    <span class="button-icon">📖</span><span class="button-text">Tạo Đoạn Văn</span>
+                <button id="generateParagraphButton" class="mt-6 w-full flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold transition-transform transform hover:scale-105" style="background-color: var(--primary-color); color: white;">
+                    <span class="button-icon"></span><span class="button-text">Tạo Đoạn Văn</span>
                 </button>
                 <div id="paragraphOutputWrapper" class="mt-6 hidden grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex flex-col space-y-2"><label for="edeParagraphOutput" class="font-semibold">Đoạn văn tiếng Ê-đê</label><textarea id="edeParagraphOutput" rows="8" readonly class="w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
-                    <div class="flex flex-col space-y-2"><label for="vietParagraphOutput" class="font-semibold">Bản dịch tiếng Việt</label><textarea id="vietParagraphOutput" rows="8" readonly class="w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
+                    <div class="flex flex-col space-y-2"><label for="edeParagraphOutput" class="font-semibold">Đoạn văn tiếng Ê-đê</label><textarea id="edeParagraphOutput" rows="8" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
+                    <div class="flex flex-col space-y-2"><label for="vietParagraphOutput" class="font-semibold">Bản dịch tiếng Việt</label><textarea id="vietParagraphOutput" rows="8" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
                 </div>
             </div>
 
@@ -169,82 +194,58 @@
                     <div id="imageTab" class="space-y-6">
                         <div class="p-6 border-2 border-dashed rounded-lg text-center cursor-pointer transition" style="border-color: var(--border-color);" id="dropZone">
                             <input type="file" id="imageInput" class="hidden" accept="image/*">
-                            <div id="imagePlaceholder"><span class="text-4xl">🖼️</span><p class="mt-2" style="color: var(--text-secondary);">Kéo thả ảnh, hoặc <span class="font-semibold" style="color: var(--primary-color);">chọn file</span></p></div>
-                            <div id="imagePreviewWrapper" class="hidden relative"><img id="imagePreview" class="max-h-60 mx-auto rounded-md shadow-md"/><button id="removeImageButton" class="absolute -top-2 -right-2 bg-white rounded-full p-1 shadow-md text-red-500 hover:bg-red-50 text-xl font-bold">&times;</button></div>
+                            <div id="imagePlaceholder" class="flex flex-col items-center justify-center gap-3"></div>
+                            <div id="imagePreviewWrapper" class="hidden relative"><img id="imagePreview" class="max-h-60 mx-auto rounded-md shadow-md"/><button id="removeImageButton" class="absolute -top-3 -right-3 bg-white rounded-full p-1 shadow-lg text-red-500 hover:bg-red-50 text-2xl font-bold w-8 h-8 flex items-center justify-center">&times;</button></div>
                         </div>
-                        <button id="translateImageButton" class="w-full flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold" style="background-color: var(--accent-color); color: white;" disabled>
-                            <span class="button-icon">📷</span><span class="button-text">Dịch từ ảnh</span>
+                        <button id="translateImageButton" class="w-full flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold transition-transform transform hover:scale-105" style="background-color: var(--accent-color); color: white;" disabled>
+                            <span class="button-icon"></span><span class="button-text">Dịch từ ảnh</span>
                         </button>
                         <div id="imageTranslateResultWrapper" class="mt-6 hidden">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="flex flex-col space-y-2"><label class="font-semibold">1. Dịch theo từ (Ưu tiên từ điển)</label><textarea id="wordByWordImageText" rows="6" readonly class="w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
-                                <div class="flex flex-col space-y-2"><label class="font-semibold">2. Dịch theo ngữ cảnh</label><textarea id="contextualImageText" rows="6" readonly class="w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
+                                <div class="flex flex-col space-y-2"><label class="font-semibold">1. Văn bản gốc trích xuất</label><textarea id="wordByWordImageText" rows="6" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
+                                <div class="flex flex-col space-y-2"><label class="font-semibold">2. Dịch theo ngữ cảnh</label><textarea id="contextualImageText" rows="6" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);"></textarea></div>
                             </div>
                         </div>
                     </div>
                     <div id="dictionaryTab" class="hidden space-y-6">
+                        <!-- Cải tiến: Thêm ô tìm kiếm cho từ điển -->
+                        <div class="relative">
+                            <input type="text" id="dictionarySearch" placeholder="Tìm kiếm từ vựng..." class="form-input w-full p-3 pl-10 rounded-lg border-2" style="background-color: var(--bg-tertiary); border-color: var(--border-color);">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style="color: var(--text-secondary);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </div>
+                        </div>
                         <div class="mt-6 pt-4 border-t" style="border-color: var(--border-color);"><h3 class="lg font-semibold mb-3">Danh sách từ vựng nội bộ</h3><div id="internalDictionaryList" class="max-h-96 overflow-y-auto space-y-3 pr-2"><p class="text-center py-4" id="dictionaryPlaceholder" style="color: var(--text-secondary);">Đang tải từ điển...</p></div></div>
                     </div>
                 </div>
             </div>
         </main>
-
+        
         <footer class="text-center mt-10 text-sm" style="color: var(--text-secondary);">
-            <p>Phát triển bởi Thế Bằng &copy; 2025</p>
+            <p>Phát triển bởi Thế Bằng &copy; 2024</p>
         </footer>
     </div>
-
-    <!-- Nút trợ lý AI -->
+    
     <button id="aiAssistantButton" title="Trợ lý AI Ngôn ngữ" class="w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-3xl transition-transform transform hover:scale-110" style="background-color: var(--primary-color); color: white;">
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
     </button>
-
-    <!-- Khung chat AI -->
     <div id="aiChatContainer" class="w-full max-w-md rounded-2xl shadow-2xl card hidden origin-bottom-right">
-        <div class="p-4 border-b flex justify-between items-center" style="border-color: var(--border-color);"><h3 class="text-lg font-bold">Trợ lý AI Ngôn ngữ</h3><button id="closeChatButton" class="text-2xl font-bold" style="color: var(--text-secondary);">&times;</button></div>
+        <div class="p-4 border-b flex justify-between items-center" style="border-color: var(--border-color);"><h3 class="text-lg font-bold">Trợ lý AI Ngôn ngữ</h3><button id="closeChatButton" class="text-2xl font-bold p-1" style="color: var(--text-secondary);">&times;</button></div>
         <div id="chatMessages" class="p-4 h-80 overflow-y-auto space-y-4">
-             <div class="flex items-start gap-3"><div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--primary-color); color: white;">AI</div><div class="p-3 rounded-lg" style="background-color: var(--bg-tertiary);"><p class="text-sm">Xin chào! Tôi là một trợ lý AI. Dữ liệu của tôi được cập nhật đến <strong>tháng 8 năm 2025</strong>. Tôi có thể giúp gì cho bạn hôm nay?</p></div></div>
+             <div class="flex items-start gap-3"><div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--primary-color); color: white;">AI</div><div class="p-3 rounded-lg" style="background-color: var(--bg-tertiary);"><p class="text-sm">Xin chào! Tôi là một trợ lý AI. Dữ liệu của tôi được cập nhật đến <strong>tháng 8 năm 2024</strong>. Tôi có thể giúp gì cho bạn hôm nay?</p></div></div>
         </div>
         <div class="p-4 border-t" style="border-color: var(--border-color);">
-            <div class="flex gap-2"><input type="text" id="chatInput" placeholder="Hỏi tôi bất cứ điều gì..." class="flex-1 p-3 rounded-lg border-2" style="background-color: var(--bg-tertiary); border-color: var(--border-color);"><button id="sendChatButton" class="px-5 py-3 font-semibold rounded-lg shadow-md" style="background-color: var(--primary-color); color: white;">Gửi</button></div>
+            <div class="flex gap-2"><input type="text" id="chatInput" placeholder="Hỏi tôi bất cứ điều gì..." class="form-input flex-1 p-3 rounded-lg border-2" style="background-color: var(--bg-tertiary); border-color: var(--border-color);"><button id="sendChatButton" class="px-5 py-3 font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105" style="background-color: var(--primary-color); color: white;">Gửi</button></div>
         </div>
     </div>
 
-    <!-- Thông báo -->
     <div id="messageBox" class="message-box"></div>
 
 <script type="module">
-document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. KHAI BÁO BIẾN VÀ DOM ---
-
-    // **DOM caching**: Lưu trữ các phần tử DOM để sử dụng lại, giúp tăng tốc độ truy cập
-    const ui = {}; // Tạo một đối tượng để lưu trữ các phần tử giao diện
-    [
-        "inputText", "outputText", "translateButton", "generateExamplesButton", "summarizeButton",
-        "additionalOutput", "additionalOutputWrapper", "paragraphKeywords", "generateParagraphButton",
-        "edeParagraphOutput", "vietParagraphOutput", "paragraphOutputWrapper", "themeSelector",
-        "aiAssistantButton", "aiChatContainer", "closeChatButton", "chatMessages", "chatInput", "sendChatButton",
-        "messageBox", "dropZone", "imageInput", "imagePlaceholder", "imagePreviewWrapper", "imagePreview",
-        "removeImageButton", "translateImageButton", "imageTranslateResultWrapper", "wordByWordImageText", "contextualImageText",
-        "internalDictionaryList", "dictionaryPlaceholder", "speakTranslatedTextButton", "speakAdditionalTextButton",
-    ].forEach(id => ui[id] = document.getElementById(id)); // Gán các phần tử DOM vào đối tượng ui
-
-    // Lưu tabs và tabContents
-    ui.tabs = document.querySelectorAll('.tab-button');
-    ui.tabContents = document.querySelectorAll('.tab-content > div');
-
-    // **State**: Quản lý trạng thái của ứng dụng
-    const state = {
-        isLoading: false, // Trạng thái đang tải
-        isChatLoading: false, // Trạng thái đang tải chat
-        chatHistory: [], // Lịch sử chat
-        speechSynthesis: window.speechSynthesis, // API đọc văn bản
-        voices: [], // Danh sách giọng đọc
-    };
-
-    // **Dữ liệu từ điển**: Mảng các từ vựng
+try {
+    const translationCache = new Map();
     const internalDictionary = [
-        { "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
+{ "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
 { "ede": "Abăn", "meanings": [{ "type": "dt", "vietnamese": "Cái chăn (mền)" }] },
 { "ede": "Abŭ", "meanings": [{ "type": "dt", "vietnamese": "Cái hũ" }] },
 { "ede": "Adei", "meanings": [{ "type": "dt", "vietnamese": "Em" }] },
@@ -4247,104 +4248,421 @@ document.addEventListener('DOMContentLoaded', () => {
 { "ede": "Yư̆ yăm", "meanings": [{ "type": "đgt", "vietnamese": "Hôn mê" }] },
 { "ede": "Yư̆ yơ̆ng", "meanings": [{ "type": "đgt", "vietnamese": "Buông" }] },
 { "ede": "Yư̆ yư̆", "meanings": [{ "type": "tt", "vietnamese": "Chầm chậm" }] },
-    ];
+];
+    
+    const state = { isLoading: false, isChatLoading: false, chatHistory: [], speechSynthesis: window.speechSynthesis, voices: [] };
+    const ui = Object.fromEntries(Array.from(document.querySelectorAll('[id]')).map(el => [el.id, el]));
+    Object.assign(ui, { tabs: document.querySelectorAll('.tab-button'), tabContents: document.querySelectorAll('.tab-content > div') });
+    
+    const icons = {
+        translate: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>`,
+        examples: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.042 21.672 13.684 16.6s.42-2.021 2.024-2.021a2.88 2.88 0 0 1 2.88 2.88c0 3.433-3.716 4.244-3.716 4.244Z"/><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>`,
+        summarize: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"/></svg>`,
+        paragraph: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h12"/></svg>`,
+        image: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5c-2.5 2.7-6.2 2.5-8.4-1.2s-1.8-7-4.2-8.2"/></svg>`,
+        speak: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`,
+        upload: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-secondary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`
+    };
 
-    // --- 2. HÀM HỖ TRỢ ---
+    const scheduleUIUpdate = (callback) => window.requestAnimationFrame(callback);
 
-    // **loadVoices**: Tải danh sách giọng đọc tiếng Việt
-    function loadVoices() {
-        state.voices = state.speechSynthesis.getVoices().filter(voice => voice.lang.startsWith('vi'));
+    function setInitialIcons() {
+        if(ui.translateButton) ui.translateButton.querySelector('.button-icon').innerHTML = icons.translate;
+        if(ui.generateExamplesButton) ui.generateExamplesButton.querySelector('.button-icon').innerHTML = icons.examples;
+        if(ui.summarizeButton) ui.summarizeButton.querySelector('.button-icon').innerHTML = icons.summarize;
+        if(ui.generateParagraphButton) ui.generateParagraphButton.querySelector('.button-icon').innerHTML = icons.paragraph;
+        if(ui.translateImageButton) ui.translateImageButton.querySelector('.button-icon').innerHTML = icons.image;
+        if(ui.speakTranslatedTextButton) ui.speakTranslatedTextButton.innerHTML = icons.speak;
+        if(ui.speakAdditionalTextButton) ui.speakAdditionalTextButton.innerHTML = icons.speak;
+        if(ui.imagePlaceholder) ui.imagePlaceholder.innerHTML = `${icons.upload}<p class="mt-2" style="color: var(--text-secondary);">Kéo thả ảnh, hoặc <span class="font-semibold" style="color: var(--primary-color);">chọn file</span></p>`;
     }
-    loadVoices(); // Tải ngay khi trang web được tải
-    if (state.speechSynthesis.onvoiceschanged !== undefined) {
-        state.speechSynthesis.onvoiceschanged = loadVoices; // Tải lại khi danh sách giọng đọc thay đổi
-    }
 
-    // **debounce**: Hàm giúp giảm tần suất gọi một hàm
-    function debounce(fn, delay) {
-        let timeout;
-        return (...args) => {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => fn(...args), delay);
-        };
-    }
-
-    // **applyTheme**: Áp dụng giao diện cho trang web
     function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme); // Đặt thuộc tính data-theme
-        const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim(); // Lấy màu từ CSS
-        document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`; // Đặt background
+        scheduleUIUpdate(() => {
+            document.documentElement.setAttribute('data-theme', theme);
+            const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim();
+            document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
+        });
     }
 
-    // **speakText**: Đọc văn bản
+    function loadVoices() { 
+        state.voices = state.speechSynthesis.getVoices().filter(voice => voice.lang.startsWith('vi')); 
+    }
+    
     function speakText(text) {
-        if (state.speechSynthesis.speaking) { state.speechSynthesis.cancel(); } // Dừng nếu đang đọc
+        if (state.speechSynthesis.speaking) { state.speechSynthesis.cancel(); }
         if (text) {
-            const utterance = new SpeechSynthesisUtterance(text); // Tạo đối tượng văn bản
-            if (state.voices.length > 1) utterance.voice = state.voices[1]; // Chọn giọng đọc
+            const utterance = new SpeechSynthesisUtterance(text);
+            if (state.voices.length > 1) utterance.voice = state.voices[1];
             else if (state.voices.length > 0) utterance.voice = state.voices[0];
-            utterance.rate = 1.2; // Tốc độ đọc
-            state.speechSynthesis.speak(utterance); // Đọc
+            utterance.rate = 1.2;
+            state.speechSynthesis.speak(utterance);
         }
     }
 
-    // **showMessage**: Hiển thị thông báo
     function showMessage(message, duration = 3000) {
-        ui.messageBox.textContent = message; // Đặt nội dung thông báo
-        ui.messageBox.classList.add('show'); // Hiển thị thông báo
-        setTimeout(() => ui.messageBox.classList.remove('show'), duration); // Ẩn sau một khoảng thời gian
+        scheduleUIUpdate(() => {
+            if(ui.messageBox) {
+                ui.messageBox.textContent = message;
+                ui.messageBox.classList.add('show');
+            }
+        });
+        setTimeout(() => scheduleUIUpdate(() => {
+            if(ui.messageBox) ui.messageBox.classList.remove('show');
+        }), duration);
     }
 
-    // **setLoadingState**: Thay đổi trạng thái nút (loading/không loading)
     function setLoadingState(button, isLoading, originalText) {
-        const textSpan = button.querySelector('.button-text'); // Phần tử chứa chữ
-        const iconSpan = button.querySelector('.button-icon'); // Phần tử chứa biểu tượng
-        state.isLoading = isLoading; // Cập nhật trạng thái
-        button.disabled = isLoading; // Vô hiệu hóa nút
-        if (textSpan) textSpan.textContent = isLoading ? 'Đang xử lý...' : originalText; // Thay đổi chữ
-        if (iconSpan) iconSpan.innerHTML = isLoading ? '<div class="loader"></div>' : { 'Dịch': '✨', 'Tạo ví dụ': '💡', 'Tóm tắt': '📝', 'Tạo Đoạn Văn': '📖', 'Dịch từ ảnh': '📷' }[originalText]; // Thay đổi biểu tượng
+        if (!button) return;
+        state.isLoading = isLoading;
+        scheduleUIUpdate(() => {
+            const textSpan = button.querySelector('.button-text');
+            const iconSpan = button.querySelector('.button-icon');
+            button.disabled = isLoading;
+            if (textSpan) textSpan.textContent = isLoading ? 'Đang xử lý...' : originalText;
+            if (iconSpan) iconSpan.innerHTML = isLoading ? '<div class="loader"></div>' : { 'Dịch': icons.translate, 'Tạo ví dụ': icons.examples, 'Tóm tắt': icons.summarize, 'Tạo Đoạn Văn': icons.paragraph, 'Dịch từ ảnh': icons.image }[originalText] || '';
+        });
+    }
+    
+    function renderInternalDictionary(filter = '') {
+        if (!ui.internalDictionaryList || !ui.dictionaryPlaceholder) return;
+        scheduleUIUpdate(() => {
+            ui.internalDictionaryList.innerHTML = '';
+            const filteredDictionary = internalDictionary.filter(term => 
+                term.ede.toLowerCase().includes(filter.toLowerCase()) || 
+                term.meanings.some(m => m.vietnamese.toLowerCase().includes(filter.toLowerCase()))
+            );
+
+            if (filteredDictionary.length === 0) {
+                ui.dictionaryPlaceholder.textContent = filter ? 'Không tìm thấy kết quả.' : 'Từ điển nội bộ trống.';
+                ui.internalDictionaryList.appendChild(ui.dictionaryPlaceholder);
+            } else {
+                const sortedDictionary = filteredDictionary.sort((a, b) => a.ede.localeCompare(b.ede));
+                const fragment = document.createDocumentFragment();
+                sortedDictionary.forEach(term => {
+                    const meaningsHtml = term.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; ');
+                    const item = document.createElement('div');
+                    item.className = 'dictionary-item p-3 rounded-lg border transition hover:bg-[color:var(--bg-tertiary)] hover:border-[color:var(--primary-color)]';
+                    item.style.borderColor = 'var(--border-color)';
+                    item.innerHTML = `<div><p class="font-semibold">${term.ede}</p><p class="text-sm" style="color: var(--text-secondary);">${meaningsHtml}</p></div>`;
+                    fragment.appendChild(item);
+                });
+                ui.internalDictionaryList.appendChild(fragment);
+            }
+        });
     }
 
-    // **renderInternalDictionary**: Hiển thị danh sách từ vựng
-    function renderInternalDictionary() {
-        // Kiểm tra xem đã render chưa
-        if (ui.internalDictionaryList.getAttribute('data-rendered') === 'true') return;
-        ui.internalDictionaryList.setAttribute('data-rendered', 'true');
-
-        ui.internalDictionaryList.innerHTML = ''; // Xóa nội dung cũ
-        if (internalDictionary.length === 0) {
-            ui.dictionaryPlaceholder.textContent = 'Từ điển nội bộ trống.';
-            ui.internalDictionaryList.appendChild(ui.dictionaryPlaceholder);
-        } else {
-            const sortedDictionary = [...internalDictionary].sort((a, b) => a.ede.localeCompare(b.ede)); // Sắp xếp từ vựng
-            const frag = document.createDocumentFragment(); // Tạo fragment để tăng tốc độ render
-            sortedDictionary.forEach(term => {
-                const meaningsHtml = term.meanings.map(m => `(${m.type}) ${m.vietnamese}`).join('; '); // Tạo chuỗi nghĩa
-                const item = document.createElement('div');
-                item.className = 'dictionary-item p-3 rounded-lg border';
-                item.style.borderColor = 'var(--border-color)';
-                item.innerHTML = `<div><p class="font-semibold">${term.ede}</p><p class="text-sm" style="color: var(--text-secondary);">${meaningsHtml}</p></div>`;
-                frag.appendChild(item);
-            });
-            ui.internalDictionaryList.appendChild(frag); // Thêm vào DOM
-        }
-    }
-
-    // --- 3. HÀM XỬ LÝ CHÍNH ---
-
-    // **callGeminiAPI**: Gọi API Gemini để dịch
     async function callGeminiAPI(prompt, imageData = null, model = 'gemini-2.5-flash-preview-05-20', chatHistory = []) {
-        const apiKey = "AIzaSyBVCTx8fPnGWFprwoT9bgixio_NUgvNG4k"; // API key của bạn
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`; // URL API
-        const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [{inlineData: imageData}] : [])] }]; // Tạo nội dung yêu cầu
+        const apiKey = ""; 
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+        const contents = [...chatHistory, { role: "user", parts: [{ text: prompt }, ...(imageData ? [{inlineData: imageData}] : [])] }];
         try {
-            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents }) }); // Gọi API
+            const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents }) });
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(`Lỗi API: ${response.status} - ${errorData.error?.message || 'Lỗi không xác định'}`); // Xử lý lỗi
+                throw new Error(`Lỗi API: ${response.status} - ${errorData.error?.message || 'Lỗi không xác định'}`);
             }
-            const result = await response.json(); // Lấy kết quả
+            const result = await response.json();
             if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                return result.candidates[0].content.parts[0].text; // Trả về kết quả
+                return result.candidates[0].content.parts[0].text;
             }
             const blockReason = result.candidates?.[0]?.finishReason;
+            throw new Error(blockReason ? `Yêu cầu bị chặn vì lý do: ${blockReason}.` : "Phản hồi API không hợp lệ.");
+        } catch (error) {
+            console.error("Lỗi API Gemini:", error);
+            throw error;
+        }
+    }
+
+    async function handleTranslate() {
+        if (!ui.inputText || !ui.outputText) return;
+        const inputText = ui.inputText.value.trim();
+        if (state.isLoading || !inputText) return;
+        if (translationCache.has(inputText)) {
+            scheduleUIUpdate(() => { ui.outputText.value = translationCache.get(inputText); });
+            return;
+        }
+        setLoadingState(ui.translateButton, true, 'Dịch');
+        scheduleUIUpdate(() => { ui.outputText.value = ''; });
+        const prompt = `Dịch văn bản sau giữa tiếng Việt và Ê-đê. Chỉ trả về văn bản đã dịch. Văn bản: ${inputText}`;
+        try {
+            const translation = await callGeminiAPI(prompt);
+            translationCache.set(inputText, translation);
+            scheduleUIUpdate(() => { if (ui.outputText) ui.outputText.value = translation; });
+        } catch (error) {
+            scheduleUIUpdate(() => { if (ui.outputText) ui.outputText.value = `Lỗi: ${error.message}`; });
+            showMessage(`Lỗi dịch: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.translateButton, false, 'Dịch');
+        }
+    }
+
+    async function handleGenerateExamples() {
+        if (!ui.inputText || !ui.additionalOutput || !ui.additionalOutputWrapper) return;
+        if (state.isLoading || !ui.inputText.value.trim()) return showMessage("Vui lòng nhập một từ để tạo ví dụ.");
+        setLoadingState(ui.generateExamplesButton, true, 'Tạo ví dụ');
+        const originalWord = ui.inputText.value.trim();
+        const prompt = `Với từ gốc là "${originalWord}", tạo 3 câu ví dụ tiếng Ê-đê và dịch sang tiếng Việt. Định dạng:\n1. [Câu Ê-đê]\n   - Dịch: [Câu Việt]\n...`;
+        try {
+            const examples = await callGeminiAPI(prompt);
+            scheduleUIUpdate(() => {
+                ui.additionalOutput.value = examples;
+                ui.additionalOutputWrapper.classList.remove('hidden');
+            });
+        } catch (error) {
+            showMessage(`Lỗi tạo ví dụ: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.generateExamplesButton, false, 'Tạo ví dụ');
+        }
+    }
+
+    async function handleSummarize() {
+        if (!ui.outputText || !ui.additionalOutput || !ui.additionalOutputWrapper) return;
+        if (state.isLoading || !ui.outputText.value.trim()) return showMessage("Vui lòng dịch một nội dung trước khi tóm tắt.");
+        setLoadingState(ui.summarizeButton, true, 'Tóm tắt');
+        const prompt = `Tóm tắt hoặc giải thích ngắn gọn ý nghĩa của văn bản sau: "${ui.outputText.value}". Chỉ trả về phần tóm tắt/giải thích.`;
+        try {
+            const summary = await callGeminiAPI(prompt);
+            scheduleUIUpdate(() => {
+                ui.additionalOutput.value = summary;
+                ui.additionalOutputWrapper.classList.remove('hidden');
+            });
+        } catch (error) {
+            showMessage(`Lỗi tóm tắt: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.summarizeButton, false, 'Tóm tắt');
+        }
+    }
+    
+    async function handleGenerateParagraph() {
+        if (!ui.paragraphKeywords || !ui.edeParagraphOutput || !ui.vietParagraphOutput || !ui.paragraphOutputWrapper) return;
+        if (state.isLoading || !ui.paragraphKeywords.value.trim()) return;
+        setLoadingState(ui.generateParagraphButton, true, 'Tạo Đoạn Văn');
+        const prompt = `Viết một đoạn văn tiếng Ê-đê hoàn chỉnh (mở bài, thân bài, kết bài) về chủ đề: "${ui.paragraphKeywords.value}". Sau đó, dịch toàn bộ sang tiếng Việt. Định dạng:\nTiếng Ê-đê:\n[Đoạn văn]\n\nTiếng Việt:\n[Đoạn văn]`;
+        try {
+            const rawResponse = await callGeminiAPI(prompt);
+            const edeMatch = rawResponse.match(/Tiếng Ê-đê:\n([\s\S]*?)\n\nTiếng Việt:/i);
+            const vietMatch = rawResponse.match(/Tiếng Việt:\n([\s\S]*)/i);
+            scheduleUIUpdate(() => {
+                ui.edeParagraphOutput.value = edeMatch ? edeMatch[1].trim() : "Không thể phân tách đoạn văn Ê-đê.";
+                ui.vietParagraphOutput.value = vietMatch ? vietMatch[1].trim() : "Không thể phân tách bản dịch Việt.";
+                ui.paragraphOutputWrapper.classList.remove('hidden');
+            });
+        } catch (error) {
+            showMessage(`Lỗi tạo đoạn văn: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.generateParagraphButton, false, 'Tạo Đoạn Văn');
+        }
+    }
+
+    async function handleTranslateImage() {
+        if(!ui.imagePreview || !ui.imagePreview.src || !ui.imageTranslateResultWrapper || !ui.wordByWordImageText || !ui.contextualImageText) return;
+        setLoadingState(ui.translateImageButton, true, 'Dịch từ ảnh');
+        scheduleUIUpdate(() => ui.imageTranslateResultWrapper.classList.add('hidden'));
+        const base64Image = ui.imagePreview.src.split(',')[1];
+        const mimeTypeMatch = ui.imagePreview.src.match(/data:(.*);/);
+        if (!mimeTypeMatch) {
+            showMessage("Không thể xác định loại tệp ảnh.");
+            setLoadingState(ui.translateImageButton, false, 'Dịch từ ảnh');
+            return;
+        }
+        const mimeType = mimeTypeMatch[1];
+        
+        try {
+            const extractPrompt = `Trích xuất văn bản từ ảnh.`;
+            const extractedText = await callGeminiAPI(extractPrompt, { mimeType, data: base64Image });
+            
+            const contextualPrompt = `Dịch văn bản sau giữa Việt và Ê-đê: "${extractedText}"`;
+            const contextualTranslation = await callGeminiAPI(contextualPrompt);
+
+            scheduleUIUpdate(() => {
+                ui.wordByWordImageText.value = `Văn bản gốc: ${extractedText}`;
+                ui.contextualImageText.value = contextualTranslation;
+                ui.imageTranslateResultWrapper.classList.remove('hidden');
+            });
+        } catch (error) {
+            showMessage(`Lỗi dịch ảnh: ${error.message}`, 5000);
+        } finally {
+            setLoadingState(ui.translateImageButton, false, 'Dịch từ ảnh');
+        }
+    }
+
+    function handleImageSelection(file) {
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                scheduleUIUpdate(() => {
+                    if (ui.imagePreview) ui.imagePreview.src = e.target.result;
+                    if (ui.imagePlaceholder) ui.imagePlaceholder.classList.add('hidden');
+                    if (ui.imagePreviewWrapper) ui.imagePreviewWrapper.classList.remove('hidden');
+                    if (ui.translateImageButton) ui.translateImageButton.disabled = false;
+                });
+            };
+            reader.readAsDataURL(file);
+        } else {
+            showMessage("Vui lòng chọn một tệp hình ảnh hợp lệ.");
+        }
+    }
+
+    function toggleChat() {
+        if (ui.aiChatContainer) scheduleUIUpdate(() => ui.aiChatContainer.classList.toggle('hidden'));
+    }
+    
+    async function handleAIChat() {
+        if (!ui.chatInput || !ui.chatMessages) return;
+        const userInput = ui.chatInput.value.trim();
+        if (!userInput || state.isChatLoading) return;
+        addChatMessage(userInput, 'user');
+        scheduleUIUpdate(() => { ui.chatInput.value = ''; });
+        state.isChatLoading = true;
+        addChatMessage('...', 'ai', true); 
+        state.chatHistory.push({ role: "user", parts: [{ text: userInput }] });
+        const system_prompt = `Bạn là trợ lý AI am hiểu về ngôn ngữ và văn hóa Ê-đê. Dữ liệu của bạn được cập nhật đến tháng 8 năm 2024. Hãy trả lời câu hỏi của người dùng một cách thân thiện, súc tích và hữu ích, ghi nhớ ngữ cảnh cuộc trò chuyện.`;
+        try {
+            const fullPrompt = `${system_prompt} Lịch sử trò chuyện: ${JSON.stringify(state.chatHistory.slice(0, -1))}. Câu hỏi hiện tại: "${userInput}"`;
+            const response = await callGeminiAPI(fullPrompt);
+            state.chatHistory.push({ role: "model", parts: [{ text: response }] });
+            updateLastChatMessage(response);
+        } catch (error) {
+            updateLastChatMessage(`Xin lỗi, tôi gặp lỗi: ${error.message}`);
+        } finally {
+            state.isChatLoading = false;
+        }
+    }
+    
+    function addChatMessage(message, sender, isLoading = false) {
+        if (!ui.chatMessages) return;
+        scheduleUIUpdate(() => {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `flex items-start gap-3 ${sender === 'user' ? 'justify-end' : ''}`;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'p-3 rounded-lg max-w-xs';
+            contentDiv.style.backgroundColor = sender === 'user' ? 'var(--primary-color)' : 'var(--bg-tertiary)';
+            contentDiv.style.color = sender === 'user' ? 'white' : 'var(--text-primary)';
+            
+            const p = document.createElement('p');
+            p.className = 'text-sm';
+            p.innerHTML = isLoading ? '<div class="loader" style="border-top-color: var(--text-primary);"></div>' : message;
+            contentDiv.appendChild(p);
+
+            const iconDiv = document.createElement('div');
+            iconDiv.className = 'w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0';
+            iconDiv.textContent = sender === 'user' ? '👤' : 'AI';
+            iconDiv.style.backgroundColor = sender === 'user' ? 'var(--bg-tertiary)' : 'var(--primary-color)';
+            iconDiv.style.color = sender === 'user' ? 'var(--text-secondary)' : 'white';
+
+            if (sender === 'user') {
+                messageDiv.appendChild(contentDiv);
+                messageDiv.appendChild(iconDiv);
+            } else {
+                messageDiv.appendChild(iconDiv);
+                messageDiv.appendChild(contentDiv);
+            }
+            
+            ui.chatMessages.appendChild(messageDiv);
+            ui.chatMessages.scrollTop = ui.chatMessages.scrollHeight;
+        });
+    }
+
+    function updateLastChatMessage(newMessage) {
+        if (!ui.chatMessages) return;
+        scheduleUIUpdate(() => {
+            const lastMessage = ui.chatMessages.lastChild?.querySelector('p');
+            if (lastMessage) {
+                lastMessage.innerHTML = newMessage;
+            }
+        });
+    }
+
+    // --- SỬA LỖI: Gán sự kiện một cách an toàn ---
+    // Bọc tất cả các lệnh gọi addEventListener trong khối kiểm tra 'if' để đảm bảo
+    // phần tử tồn tại trước khi gán sự kiện cho nó.
+    function setupEventListeners() {
+        if (ui.themeSelector) {
+            ui.themeSelector.addEventListener('change', (e) => {
+                const theme = e.target.value;
+                applyTheme(theme);
+                localStorage.setItem('selectedTheme', theme);
+            });
+        }
+        if (ui.translateButton) ui.translateButton.addEventListener('click', handleTranslate);
+        if (ui.generateExamplesButton) ui.generateExamplesButton.addEventListener('click', handleGenerateExamples);
+        if (ui.summarizeButton) ui.summarizeButton.addEventListener('click', handleSummarize);
+        if (ui.generateParagraphButton) ui.generateParagraphButton.addEventListener('click', handleGenerateParagraph);
+        if (ui.translateImageButton) ui.translateImageButton.addEventListener('click', handleTranslateImage);
+        
+        if (ui.speakTranslatedTextButton) {
+            ui.speakTranslatedTextButton.addEventListener('click', () => speakText(ui.outputText?.value));
+        }
+        if (ui.speakAdditionalTextButton) {
+            ui.speakAdditionalTextButton.addEventListener('click', () => speakText(ui.additionalOutput?.value));
+        }
+
+        if (ui.tabs) {
+            ui.tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetTab = tab.dataset.tab;
+                    scheduleUIUpdate(() => {
+                        if (ui.tabs) ui.tabs.forEach(t => t.classList.toggle('active', t === tab));
+                        if (ui.tabContents) ui.tabContents.forEach(content => content.classList.toggle('hidden', content.id !== targetTab));
+                    });
+                });
+            });
+        }
+
+        if (ui.dropZone) {
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev => ui.dropZone.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); }));
+            ['dragenter', 'dragover'].forEach(ev => ui.dropZone.addEventListener(ev, () => scheduleUIUpdate(() => { if (ui.dropZone) ui.dropZone.style.borderColor = 'var(--primary-color)'; })));
+            ['dragleave', 'drop'].forEach(ev => ui.dropZone.addEventListener(ev, () => scheduleUIUpdate(() => { if (ui.dropZone) ui.dropZone.style.borderColor = 'var(--border-color)'; })));
+            ui.dropZone.addEventListener('drop', (e) => handleImageSelection(e.dataTransfer.files[0]));
+            ui.dropZone.addEventListener('click', () => ui.imageInput?.click());
+        }
+        
+        if (ui.imageInput) ui.imageInput.addEventListener('change', (e) => handleImageSelection(e.target.files[0]));
+        
+        if (ui.removeImageButton) {
+            ui.removeImageButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                scheduleUIUpdate(() => {
+                    if (ui.imageInput) ui.imageInput.value = ''; 
+                    if (ui.imagePreview) ui.imagePreview.src = '';
+                    if (ui.imagePreviewWrapper) ui.imagePreviewWrapper.classList.add('hidden');
+                    if (ui.imagePlaceholder) ui.imagePlaceholder.classList.remove('hidden');
+                    if (ui.translateImageButton) ui.translateImageButton.disabled = true;
+                    if (ui.imageTranslateResultWrapper) ui.imageTranslateResultWrapper.classList.add('hidden');
+                });
+            });
+        }
+
+        if (ui.aiAssistantButton) ui.aiAssistantButton.addEventListener('click', toggleChat);
+        if (ui.closeChatButton) ui.closeChatButton.addEventListener('click', toggleChat);
+        if (ui.sendChatButton) ui.sendChatButton.addEventListener('click', handleAIChat);
+        if (ui.chatInput) ui.chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleAIChat(); });
+        
+        if (ui.dictionarySearch) {
+            ui.dictionarySearch.addEventListener('input', (e) => renderInternalDictionary(e.target.value));
+        }
+    }
+
+    // --- INITIALIZATION ---
+    const savedTheme = localStorage.getItem('selectedTheme') || 'light';
+    if (ui.themeSelector) ui.themeSelector.value = savedTheme;
+    applyTheme(savedTheme);
+
+    loadVoices();
+    if (state.speechSynthesis.onvoiceschanged !== undefined) { 
+        state.speechSynthesis.onvoiceschanged = loadVoices; 
+    }
+
+    setInitialIcons();
+    renderInternalDictionary();
+    setupEventListeners();
+
+} catch (error) {
+    console.error("Đã xảy ra lỗi nghiêm trọng:", error);
+    document.body.innerHTML = `<div class="text-center p-8"><h1>Đã có lỗi xảy ra</h1><p>${error.message}</p></div>`;
+}
+</script>
+</body>
+</html>
