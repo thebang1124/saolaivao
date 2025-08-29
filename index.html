@@ -97,7 +97,6 @@
             transform: scale(0.9);
             pointer-events: none;
         }
-        /* Cải tiến: Thêm style cho focus state */
         .form-input:focus {
             outline: none;
             border-color: var(--primary-color) !important;
@@ -110,7 +109,6 @@
     <div class="min-h-screen p-4 sm:p-6 md:p-8 flex flex-col items-center">
         <header class="w-full max-w-4xl mx-auto flex justify-between items-center mb-8">
             <div class="flex items-center gap-3">
-                 <!-- Cải tiến: Thêm icon cho header -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-color);"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                 <div class="text-left">
                     <h1 class="text-3xl sm:text-4xl font-extrabold" style="color: var(--text-primary);">Trình Dịch Ê-đê</h1>
@@ -150,7 +148,6 @@
                 </div>
 
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <!-- Cải tiến: Phân cấp nút bấm -->
                     <button id="translateButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold transition-transform transform hover:scale-105" style="background-color: var(--primary-color); color: white;">
                         <span class="button-icon"></span><span class="button-text">Dịch</span>
                     </button>
@@ -208,7 +205,6 @@
                         </div>
                     </div>
                     <div id="dictionaryTab" class="hidden space-y-6">
-                        <!-- Cải tiến: Thêm ô tìm kiếm cho từ điển -->
                         <div class="relative">
                             <input type="text" id="dictionarySearch" placeholder="Tìm kiếm từ vựng..." class="form-input w-full p-3 pl-10 rounded-lg border-2" style="background-color: var(--bg-tertiary); border-color: var(--border-color);">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none" style="color: var(--text-secondary);">
@@ -232,7 +228,13 @@
     <div id="aiChatContainer" class="w-full max-w-md rounded-2xl shadow-2xl card hidden origin-bottom-right">
         <div class="p-4 border-b flex justify-between items-center" style="border-color: var(--border-color);"><h3 class="text-lg font-bold">Trợ lý AI Ngôn ngữ</h3><button id="closeChatButton" class="text-2xl font-bold p-1" style="color: var(--text-secondary);">&times;</button></div>
         <div id="chatMessages" class="p-4 h-80 overflow-y-auto space-y-4">
-             <div class="flex items-start gap-3"><div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--primary-color); color: white;">AI</div><div class="p-3 rounded-lg" style="background-color: var(--bg-tertiary);"><p class="text-sm">Xin chào! Tôi là một trợ lý AI. Dữ liệu của tôi được cập nhật đến <strong>tháng 8 năm 2025</strong>. Tôi có thể giúp gì cho bạn hôm nay?</p></div></div>
+             <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--primary-color); color: white;">AI</div>
+                <div class="p-3 rounded-lg" style="background-color: var(--bg-tertiary);">
+                    <!-- Cập nhật: Thêm ID để cập nhật động -->
+                    <p class="text-sm" id="aiGreetingMessage">Xin chào! Tôi là một trợ lý AI. Tôi có thể giúp gì cho bạn hôm nay?</p>
+                </div>
+            </div>
         </div>
         <div class="p-4 border-t" style="border-color: var(--border-color);">
             <div class="flex gap-2"><input type="text" id="chatInput" placeholder="Hỏi tôi bất cứ điều gì..." class="form-input flex-1 p-3 rounded-lg border-2" style="background-color: var(--bg-tertiary); border-color: var(--border-color);"><button id="sendChatButton" class="px-5 py-3 font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105" style="background-color: var(--primary-color); color: white;">Gửi</button></div>
@@ -4248,8 +4250,8 @@ try {
 { "ede": "Yư̆ yăm", "meanings": [{ "type": "đgt", "vietnamese": "Hôn mê" }] },
 { "ede": "Yư̆ yơ̆ng", "meanings": [{ "type": "đgt", "vietnamese": "Buông" }] },
 { "ede": "Yư̆ yư̆", "meanings": [{ "type": "tt", "vietnamese": "Chầm chậm" }] },
-];
-    
+    ];
+
     const state = { isLoading: false, isChatLoading: false, chatHistory: [], speechSynthesis: window.speechSynthesis, voices: [] };
     const ui = Object.fromEntries(Array.from(document.querySelectorAll('[id]')).map(el => [el.id, el]));
     Object.assign(ui, { tabs: document.querySelectorAll('.tab-button'), tabContents: document.querySelectorAll('.tab-content > div') });
@@ -4277,12 +4279,33 @@ try {
         if(ui.imagePlaceholder) ui.imagePlaceholder.innerHTML = `${icons.upload}<p class="mt-2" style="color: var(--text-secondary);">Kéo thả ảnh, hoặc <span class="font-semibold" style="color: var(--primary-color);">chọn file</span></p>`;
     }
 
+    // Sửa lỗi: Cải thiện hàm applyTheme để hoạt động ổn định hơn
     function applyTheme(theme) {
         scheduleUIUpdate(() => {
-            document.documentElement.setAttribute('data-theme', theme);
-            const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim();
-            document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
+            try {
+                document.documentElement.setAttribute('data-theme', theme);
+                // Dùng setTimeout 0ms để chờ trình duyệt áp dụng CSS variables mới
+                setTimeout(() => {
+                    if (document.body) {
+                        const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim();
+                        if (drumColor) {
+                             document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
+                        }
+                    }
+                }, 0);
+            } catch (error) {
+                console.error("Lỗi khi áp dụng giao diện:", error);
+            }
         });
+    }
+    
+    // Cập nhật: Hàm cập nhật lời chào của AI
+    function updateAIGreeting() {
+        if (ui.aiGreetingMessage) {
+            const now = new Date();
+            const formattedDate = `tháng ${now.getMonth() + 1} năm ${now.getFullYear()}`;
+            ui.aiGreetingMessage.innerHTML = `Xin chào! Tôi là một trợ lý AI. Dữ liệu của tôi được cập nhật đến <strong>${formattedDate}</strong>. Tôi có thể giúp gì cho bạn hôm nay?`;
+        }
     }
 
     function loadVoices() { 
@@ -4575,9 +4598,6 @@ try {
         });
     }
 
-    // --- SỬA LỖI: Gán sự kiện một cách an toàn ---
-    // Bọc tất cả các lệnh gọi addEventListener trong khối kiểm tra 'if' để đảm bảo
-    // phần tử tồn tại trước khi gán sự kiện cho nó.
     function setupEventListeners() {
         if (ui.themeSelector) {
             ui.themeSelector.addEventListener('change', (e) => {
@@ -4656,6 +4676,7 @@ try {
     }
 
     setInitialIcons();
+    updateAIGreeting(); // Cập nhật lời chào khi tải trang
     renderInternalDictionary();
     setupEventListeners();
 
