@@ -133,19 +133,38 @@
 
         <main class="w-full max-w-4xl mx-auto">
             <div class="card rounded-2xl shadow-lg p-6 md:p-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex flex-col space-y-4">
-                        <label for="inputText" class="font-semibold">Văn bản gốc (Việt hoặc Ê-đê)</label>
-                        <textarea id="inputText" rows="8" class="form-input w-full p-4 rounded-lg border-2 transition duration-300 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Nhập văn bản cần dịch..."></textarea>
+                <div class="grid grid-cols-1 md:grid-cols-11 gap-4 items-start">
+                    <div class="flex flex-col space-y-2 md:col-span-5">
+                        <div class="flex justify-between items-center">
+                            <label for="inputLang" class="font-semibold text-sm" style="color: var(--text-secondary);">Từ ngôn ngữ</label>
+                            <select id="inputLang" class="form-input rounded-md border-2 p-1 text-sm" style="background-color: var(--bg-tertiary); border-color: var(--border-color);">
+                                <option value="Tiếng Ê-đê" selected>Tiếng Ê-đê</option>
+                                <option value="Tiếng Việt">Tiếng Việt</option>
+                            </select>
+                        </div>
+                        <textarea id="inputText" rows="8" class="form-input w-full p-4 rounded-lg border-2 transition duration-300 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Nhập văn bản..."></textarea>
                     </div>
-                    <div class="flex flex-col space-y-4">
-                        <label for="outputText" class="font-semibold">Kết quả dịch</label>
+
+                    <div class="flex items-center justify-center md:pt-10">
+                        <button id="swapLanguagesButton" title="Đảo ngược ngôn ngữ" class="p-2 rounded-full transition-transform transform hover:scale-110 hover:rotate-180" style="color: var(--text-secondary); background-color: var(--bg-tertiary); border: 1px solid var(--border-color);"></button>
+                    </div>
+
+                    <div class="flex flex-col space-y-2 md:col-span-5">
+                        <div class="flex justify-between items-center">
+                            <!-- Cập nhật: Thêm label cho nguồn dịch -->
+                            <label for="outputLang" class="font-semibold text-sm" style="color: var(--text-secondary);">Sang ngôn ngữ <span id="translationSource" class="text-xs font-normal hidden">(từ từ điển)</span></label>
+                            <select id="outputLang" class="form-input rounded-md border-2 p-1 text-sm" style="background-color: var(--bg-tertiary); border-color: var(--border-color);">
+                                <option value="Tiếng Việt" selected>Tiếng Việt</option>
+                                <option value="Tiếng Ê-đê">Tiếng Ê-đê</option>
+                            </select>
+                        </div>
                         <div class="relative w-full">
-                            <textarea id="outputText" rows="8" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Kết quả dịch sẽ hiển thị ở đây..."></textarea>
+                            <textarea id="outputText" rows="8" readonly class="form-input w-full p-4 rounded-lg border-2 resize-none" style="background-color: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-primary);" placeholder="Kết quả..."></textarea>
                             <button id="speakTranslatedTextButton" title="Phát âm văn bản" class="absolute bottom-3 right-3 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition" style="background-color: var(--bg-secondary); color: var(--text-secondary);"></button>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <button id="translateButton" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg shadow-md font-semibold transition-transform transform hover:scale-105" style="background-color: var(--primary-color); color: white;">
@@ -218,7 +237,7 @@
         </main>
         
         <footer class="text-center mt-10 text-sm" style="color: var(--text-secondary);">
-            <p>Phát triển bởi Thế Bằng &copy; 2025</p>
+            <p>Phát triển bởi Thế Bằng &copy; tháng 8 năm 2025</p>
         </footer>
     </div>
     
@@ -231,7 +250,6 @@
              <div class="flex items-start gap-3">
                 <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background-color: var(--primary-color); color: white;">AI</div>
                 <div class="p-3 rounded-lg" style="background-color: var(--bg-tertiary);">
-                    <!-- Cập nhật: Thêm ID để cập nhật động -->
                     <p class="text-sm" id="aiGreetingMessage">Xin chào! Tôi là một trợ lý AI. Tôi có thể giúp gì cho bạn hôm nay?</p>
                 </div>
             </div>
@@ -246,8 +264,9 @@
 <script type="module">
 try {
     const translationCache = new Map();
+    // Ví dụ về cách thêm từ vào từ điển
     const internalDictionary = [
-{ "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
+      { "ede": "Abao", "meanings": [{ "type": "dt", "vietnamese": "Ốc bươu" }] },
 { "ede": "Abăn", "meanings": [{ "type": "dt", "vietnamese": "Cái chăn (mền)" }] },
 { "ede": "Abŭ", "meanings": [{ "type": "dt", "vietnamese": "Cái hũ" }] },
 { "ede": "Adei", "meanings": [{ "type": "dt", "vietnamese": "Em" }] },
@@ -4263,7 +4282,8 @@ try {
         paragraph: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h12"/></svg>`,
         image: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5c-2.5 2.7-6.2 2.5-8.4-1.2s-1.8-7-4.2-8.2"/></svg>`,
         speak: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>`,
-        upload: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-secondary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`
+        upload: `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-secondary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>`,
+        swap: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>`
     };
 
     const scheduleUIUpdate = (callback) => window.requestAnimationFrame(callback);
@@ -4277,29 +4297,26 @@ try {
         if(ui.speakTranslatedTextButton) ui.speakTranslatedTextButton.innerHTML = icons.speak;
         if(ui.speakAdditionalTextButton) ui.speakAdditionalTextButton.innerHTML = icons.speak;
         if(ui.imagePlaceholder) ui.imagePlaceholder.innerHTML = `${icons.upload}<p class="mt-2" style="color: var(--text-secondary);">Kéo thả ảnh, hoặc <span class="font-semibold" style="color: var(--primary-color);">chọn file</span></p>`;
+        if(ui.swapLanguagesButton) ui.swapLanguagesButton.innerHTML = icons.swap;
     }
 
-    // Sửa lỗi: Cải thiện hàm applyTheme để hoạt động ổn định hơn
     function applyTheme(theme) {
-        scheduleUIUpdate(() => {
+        if (!document.documentElement) return;
+        document.documentElement.setAttribute('data-theme', theme);
+        setTimeout(() => {
             try {
-                document.documentElement.setAttribute('data-theme', theme);
-                // Dùng setTimeout 0ms để chờ trình duyệt áp dụng CSS variables mới
-                setTimeout(() => {
-                    if (document.body) {
-                        const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim();
-                        if (drumColor) {
-                             document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
-                        }
+                if (document.body) {
+                    const drumColor = getComputedStyle(document.documentElement).getPropertyValue('--drum-pattern-color').trim();
+                    if (drumColor) {
+                         document.body.style.backgroundImage = `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='${encodeURIComponent(drumColor)}' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
                     }
-                }, 0);
+                }
             } catch (error) {
-                console.error("Lỗi khi áp dụng giao diện:", error);
+                console.error("Lỗi khi cập nhật họa tiết nền:", error);
             }
-        });
+        }, 0);
     }
     
-    // Cập nhật: Hàm cập nhật lời chào của AI
     function updateAIGreeting() {
         if (ui.aiGreetingMessage) {
             const now = new Date();
@@ -4397,20 +4414,61 @@ try {
         }
     }
 
+    // Cập nhật: Hàm dịch ưu tiên từ điển
     async function handleTranslate() {
-        if (!ui.inputText || !ui.outputText) return;
-        const inputText = ui.inputText.value.trim();
+        if (!ui.inputText || !ui.outputText || !ui.inputLang || !ui.outputLang || !ui.translationSource) return;
+        const inputText = ui.inputText.value.trim().toLowerCase();
         if (state.isLoading || !inputText) return;
-        if (translationCache.has(inputText)) {
-            scheduleUIUpdate(() => { ui.outputText.value = translationCache.get(inputText); });
+
+        const inputLang = ui.inputLang.value;
+        const outputLang = ui.outputLang.value;
+
+        // Ẩn thông báo nguồn dịch trước
+        scheduleUIUpdate(() => ui.translationSource.classList.add('hidden'));
+
+        if (inputLang === outputLang) {
+            scheduleUIUpdate(() => { ui.outputText.value = ui.inputText.value; });
             return;
         }
+
+        // 1. Tìm kiếm trong từ điển nội bộ trước
+        let dictionaryResult = null;
+        if (inputLang === 'Tiếng Ê-đê' && outputLang === 'Tiếng Việt') {
+            const found = internalDictionary.find(term => term.ede.toLowerCase() === inputText);
+            if (found) {
+                dictionaryResult = found.meanings.map(m => m.vietnamese).join(', ');
+            }
+        } else if (inputLang === 'Tiếng Việt' && outputLang === 'Tiếng Ê-đê') {
+            const found = internalDictionary.find(term => term.meanings.some(m => m.vietnamese.toLowerCase() === inputText));
+            if (found) {
+                dictionaryResult = found.ede;
+            }
+        }
+
+        // 2. Nếu tìm thấy, hiển thị kết quả và dừng lại
+        if (dictionaryResult) {
+            scheduleUIUpdate(() => {
+                ui.outputText.value = dictionaryResult;
+                ui.translationSource.classList.remove('hidden');
+            });
+            return;
+        }
+
+        // 3. Nếu không tìm thấy, tiếp tục với API
+        const cacheKey = `${inputLang}:${outputLang}:${inputText}`;
+        if (translationCache.has(cacheKey)) {
+            scheduleUIUpdate(() => { ui.outputText.value = translationCache.get(cacheKey); });
+            return;
+        }
+
         setLoadingState(ui.translateButton, true, 'Dịch');
         scheduleUIUpdate(() => { ui.outputText.value = ''; });
-        const prompt = `Dịch văn bản sau giữa tiếng Việt và Ê-đê. Chỉ trả về văn bản đã dịch. Văn bản: ${inputText}`;
+        
+        const prompt = `Dịch văn bản sau từ ${inputLang} sang ${outputLang}. Chỉ trả về văn bản đã dịch. Văn bản: "${ui.inputText.value.trim()}"`;
+
         try {
             const translation = await callGeminiAPI(prompt);
-            translationCache.set(inputText, translation);
+            translationCache.set(cacheKey, translation);
             scheduleUIUpdate(() => { if (ui.outputText) ui.outputText.value = translation; });
         } catch (error) {
             scheduleUIUpdate(() => { if (ui.outputText) ui.outputText.value = `Lỗi: ${error.message}`; });
@@ -4598,6 +4656,19 @@ try {
         });
     }
 
+    function handleSwapLanguages() {
+        if (!ui.inputLang || !ui.outputLang || !ui.inputText || !ui.outputText) return;
+        scheduleUIUpdate(() => {
+            const currentInputLang = ui.inputLang.value;
+            ui.inputLang.value = ui.outputLang.value;
+            ui.outputLang.value = currentInputLang;
+
+            const currentInputText = ui.inputText.value;
+            ui.inputText.value = ui.outputText.value;
+            ui.outputText.value = currentInputText;
+        });
+    }
+
     function setupEventListeners() {
         if (ui.themeSelector) {
             ui.themeSelector.addEventListener('change', (e) => {
@@ -4611,6 +4682,7 @@ try {
         if (ui.summarizeButton) ui.summarizeButton.addEventListener('click', handleSummarize);
         if (ui.generateParagraphButton) ui.generateParagraphButton.addEventListener('click', handleGenerateParagraph);
         if (ui.translateImageButton) ui.translateImageButton.addEventListener('click', handleTranslateImage);
+        if (ui.swapLanguagesButton) ui.swapLanguagesButton.addEventListener('click', handleSwapLanguages);
         
         if (ui.speakTranslatedTextButton) {
             ui.speakTranslatedTextButton.addEventListener('click', () => speakText(ui.outputText?.value));
@@ -4676,7 +4748,7 @@ try {
     }
 
     setInitialIcons();
-    updateAIGreeting(); // Cập nhật lời chào khi tải trang
+    updateAIGreeting();
     renderInternalDictionary();
     setupEventListeners();
 
